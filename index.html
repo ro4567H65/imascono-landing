@@ -319,7 +319,7 @@
       line-height: 1.05;
       letter-spacing: -0.02em;
       margin-bottom: 0;
-      min-height: 12.6rem; /* 2 lines × 6rem × 1.05 line-height */
+      min-height: 12.8rem; /* 2 lines × 6rem × 1.05 line-height */
     }
     .hero-title .char {
       opacity: 0;
@@ -410,7 +410,15 @@
       margin-left: calc(-50vw + 50%);
       background: #0a0a14;
     }
-    .hero-media img {
+    .hero-media::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(74,90,104,0.2);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .hero-media img, .hero-media video {
       position: absolute;
       top: 0;
       left: 0;
@@ -1470,11 +1478,7 @@
         <span>Scroll down</span>
       </div>
       <div class="hero-media">
-        <img src="Hero_Video_Screenshot.jpg" alt="Showreel">
-        <div class="play-btn">
-          <svg viewBox="0 0 14 14" fill="currentColor"><polygon points="3,1 12,7 3,13"/></svg>
-          Play showreel
-        </div>
+        <video src="58842026.mp4" autoplay muted loop playsinline></video>
       </div>
     </div>
   </section>
@@ -1990,18 +1994,32 @@
     const title = document.querySelector('.hero-title');
     const parts = title.innerHTML.split(/<br\s*\/?>/gi);
     title.innerHTML = '';
+    // Pre-insert invisible line break to reserve 2-line height and prevent jump
+    var placeholderBr = document.createElement('br');
+    title.appendChild(placeholderBr);
+    var placeholderLine2 = document.createElement('span');
+    placeholderLine2.innerHTML = '&nbsp;';
+    placeholderLine2.style.visibility = 'hidden';
+    placeholderLine2.style.fontSize = '6rem';
+    placeholderLine2.style.lineHeight = '1.05';
+    title.appendChild(placeholderLine2);
+    // Prepend cursor before placeholder
     const cursor = document.createElement('span');
     cursor.className = 'cursor';
-    title.appendChild(cursor);
+    title.insertBefore(cursor, placeholderBr);
     var tokens = [];
     parts.forEach(function(part, idx) {
       part.split('').forEach(function(c) { tokens.push({type:'char', value:c}); });
       if (idx < parts.length - 1) tokens.push({type:'br'});
     });
+    window._titleProgress = 0;
     let i = 0;
     function type() {
       if (i < tokens.length) {
         if (tokens[i].type === 'br') {
+          // Remove placeholders and insert real br
+          if (placeholderBr.parentNode) placeholderBr.remove();
+          if (placeholderLine2.parentNode) placeholderLine2.remove();
           title.insertBefore(document.createElement('br'), cursor);
         } else {
           const span = document.createElement('span');
@@ -2010,12 +2028,19 @@
           title.insertBefore(span, cursor);
         }
         i++;
+        window._titleProgress = i / tokens.length;
         setTimeout(type, 60);
       } else {
+        window._titleProgress = 1;
         setTimeout(function() { cursor.style.opacity = '0'; }, 2000);
       }
     }
-    setTimeout(type, 500);
+    setTimeout(function() {
+      // Start particles when title starts typing
+      window._heroTitleStarted = true;
+      if (window._startParticles) window._startParticles();
+      type();
+    }, 500);
   })();
 </script>
 <script>
@@ -2121,6 +2146,7 @@
     var text = el.getAttribute('data-typewrite');
     var cursor = document.createElement('span');
     cursor.className = 'block-cursor';
+    cursor.style.animation = 'none';
     cursor.style.opacity = '0';
     el.textContent = '';
     el.appendChild(cursor);
@@ -2138,7 +2164,7 @@
         el.insertBefore(charNode, cursor);
         index++;
         updateCursorPos();
-        var delay = 8 + Math.random() * 6;
+        var delay = 25 + Math.random() * 15;
         setTimeout(typeNext, delay);
       } else {
         // Stop blinking and hide cursor after done
@@ -2162,6 +2188,7 @@
           started = true;
           // Wait for hero title typing to finish, then show cursor and start
           setTimeout(function() {
+            cursor.style.animation = '';
             cursor.style.opacity = '';
             typeNext();
           }, 2500);
@@ -2211,7 +2238,7 @@
     var particlesStarted = false;
 
     function tryStart() {
-      if (!logoReady || !window._heroTextsReady || particlesStarted) return;
+      if (!logoReady || !window._heroTitleStarted || particlesStarted) return;
       particlesStarted = true;
       initParticles();
       // Fade in canvas
@@ -2240,6 +2267,7 @@
     }
 
     var gridDots = [];
+    var birthStart = 0;
 
     function initParticles() {
       particles = [];
@@ -2263,17 +2291,31 @@
             var px = offsetX + x * scaleFactor + (Math.random() - 0.5) * 4;
             var py = offsetY + y * scaleFactor + (Math.random() - 0.5) * 4;
             var size = 10 + Math.random() * 8;
+            // birthThreshold: particle appears when title progress reaches this value
+            var birthThreshold = Math.random() * 0.95;
             particles.push({
               x: px, y: py, ox: px, oy: py,
               size: size,
               opacity: 0.25 + Math.random() * 0.4,
               vx: 0, vy: 0,
               tc: 0,
-              font: size + 'px PP Neue Montreal, system-ui, sans-serif'
+              font: size + 'px PP Neue Montreal, system-ui, sans-serif',
+              birthThreshold: birthThreshold,
+              birthTime: 0,
+              born: false
             });
           }
         }
       }
+
+      // Set spawn point at center of logo area
+      var spawnX = offsetX + targetW / 2;
+      var spawnY = offsetY + targetH / 2;
+      for (var pi = 0; pi < particles.length; pi++) {
+        particles[pi].x = spawnX;
+        particles[pi].y = spawnY;
+      }
+      birthStart = performance.now();
 
       // Grid line dots — match body::before pattern
       var heroW = heroTop.offsetWidth;
@@ -2308,8 +2350,33 @@
       var len = particles.length;
       var mX = mouseX, mY = mouseY, mR = mouseRadius, mRsq = mouseRadiusSq;
 
+      var now = performance.now();
+      var titleProg = window._titleProgress || 0;
+
       for (var i = 0; i < len; i++) {
         var p = particles[i];
+
+        // Birth animation — synced to title typing progress
+        if (!p.born) {
+          if (titleProg < p.birthThreshold) { continue; }
+          if (p.birthTime === 0) p.birthTime = now;
+          var t = (now - p.birthTime) / 1500; // 1.5s to reach target
+          if (t >= 1) {
+            p.born = true;
+            p.x = p.ox;
+            p.y = p.oy;
+          } else {
+            // Smooth ease-out cubic
+            var e = 1 - Math.pow(1 - t, 3);
+            p.x = p.x + (p.ox - p.x) * 0.06;
+            p.y = p.y + (p.oy - p.y) * 0.06;
+            var birthOpacity = p.opacity * e;
+            ctx.font = p.font;
+            ctx.fillStyle = 'rgba(120,140,165,' + birthOpacity + ')';
+            ctx.fillText('>', p.x, p.y);
+            continue;
+          }
+        }
 
         // Mouse dispersion (avoid sqrt when possible)
         var dx = p.x - mX;
@@ -2336,11 +2403,6 @@
           typeHit = true;
         }
 
-        // Track type-induced color (decays over time)
-        if (typeHit) p.tc = 1;
-        else if (p.tc > 0) p.tc *= 0.96;
-        else p.tc = 0;
-
         // Spring back + damping
         p.vx = (p.vx + (p.ox - p.x) * 0.04) * 0.88;
         p.vy = (p.vy + (p.oy - p.y) * 0.04) * 0.88;
@@ -2348,12 +2410,7 @@
         p.y += p.vy;
 
         ctx.font = p.font;
-        if (p.tc > 0.05) {
-          var pHue = (p.ox * 0.5 + p.oy * 0.3 + performance.now() * 0.04) % 360;
-          ctx.fillStyle = 'hsla(' + pHue + ',65%,60%,' + (p.opacity + p.tc * 0.4) + ')';
-        } else {
-          ctx.fillStyle = 'rgba(120,140,165,' + p.opacity + ')';
-        }
+        ctx.fillStyle = 'rgba(120,140,165,' + p.opacity + ')';
         ctx.fillText('>', p.x, p.y);
       }
 
@@ -2374,7 +2431,6 @@
           d.vy += gdy * gf;
         }
 
-        var gtypeHit = false;
         var gtdx = d.x - typeX;
         var gtdy = d.y - typeY;
         var gtdistSq = gtdx * gtdx + gtdy * gtdy;
@@ -2383,26 +2439,15 @@
           var gtf = ((mR - gtdist) / mR) * 4 / gtdist;
           d.vx += gtdx * gtf;
           d.vy += gtdy * gtf;
-          gtypeHit = true;
         }
-
-        if (gtypeHit) d.tc = 1;
-        else if (d.tc > 0) d.tc *= 0.96;
-        else d.tc = 0;
 
         d.vx = (d.vx + (d.ox - d.x) * 0.04) * 0.88;
         d.vy = (d.vy + (d.oy - d.y) * 0.04) * 0.88;
         d.x += d.vx;
         d.y += d.vy;
 
-        if (d.tc > 0.05) {
-          var hue = (d.ox * 0.3 + d.oy * 0.2 + performance.now() * 0.05) % 360;
-          ctx.strokeStyle = 'hsla(' + hue + ',70%,65%,' + (0.3 + d.tc * 0.5) + ')';
-          ctx.lineWidth = 1 + d.tc;
-        } else {
-          ctx.strokeStyle = 'rgba(200,210,220,0.45)';
-          ctx.lineWidth = 1;
-        }
+        ctx.strokeStyle = 'rgba(200,210,220,0.45)';
+        ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(d.x, d.y);
         ctx.lineTo(d.x, d.y + d.len);
