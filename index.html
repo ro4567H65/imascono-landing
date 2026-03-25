@@ -2121,6 +2121,7 @@
     var text = el.getAttribute('data-typewrite');
     var cursor = document.createElement('span');
     cursor.className = 'block-cursor';
+    cursor.style.opacity = '0';
     el.textContent = '';
     el.appendChild(cursor);
     var index = 0;
@@ -2149,6 +2150,9 @@
         if (buttons) {
           setTimeout(function() { buttons.classList.add('visible'); }, 300);
         }
+        // Signal particles to start
+        window._heroTextsReady = true;
+        if (window._startParticles) window._startParticles();
       }
     }
 
@@ -2156,8 +2160,11 @@
       entries.forEach(function(entry) {
         if (entry.isIntersecting && !started) {
           started = true;
-          // Wait for hero title typing to finish first
-          setTimeout(typeNext, 2500);
+          // Wait for hero title typing to finish, then show cursor and start
+          setTimeout(function() {
+            cursor.style.opacity = '';
+            typeNext();
+          }, 2500);
         }
       });
     }, { threshold: 0.3 });
@@ -2195,13 +2202,26 @@
         tmpCtx.drawImage(img, 0, 0, logoW, logoH);
         logoPixels = tmpCtx.getImageData(0, 0, logoW, logoH).data;
         logoReady = true;
-        initParticles();
-        if (!animating) { animating = true; requestAnimationFrame(animate); }
+        tryStart();
       };
       img.src = 'Logo_Particles.svg';
     }
 
     var animating = false;
+    var particlesStarted = false;
+
+    function tryStart() {
+      if (!logoReady || !window._heroTextsReady || particlesStarted) return;
+      particlesStarted = true;
+      initParticles();
+      // Fade in canvas
+      canvas.style.opacity = '0';
+      canvas.style.transition = 'opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1)';
+      requestAnimationFrame(function() { canvas.style.opacity = '1'; });
+      if (!animating) { animating = true; requestAnimationFrame(animate); }
+    }
+
+    window._startParticles = tryStart;
 
     function resize() {
       var w = canvas.offsetWidth;
@@ -2216,7 +2236,7 @@
       canvas.style.width = w + 'px';
       canvas.style.height = h + 'px';
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      if (logoReady) initParticles();
+      if (particlesStarted) initParticles();
     }
 
     var gridDots = [];
