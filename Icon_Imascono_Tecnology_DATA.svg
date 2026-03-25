@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 220.5 213.5">
+  <!-- Generator: Adobe Illustrator 30.2.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 1)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: none;
+        stroke: #3a4f5f;
+        stroke-miterlimit: 10;
+        stroke-width: 3px;
+      }
+    </style>
+  </defs>
+  <rect class="st0" x="9.7" y="15.7" width="201.1" height="43.9"/>
+  <line class="st0" x1="29.2" y1="37.6" x2="58.4" y2="37.6"/>
+  <rect class="st0" x="9.7" y="70.2" width="201.1" height="43.9"/>
+  <line class="st0" x1="29.2" y1="92.1" x2="58.4" y2="92.1"/>
+  <rect class="st0" x="9.7" y="124.6" width="201.1" height="43.9"/>
+  <line class="st0" x1="29.2" y1="146.6" x2="58.4" y2="146.6"/>
+  <line class="st0" x1="110.2" y1="168.5" x2="110.2" y2="197.8"/>
+  <line class="st0" x1="9.7" y1="197.8" x2="210.8" y2="197.8"/>
+</svg>

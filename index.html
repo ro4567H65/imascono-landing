@@ -1,0 +1,2486 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imascono — Humanizamos la tecnología</title>
+  <style>
+    /* ── PP Neue Montreal Font ── */
+    @font-face { font-family: 'PP Neue Montreal'; src: url('fonts/montrealbook.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'PP Neue Montreal'; src: url('fonts/montreal.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+
+    /* ── Visuelt Pro Font ── */
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Black.ttf') format('truetype'); font-weight: 900; font-style: normal; font-display: swap; }
+
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: 'Visuelt Pro', system-ui, -apple-system, sans-serif;
+      color: #647483;
+      background: #ffffff;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: max(40px, calc(50% - 700px));
+      right: max(40px, calc(50% - 700px));
+      pointer-events: none;
+      z-index: -1;
+      background-image:
+        repeating-linear-gradient(to bottom, rgba(200,210,220,0.45) 0px, rgba(200,210,220,0.45) 4px, transparent 4px, transparent 10px);
+      -webkit-mask-image:
+        linear-gradient(to right,
+          transparent 0%, transparent calc(11.111% - 0.5px), black calc(11.111% - 0.5px), black calc(11.111% + 0.5px), transparent calc(11.111% + 0.5px),
+          transparent calc(22.222% - 0.5px), black calc(22.222% - 0.5px), black calc(22.222% + 0.5px), transparent calc(22.222% + 0.5px),
+          transparent calc(33.333% - 0.5px), black calc(33.333% - 0.5px), black calc(33.333% + 0.5px), transparent calc(33.333% + 0.5px),
+          transparent calc(44.444% - 0.5px), black calc(44.444% - 0.5px), black calc(44.444% + 0.5px), transparent calc(44.444% + 0.5px),
+          transparent calc(55.556% - 0.5px), black calc(55.556% - 0.5px), black calc(55.556% + 0.5px), transparent calc(55.556% + 0.5px),
+          transparent calc(66.667% - 0.5px), black calc(66.667% - 0.5px), black calc(66.667% + 0.5px), transparent calc(66.667% + 0.5px),
+          transparent calc(77.778% - 0.5px), black calc(77.778% - 0.5px), black calc(77.778% + 0.5px), transparent calc(77.778% + 0.5px),
+          transparent calc(88.889% - 0.5px), black calc(88.889% - 0.5px), black calc(88.889% + 0.5px), transparent calc(88.889% + 0.5px),
+          transparent 100%);
+      mask-image:
+        linear-gradient(to right,
+          transparent 0%, transparent calc(11.111% - 0.5px), black calc(11.111% - 0.5px), black calc(11.111% + 0.5px), transparent calc(11.111% + 0.5px),
+          transparent calc(22.222% - 0.5px), black calc(22.222% - 0.5px), black calc(22.222% + 0.5px), transparent calc(22.222% + 0.5px),
+          transparent calc(33.333% - 0.5px), black calc(33.333% - 0.5px), black calc(33.333% + 0.5px), transparent calc(33.333% + 0.5px),
+          transparent calc(44.444% - 0.5px), black calc(44.444% - 0.5px), black calc(44.444% + 0.5px), transparent calc(44.444% + 0.5px),
+          transparent calc(55.556% - 0.5px), black calc(55.556% - 0.5px), black calc(55.556% + 0.5px), transparent calc(55.556% + 0.5px),
+          transparent calc(66.667% - 0.5px), black calc(66.667% - 0.5px), black calc(66.667% + 0.5px), transparent calc(66.667% + 0.5px),
+          transparent calc(77.778% - 0.5px), black calc(77.778% - 0.5px), black calc(77.778% + 0.5px), transparent calc(77.778% + 0.5px),
+          transparent calc(88.889% - 0.5px), black calc(88.889% - 0.5px), black calc(88.889% + 0.5px), transparent calc(88.889% + 0.5px),
+          transparent 100%);
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ── Container ── */
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* ── Header / Nav ── */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      animation: slideDown 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    @keyframes slideDown {
+      0% { transform: translateY(-100%); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    .header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .logo svg { width: 36px; height: 20px; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #8a9baa;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #647483; }
+    .nav-links a.nav-active { color: #647483; font-weight: 600; text-decoration: underline; text-underline-offset: 6px; }
+
+    /* ── Mega Dropdown ── */
+    .nav-mega {
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(74,90,104,0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 99;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      overflow-y: auto;
+    }
+    .nav-mega.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .nav-mega-content {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 60px;
+      padding-top: 80px;
+      align-items: start;
+    }
+    .nav-mega-title {
+      font-size: 6rem;
+      font-weight: 300;
+      color: #ffffff;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    .nav-mega-links {
+      padding-top: 10px;
+    }
+    .nav-mega-links a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      color: #ffffff;
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: opacity 0.2s;
+    }
+    .nav-mega-links a:first-child {
+      border-top: 1px solid rgba(255,255,255,0.2);
+    }
+    .nav-mega-links a:hover { opacity: 0.7; }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .btn-lang {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #8a9baa;
+      padding: 6px 12px;
+      border: 1px solid #d0d5dd;
+      border-radius: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+    .btn-outline {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #647483;
+      padding: 10px 24px;
+      border: 1px solid #c8ced6;
+      border-radius: 0;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover {
+      border-color: #647483;
+    }
+    .btn-primary {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #fff;
+      padding: 10px 24px;
+      border: none;
+      border-radius: 0;
+      background: #546878;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary:hover { background: #748a97; }
+    .btn-primary .arrow { font-size: 1rem; }
+
+    /* ── Hero ── */
+    .hero {
+      padding-top: 72px;
+      padding-bottom: 0;
+      overflow-x: clip;
+      position: relative;
+      z-index: 1;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #fff;
+      z-index: -1;
+    }
+    .hero .container {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .hero-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      min-height: 70vh;
+      padding: 40px 0;
+      position: relative;
+      overflow: visible;
+    }
+    #hero-particles {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: calc(-50vw + 50%);
+      width: calc(50vw + 50%);
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .hero-content, .hero-right {
+      position: relative;
+      z-index: 2;
+    }
+    .hero-media {
+      position: relative;
+      overflow: hidden;
+      background: #0a0a14;
+      aspect-ratio: 21/9;
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
+    }
+    .hero-title {
+      font-size: 6rem;
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 0;
+      min-height: 12.6rem; /* 2 lines × 6rem × 1.05 line-height */
+    }
+    .hero-title .char {
+      opacity: 0;
+      display: inline;
+      animation: charAppear 0.05s forwards;
+    }
+    .hero-title .char.space {
+      white-space: pre;
+    }
+    .hero-title .cursor {
+      display: inline-block;
+      width: 3px;
+      height: 0.9em;
+      background: #647483;
+      margin-left: 2px;
+      margin-right: -5px;
+      vertical-align: baseline;
+      animation: blink 0.7s step-end infinite;
+    }
+    @keyframes charAppear {
+      to { opacity: 1; }
+    }
+    @keyframes blink {
+      50% { border-color: transparent; background: transparent; }
+    }
+    .hero-desc {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 0.95rem;
+      color: #647483;
+      line-height: 1.7;
+      margin-bottom: 32px;
+      text-transform: uppercase;
+      min-height: 5em;
+    }
+    .hero-desc .block-cursor {
+      display: inline-block;
+      width: 0.55em;
+      height: 1.1em;
+      background: #647483;
+      vertical-align: text-bottom;
+      animation: blockBlink 0.8s step-end infinite;
+    }
+    @keyframes blockBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .hero-buttons.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .scroll-hint {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: #647483;
+      font-size: 0.85rem;
+      font-weight: 400;
+      padding: 30px 0;
+      animation: bounceDown 2s ease-in-out infinite;
+    }
+    .scroll-hint svg {
+      animation: arrowBounce 2s ease-in-out infinite;
+    }
+    @keyframes arrowBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(5px); }
+    }
+    .hero-buttons button {
+      flex: 1;
+      text-align: center;
+      justify-content: center;
+    }
+    .hero-media {
+      position: relative;
+      border-radius: 0;
+      overflow: hidden;
+      height: 60vh;
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      background: #0a0a14;
+    }
+    .hero-media img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 150%;
+      object-fit: cover;
+      opacity: 0.85;
+      will-change: transform;
+      animation: kenburns 20s ease-in-out infinite alternate;
+    }
+    @keyframes kenburns {
+      0% { transform: scale(1) translate(0, var(--parallax-y, 0)); }
+      100% { transform: scale(1.18) translate(-2%, calc(-2% + var(--parallax-y, 0))); }
+    }
+    .play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: transparent;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: #fff;
+      width: auto;
+      height: auto;
+      padding: 18px 48px;
+      border-radius: 0;
+      font-size: 1.1rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.3);
+      pointer-events: none;
+      transition: left 0.6s cubic-bezier(0.25, 0.1, 0.25, 1), top 0.6s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.15s ease-out, border-radius 0.4s cubic-bezier(0.4, 0, 0.2, 1), width 0.4s cubic-bezier(0.4, 0, 0.2, 1), height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s cubic-bezier(0.4, 0, 0.2, 1), font-size 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 1;
+    }
+    .hero-media.hovering .play-btn {
+      flex-direction: column;
+      width: 140px;
+      height: 140px;
+      padding: 0;
+      border-radius: 50%;
+      font-size: 0.85rem;
+      transition: left 0.12s ease-out, top 0.12s ease-out, transform 0.12s ease-out, border-radius 0.8s cubic-bezier(0.4, 0, 0.2, 1), width 0.8s cubic-bezier(0.4, 0, 0.2, 1), height 0.8s cubic-bezier(0.4, 0, 0.2, 1), padding 0.8s cubic-bezier(0.4, 0, 0.2, 1), font-size 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .play-btn svg { width: 18px; height: 18px; }
+
+    /* ── Stats ── */
+    .stats {
+      position: relative;
+      z-index: auto;
+      background: #fff;
+      padding: 60px 0;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      text-align: center;
+      gap: 20px;
+    }
+    .stat-number {
+      font-size: 6rem;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      margin-bottom: -8px;
+      line-height: 1;
+    }
+    .stat-label {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 0.75rem;
+      color: #647483;
+      line-height: 1.7;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── Logos ── */
+    .logos {
+      position: relative;
+      z-index: auto;
+      background: #fff;
+      padding: 60px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .logos-title {
+      text-align: center;
+      font-family: 'Visuelt Pro', system-ui, -apple-system, sans-serif;
+      font-size: 2.2rem;
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: #647483;
+      margin-bottom: 40px;
+    }
+    .logos-grid {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .logos-grid span {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #bcc6cf;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .logos-marquee {
+      position: relative;
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      overflow: hidden;
+      margin-top: 40px;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    }
+    .logos-marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 30s linear infinite;
+    }
+    .logos-marquee-track img {
+      display: block;
+      height: 70px;
+      width: auto;
+      flex-shrink: 0;
+      padding-right: 0;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── Section ── */
+    .section {
+      position: relative;
+      z-index: auto;
+      background: #fff;
+      padding: 100px 0;
+    }
+    .section-border {
+      border-bottom: 1px solid #eee;
+    }
+    .section-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+      margin-bottom: 60px;
+    }
+    .section-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .section-title.hero-style {
+      font-size: 6rem;
+      font-weight: 300;
+      line-height: 1.05;
+    }
+    .section-desc {
+      font-size: 0.95rem;
+      color: #8a9baa;
+      line-height: 1.7;
+      padding-top: 12px;
+    }
+
+    /* ── Idea al Producto - Tags ── */
+    /* ── Timeline ── */
+    .timeline {
+      margin: 120px 0 50px;
+      position: relative;
+    }
+    .timeline-bar {
+      position: relative;
+      width: 100%;
+      height: 24px;
+      margin-bottom: 0;
+      clip-path: inset(-10px 100% -10px 0);
+      transition: clip-path 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.4s;
+      z-index: 2;
+    }
+    .timeline-bar-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, #c8d2dc 0%, #647483 50%, #2c3e50 100%);
+      clip-path: polygon(0 85%, 100% 0, 100% 100%, 0 100%);
+      border-radius: 2px;
+    }
+    .timeline.in-view .timeline-bar {
+      clip-path: inset(-10px 0 -10px 0);
+    }
+    .timeline-bar-fill::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 128px 128px;
+      opacity: 0.75;
+      mix-blend-mode: overlay;
+    }
+    .timeline-bar::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, #c8d2dc 0%, #647483 50%, #2c3e50 100%);
+    }
+    .timeline-steps {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      position: relative;
+    }
+    .timeline-step {
+      text-align: center;
+      position: relative;
+      padding-top: 20px;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .timeline-step.revealed {
+      opacity: 1;
+      transform: none;
+    }
+    .timeline-steps:hover .timeline-step.revealed {
+      opacity: 0.5;
+    }
+    .timeline-steps .timeline-step.revealed:hover {
+      opacity: 1;
+    }
+    .timeline-step::before,
+    .timeline-step::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      border-radius: 50%;
+      border: 1px solid rgba(163, 177, 190, 0.2);
+      background: radial-gradient(circle, rgba(163, 177, 190, 0.06) 0%, transparent 70%);
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0;
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .timeline-step::before {
+      width: 160px;
+      height: 160px;
+      border-color: rgba(255, 255, 255, 0.9);
+      background: transparent;
+      z-index: 3;
+    }
+    .timeline-step::after {
+      width: 260px;
+      height: 260px;
+      border-color: rgba(163, 177, 190, 0.15);
+      background: #e7eaec;
+      box-shadow: 0 0 0 130px #f6f7f8, 0 0 0 131px rgba(163, 177, 190, 0.07);
+      transition-delay: 0.08s;
+    }
+    .timeline-step:hover::before {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0;
+    }
+    .timeline-step:hover::after {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0;
+    }
+    .timeline-marker::before {
+      content: '';
+      position: absolute;
+      top: -4px;
+      left: 50%;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #647483;
+      transform: translateX(-50%) scale(0);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .timeline-step:hover .timeline-marker::before {
+      transform: translateX(-50%) scale(1);
+    }
+    .timeline-step:hover .timeline-num {
+      transform: translateX(-50%) translateY(-6px);
+      color: #647483;
+    }
+    .timeline-marker {
+      position: absolute;
+      top: -38px;
+      left: 50%;
+      width: 0.5px;
+      height: 52px;
+      background: #a3b1be;
+      transform: translateX(-50%) scaleY(0);
+      transform-origin: bottom center;
+      transition: transform 0.4s ease;
+      z-index: 2;
+    }
+    .timeline-step.revealed .timeline-marker {
+      transform: translateX(-50%) scaleY(1);
+    }
+    .timeline-num {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.7rem;
+      color: #a3b1be;
+      letter-spacing: 0.05em;
+      display: block;
+      position: absolute;
+      top: -56px;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: transform 0.3s ease, color 0.3s ease;
+      white-space: nowrap;
+      z-index: 2;
+    }
+    .timeline-label {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #3a4f5f;
+      margin-bottom: 4px;
+      position: relative;
+      z-index: 2;
+    }
+    .timeline-sublabel {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.75rem;
+      color: #8a9baa;
+      line-height: 1.4;
+      position: relative;
+      z-index: 2;
+    }
+
+    .timeline-icon {
+      display: block;
+      width: 28px;
+      height: 28px;
+      margin: 10px auto 0;
+      position: relative;
+      z-index: 2;
+      opacity: 0;
+      transform: translateY(6px) scale(0.7);
+      transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .timeline-step:hover .timeline-icon {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    .timeline-icon svg {
+      width: 100%;
+      height: 100%;
+      stroke: #647483;
+      fill: none;
+      stroke-width: 1;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      overflow: visible;
+    }
+    .timeline-icon svg .anim-draw {
+      stroke-dasharray: 200;
+      stroke-dashoffset: 200;
+      transition: stroke-dashoffset 0.8s ease 0.15s;
+    }
+    .timeline-step:hover .timeline-icon svg .anim-draw {
+      stroke-dashoffset: 0;
+    }
+    .timeline-icon svg .anim-spin {
+      transform-origin: center;
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s;
+      transform: rotate(-90deg);
+    }
+    .timeline-step:hover .timeline-icon svg .anim-spin {
+      transform: rotate(0deg);
+    }
+    .timeline-icon svg .anim-scale {
+      transform-origin: center;
+      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s;
+      transform: scale(0);
+    }
+    .timeline-step:hover .timeline-icon svg .anim-scale {
+      transform: scale(1);
+    }
+
+    .tags-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .tag {
+      padding: 10px 22px;
+      border-radius: 0;
+      border: 1px solid #ddd;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #8a9baa;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: transparent;
+    }
+    .tag:hover, .tag.active {
+      background: #546878;
+      color: #fff;
+      border-color: #546878;
+    }
+
+    /* ── Tecnologías ── */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 40px;
+    }
+    .tech-item {
+      border: 1px solid #e8ecf0;
+      border-right: none;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      min-height: 420px;
+      transition: background 0.5s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease, opacity 0.7s ease;
+      transform-style: preserve-3d;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    .tech-item.revealed {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .tech-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
+      background-size: 128px 128px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .tech-item:hover::before {
+      opacity: 1;
+    }
+    .tech-item > * {
+      position: relative;
+      z-index: 1;
+    }
+    .tech-grid:hover .tech-item:not(:hover) {
+      filter: blur(2px);
+      opacity: 0.5;
+    }
+    .tech-item:hover {
+      background: #4a5a68;
+      transform: scale(1.03);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 0 1px rgba(100,116,131,0.2);
+      z-index: 2;
+      border-color: transparent;
+    }
+    .tech-item:hover .tech-label {
+      color: #fff;
+    }
+    .tech-item:hover .tech-separator {
+      background: #ffffff;
+    }
+    .tech-item:hover .tech-name {
+      color: #ffffff;
+    }
+    .tech-item:hover .tech-desc {
+      color: #ffffff;
+    }
+    .tech-item:hover .tech-icon {
+      filter: brightness(0) invert(1) drop-shadow(0 0 6px rgba(255,255,255,0.5)) drop-shadow(0 0 14px rgba(255,255,255,0.25));
+      animation: iconFloat 2s ease-in-out infinite;
+    }
+    @keyframes iconFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+    .tech-item:last-child {
+      border-right: 1px solid #e8ecf0;
+    }
+    .tech-item:last-child:hover {
+      border-color: transparent;
+    }
+    .tech-label {
+      font-size: 6rem;
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      color: #647483;
+      line-height: 1;
+      height: 124px;
+      margin-bottom: 0;
+      transition: color 0.5s ease;
+    }
+    .tech-separator {
+      width: 30px;
+      height: 2px;
+      background: #647483;
+      margin-bottom: 14px;
+      transition: background 0.5s ease;
+    }
+    .tech-name {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #3a4f5f;
+      margin-bottom: 40px;
+      transition: color 0.5s ease;
+    }
+    .tech-icon {
+      margin-top: auto;
+      margin-bottom: 16px;
+      width: 80px;
+      height: 80px;
+      transition: filter 0.5s ease;
+    }
+    .tech-desc {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.85rem;
+      color: #8a9baa;
+      line-height: 1.5;
+      padding-top: 8px;
+    }
+
+    /* ── Productos ── */
+    .products-header {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .products-header .section-title {
+      margin-bottom: 16px;
+    }
+    .products-subtitle {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 0.95rem;
+      color: #647483;
+      line-height: 1.7;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .products-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 50px;
+    }
+    .products-tabs .tag.active {
+      background: #546878;
+      color: #fff;
+      border-color: #546878;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 60px 40px;
+    }
+    .product-card {
+      border-radius: 0;
+      overflow: visible;
+      border: none;
+      background: transparent;
+    }
+    .product-img {
+      aspect-ratio: 16/9;
+      background: #f0f0f4;
+      overflow: hidden;
+      border-radius: 0;
+    }
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .product-info {
+      padding: 20px 0 0 0;
+    }
+    .product-badge {
+      display: none;
+    }
+    .product-name {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #546878;
+      margin-bottom: 4px;
+    }
+    .product-desc {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.85rem;
+      color: #8a9baa;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .product-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #647483;
+      padding: 14px 32px;
+      border: 1px solid #c8ced6;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .product-cta:hover {
+      background: #546878;
+      border-color: #546878;
+      color: #ffffff;
+    }
+
+    /* ── Soluciones ── */
+    .solutions-list {
+      margin-top: 0;
+    }
+    .solution-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr 2fr auto;
+      gap: 40px;
+      align-items: start;
+      padding: 40px 0;
+      border-top: 1px solid #d0d5dd;
+    }
+    .solution-item:last-child {
+      border-bottom: 1px solid #d0d5dd;
+    }
+    .solution-name {
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: #647483;
+      line-height: 1.2;
+    }
+    .solution-content {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .solution-desc {
+      font-size: 1.05rem;
+      color: #647483;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+    .solution-products {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.8rem;
+      color: #8a9baa;
+    }
+    .solution-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #647483;
+      padding: 14px 32px;
+      border: 1px solid #c8ced6;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      align-self: end;
+    }
+    .solution-cta:hover {
+      background: #546878;
+      border-color: #546878;
+      color: #ffffff;
+    }
+
+    /* ── Proyectos ── */
+    .projects-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .projects-header .section-title {
+      margin-bottom: 12px;
+    }
+    .projects-subtitle {
+      font-size: 0.9rem;
+      color: #a3b1be;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-bottom: 50px;
+    }
+    .projects-grid img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+    }
+    .projects-cta {
+      text-align: center;
+    }
+
+    /* ── CTA / Contacto ── */
+    .cta-section {
+      position: relative;
+      z-index: auto;
+      padding: 100px 0;
+      background: linear-gradient(to bottom, #f2f5f8 0%, #ffffff 50%);
+    }
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .cta-title {
+      font-size: 6rem;
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    .cta-form {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .form-group { display: flex; flex-direction: column; }
+    .form-group label { display: none; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 16px 18px;
+      border: 1.5px solid #8a9baa;
+      border-radius: 0;
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: #3a4f5f;
+      background: #fff;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input::placeholder,
+    .form-group select,
+    .form-group textarea::placeholder {
+      color: #647483;
+      font-weight: 500;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: #3a4f5f;
+    }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.8rem;
+      color: #647483;
+    }
+    .form-check input[type="checkbox"] {
+      margin-top: 2px;
+      width: 18px;
+      height: 18px;
+      border: 1.5px solid #8a9baa;
+      accent-color: #546878;
+      flex-shrink: 0;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      position: relative;
+      z-index: auto;
+      background: #fff;
+      padding: 60px 0 40px;
+      border-top: 1px solid #d0d5dd;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 60px;
+      padding-bottom: 60px;
+      border-bottom: 1px solid #d0d5dd;
+    }
+    .footer-brand p {
+      font-size: 0.8rem;
+      color: #8a9baa;
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+    .footer-col h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #3a4f5f;
+      margin-bottom: 16px;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 0.85rem;
+      color: #647483;
+      line-height: 1.7;
+      margin-bottom: 8px;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: #3a4f5f; }
+    .footer-col .footer-legal {
+      margin-top: 20px;
+    }
+    .footer-col .footer-address {
+      font-size: 0.85rem;
+      color: #647483;
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+    .footer-col .footer-sede {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #3a4f5f;
+      margin-bottom: 8px;
+    }
+    .footer-legal-bar {
+      grid-column: 2 / -1;
+      padding: 20px 0 0;
+      font-size: 0.75rem;
+      color: #647483;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .footer-legal-bar span::after {
+      content: '|';
+      margin-left: 8px;
+      color: #647483;
+    }
+    .footer-legal-links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .footer-legal-links a {
+      color: #647483;
+      transition: color 0.2s;
+    }
+    .footer-legal-links a:hover { color: #3a4f5f; }
+    .footer-legal-links a:not(:last-child)::after {
+      content: '|';
+      margin-left: 8px;
+      color: #647483;
+    }
+    .footer-bottom {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .footer-bottom-col h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #3a4f5f;
+      margin-bottom: 12px;
+    }
+    .footer-bottom-col a {
+      display: block;
+      font-size: 0.85rem;
+      color: #647483;
+      line-height: 1.7;
+      margin-bottom: 8px;
+      transition: color 0.2s;
+    }
+    .footer-bottom-col a:hover { color: #3a4f5f; }
+    .footer-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      grid-column: 3 / 5;
+    }
+    .footer-badges img {
+      height: 50px;
+      object-fit: contain;
+    }
+    .footer-badges span {
+      font-size: 0.75rem;
+      color: #647483;
+      font-weight: 500;
+    }
+    .footer-social {
+      display: flex;
+      gap: 16px;
+    }
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      border-radius: 0;
+      border: 1px solid #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: #a3b1be;
+      transition: all 0.2s;
+    }
+    .footer-social a:hover {
+      border-color: #647483;
+      color: #647483;
+    }
+
+    /* ── Scroll Reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.from-left {
+      transform: translateX(-40px);
+    }
+    .reveal.from-right {
+      transform: translateX(40px);
+    }
+    .reveal.scale-in {
+      transform: scale(0.95);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0) translateX(0) scale(1);
+    }
+    .stagger > .reveal:nth-child(1) { transition-delay: 0s; }
+    .stagger > .reveal:nth-child(2) { transition-delay: 0.12s; }
+    .stagger > .reveal:nth-child(3) { transition-delay: 0.24s; }
+    .stagger > .reveal:nth-child(4) { transition-delay: 0.36s; }
+    .stagger > .reveal:nth-child(5) { transition-delay: 0.48s; }
+    .stagger > .reveal:nth-child(6) { transition-delay: 0.6s; }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .hero .container { grid-template-columns: 1fr; gap: 40px; }
+      .hero-title { font-size: 2.5rem; }
+      .section-header { grid-template-columns: 1fr; gap: 20px; }
+      .section-title { font-size: 2.2rem; }
+      .tech-grid { grid-template-columns: repeat(2, 1fr); }
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .cta-grid { grid-template-columns: 1fr; gap: 40px; }
+      .footer-top { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .container { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero-title { font-size: 2rem; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+      .tech-grid { grid-template-columns: 1fr; }
+      .products-grid { grid-template-columns: 1fr; }
+      .solution-item { grid-template-columns: 1fr; gap: 16px; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════ HEADER ════ -->
+  <header class="header">
+    <div class="container">
+      <a href="#" class="logo">
+        <img src="logo-imascono.svg" alt="Imascono" style="height:52px;width:auto;">
+      </a>
+      <nav class="nav-links">
+        <a href="#" style="font-weight:600;color:#647483;">HOME</a>
+        <a href="#">PRODUCTOS</a>
+        <a href="#">SECTORES</a>
+        <a href="#">PROYECTOS</a>
+        <a href="#">BLOG</a>
+        <a href="#">RESEARCH</a>
+      </nav>
+      <div class="header-actions">
+        <span style="font-size:0.85rem;color:#8a9baa;cursor:pointer;">EN</span>
+        <span style="font-size:0.85rem;font-weight:600;color:#647483;cursor:pointer;">ES</span>
+        <button class="btn-primary">Hablemos <span class="arrow">→</span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ════ MEGA DROPDOWN PRODUCTOS ════ -->
+  <div class="nav-mega" id="nav-mega-productos">
+    <div class="container nav-mega-content">
+      <h2 class="nav-mega-title">PRODUCTOS</h2>
+      <div class="nav-mega-links">
+        <a href="#">AVATAR IA <span>→</span></a>
+        <a href="#">PHOTOCALL AUMENTADO <span>→</span></a>
+        <a href="#">INFOGRAFÍA INTERACTIVA <span>→</span></a>
+        <a href="#">ENTRENAMIENTO VR <span>→</span></a>
+        <a href="#">ENTORNOS GAMIFICADOS <span>→</span></a>
+        <a href="#">PROYECTOS A MEDIDA <span>→</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ MEGA DROPDOWN SECTORES ════ -->
+  <div class="nav-mega" id="nav-mega-sectores">
+    <div class="container nav-mega-content">
+      <h2 class="nav-mega-title">SECTORES</h2>
+      <div class="nav-mega-links">
+        <a href="#">TURISMO <span>→</span></a>
+        <a href="#">RETAIL &amp; OCIO <span>→</span></a>
+        <a href="#">BANCA &amp; SEGUROS <span>→</span></a>
+        <a href="#">SALUD <span>→</span></a>
+        <a href="#">INDUSTRIA <span>→</span></a>
+        <a href="#">FORMACIÓN <span>→</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ HERO ════ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-top">
+        <canvas id="hero-particles"></canvas>
+        <div class="hero-content">
+          <h1 class="hero-title">Humanizamos<br>la tecnología.</h1>
+        </div>
+        <div class="hero-right">
+          <p class="hero-desc" data-typewrite="Creamos productos digitales que conectan emocionalmente con los usuarios combinando XR + IA + UX + Data: agentes IA, experiencias inmersivas, formación VR, gemelos digitales."></p>
+          <div class="hero-buttons">
+            <button class="btn-outline" style="padding:18px 48px;font-size:1.1rem;background:rgba(255,255,255,0.5);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);">Ver Productos</button>
+            <button class="btn-primary" style="padding:18px 48px;font-size:1.1rem;">Hablemos <span class="arrow">→</span></button>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-hint">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="10" y1="3" x2="10" y2="17"/>
+          <polyline points="4,11 10,17 16,11"/>
+        </svg>
+        <span>Scroll down</span>
+      </div>
+      <div class="hero-media">
+        <img src="Hero_Video_Screenshot.jpg" alt="Showreel">
+        <div class="play-btn">
+          <svg viewBox="0 0 14 14" fill="currentColor"><polygon points="3,1 12,7 3,13"/></svg>
+          Play showreel
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ STATS ════ -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div>
+          <div class="stat-number" data-scramble="+450">+450</div>
+          <div class="stat-label">Proyectos entregados</div>
+        </div>
+        <div>
+          <div class="stat-number" data-scramble="115M">115M</div>
+          <div class="stat-label">Usuarios impactados</div>
+        </div>
+        <div>
+          <div class="stat-number" data-scramble="15">15</div>
+          <div class="stat-label">Años de experiencia</div>
+        </div>
+        <div>
+          <div class="stat-number" data-scramble="120">120</div>
+          <div class="stat-label">Profesionales en el equipo</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ LOGOS ════ -->
+  <section class="logos">
+    <div class="container">
+      <p class="logos-title">+500 empresas confían en nosotros en 120 países</p>
+      <div class="logos-marquee">
+        <div class="logos-marquee-track">
+          <img src="Clients_1.png" alt="Clientes">
+          <img src="Clients_1.png" alt="Clientes">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ DE LA IDEA AL PRODUCTO ════ -->
+  <section class="section section-border">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title hero-style">De la idea al<br>producto.</h2>
+        <p class="section-desc">Convertimos ideas en realidad con Imaginación Aplicada, un proceso probado en más de 450 proyectos y un único partner de principio a fin.</p>
+      </div>
+      <!-- Timeline -->
+      <div class="timeline">
+        <div class="timeline-bar">
+          <div class="timeline-bar-fill"></div>
+        </div>
+        <div class="timeline-steps">
+          <div class="timeline-step">
+            <div class="timeline-marker"></div>
+            <span class="timeline-num">/ 01</span>
+            <h4 class="timeline-label">Playing</h4>
+            <p class="timeline-sublabel">Descubrimiento<br>de cliente</p>
+            <span class="timeline-icon"><svg viewBox="0 0 28 28"><polygon class="anim-draw" points="8,4 24,14 8,24"/></svg></span>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-marker"></div>
+            <span class="timeline-num">/ 02</span>
+            <h4 class="timeline-label">Análisis</h4>
+            <p class="timeline-sublabel">Consultoría<br>técnica y negocio</p>
+            <span class="timeline-icon"><svg viewBox="0 0 28 28"><circle class="anim-scale" cx="4" cy="7" r="1.5"/><line class="anim-draw" x1="9" y1="7" x2="26" y2="7"/><circle class="anim-scale" cx="4" cy="14" r="1.5"/><line class="anim-draw" x1="9" y1="14" x2="26" y2="14"/><circle class="anim-scale" cx="4" cy="21" r="1.5"/><line class="anim-draw" x1="9" y1="21" x2="26" y2="21"/></svg></span>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-marker"></div>
+            <span class="timeline-num">/ 03</span>
+            <h4 class="timeline-label">Ideación</h4>
+            <p class="timeline-sublabel">Diseño<br>conceptual y<br>tecnológico</p>
+            <span class="timeline-icon" style="width:32px;height:32px"><svg viewBox="0 0 32 32"><polygon class="anim-draw" points="16,2 30,10 30,22 16,30 2,22 2,10"/><line class="anim-draw" x1="16" y1="2" x2="16" y2="16"/><line class="anim-draw" x1="2" y1="10" x2="16" y2="16"/><line class="anim-draw" x1="30" y1="10" x2="16" y2="16"/><polygon class="anim-draw" points="16,16 23,20 23,26 16,30 9,26 9,20"/><line class="anim-draw" x1="16" y1="16" x2="16" y2="30"/></svg></span>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-marker"></div>
+            <span class="timeline-num">/ 04</span>
+            <h4 class="timeline-label">Definición</h4>
+            <p class="timeline-sublabel">Especificaciones y<br>requisitos</p>
+            <span class="timeline-icon"><svg viewBox="0 0 28 28"><polyline class="anim-draw" points="3,7.5 5,9.5 8,5"/><line class="anim-draw" x1="11" y1="7" x2="26" y2="7"/><polyline class="anim-draw" points="3,14.5 5,16.5 8,12"/><line class="anim-draw" x1="11" y1="14" x2="26" y2="14"/><polyline class="anim-draw" points="3,21.5 5,23.5 8,19"/><line class="anim-draw" x1="11" y1="21" x2="26" y2="21"/></svg></span>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-marker"></div>
+            <span class="timeline-num">/ 05</span>
+            <h4 class="timeline-label">Prototipado</h4>
+            <p class="timeline-sublabel">Construcción</p>
+            <span class="timeline-icon" style="width:32px;height:28px"><svg viewBox="0 0 32 28"><rect class="anim-draw" x="1" y="1" width="30" height="26" rx="2"/><line class="anim-draw" x1="1" y1="7" x2="31" y2="7"/><line class="anim-draw" x1="4" y1="4" x2="8" y2="4"/><line class="anim-draw" x1="10" y1="4" x2="14" y2="4"/><rect class="anim-draw" x="4" y="10" width="10" height="8" rx="1"/><line class="anim-draw" x1="17" y1="11" x2="28" y2="11"/><line class="anim-draw" x1="17" y1="14.5" x2="25" y2="14.5"/><line class="anim-draw" x1="17" y1="18" x2="22" y2="18"/><path class="anim-draw" d="M22 24L20 22L22 20"/><line class="anim-draw" x1="20" y1="22" x2="26" y2="22"/></svg></span>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-marker"></div>
+            <span class="timeline-num">/ 06</span>
+            <h4 class="timeline-label">MVP</h4>
+            <p class="timeline-sublabel">Producto viable</p>
+            <span class="timeline-icon" style="width:22px;height:34px"><svg viewBox="0 0 22 34"><rect class="anim-draw" x="1" y="1" width="20" height="32" rx="2"/><line class="anim-draw" x1="1" y1="6" x2="21" y2="6"/><line class="anim-draw" x1="1" y1="27" x2="21" y2="27"/><circle class="anim-scale" cx="11" cy="30" r="1.2"/></svg></span>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-marker"></div>
+            <span class="timeline-num">/ 07</span>
+            <h4 class="timeline-label">Escala</h4>
+            <p class="timeline-sublabel">Crecimiento</p>
+            <span class="timeline-icon"><svg viewBox="0 0 28 28"><line class="anim-draw" x1="4" y1="24" x2="24" y2="24"/><line class="anim-draw" x1="4" y1="24" x2="4" y2="4"/><path class="anim-draw" d="M4 22C8 21 12 18 16 12C20 6 22 4 24 3"/><circle class="anim-scale" cx="24" cy="3" r="2"/></svg></span>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-marker"></div>
+            <span class="timeline-num">/ 08</span>
+            <h4 class="timeline-label">Soporte</h4>
+            <p class="timeline-sublabel">Mantenimiento</p>
+            <span class="timeline-icon" style="width:32px;height:32px"><svg viewBox="0 0 32 32"><circle class="anim-draw" cx="9" cy="6" r="3"/><path class="anim-draw" d="M4 16C4 13 6 11 9 11C12 11 14 13 14 16"/><circle class="anim-draw" cx="23" cy="20" r="3"/><path class="anim-draw" d="M18 30C18 27 20 25 23 25C26 25 28 27 28 30"/><path class="anim-draw" d="M14 6L22 6"/><polyline class="anim-draw" points="20,3 23,6 20,9"/><path class="anim-draw" d="M18 26L10 26"/><polyline class="anim-draw" points="12,23 9,26 12,29"/></svg></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ 4 TECNOLOGÍAS CLAVE ════ -->
+  <section class="section section-border" style="background:linear-gradient(to bottom,#ffffff 50%,#f2f5f8 100%);padding-top:50px;">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title hero-style" style="font-size:3.8rem;">Potenciado por<br>4 Tecnologías<br>Clave.</h2>
+        <p class="section-desc">Convertimos ideas en realidad con Imaginación Aplicada, un proceso probado en más de 450 proyectos con resultados medibles y escalables.</p>
+      </div>
+      <div class="tech-grid">
+        <div class="tech-item">
+          <div class="tech-label">XR</div>
+          <div class="tech-separator"></div>
+          <div class="tech-name">Realidad<br>Extendida</div>
+          <img class="tech-icon" src="Icon_Imascono_Tecnology_XR.svg" alt="XR">
+          <div class="tech-desc">Vive experiencias inmersivas que van más allá de simplemente observar.</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-label">IA</div>
+          <div class="tech-separator"></div>
+          <div class="tech-name">Inteligencia<br>Artificial</div>
+          <img class="tech-icon" src="Icon_Imascono_Tecnology_IA.svg" alt="IA">
+          <div class="tech-desc">Dialoga con la tecnología de manera natural, como si fuera una persona.</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-label">UX</div>
+          <div class="tech-separator"></div>
+          <div class="tech-name">Diseño de<br>Experiencia</div>
+          <img class="tech-icon" src="Icon_Imascono_Tecnology_UX.svg" alt="UX">
+          <div class="tech-desc">Entiende la tecnología sin fricciones y disfruta de cada interacción.</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-label">DATA</div>
+          <div class="tech-separator"></div>
+          <div class="tech-name">Estrategia &amp;<br>Analíticas</div>
+          <img class="tech-icon" src="Icon_Imascono_Tecnology_DATA.svg" alt="DATA">
+          <div class="tech-desc">Anticipa lo que tus clientes necesitan y toma decisiones estratégicas.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ PRODUCTOS ════ -->
+  <section class="section section-border">
+    <div class="container">
+      <div class="products-header">
+        <h2 class="section-title hero-style">Productos que conectan personas<br>y tecnología.</h2>
+      </div>
+      <p class="products-subtitle">Plataformas propias y probadas. Cada una resuelve un reto concreto.</p>
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-img">
+            <img src="Imagen_Producto_VEGA.jpg" alt="V·E·G·A">
+          </div>
+          <div class="product-info">
+            <div class="product-name">V·E·G·A</div>
+            <div class="product-desc">Avatares IA que hablan con tus clientes</div>
+            <button class="product-cta">Saber más &rarr;</button>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img">
+            <img src="Imagen_Producto_Virtual_Twin.jpg" alt="Virtual Twin">
+          </div>
+          <div class="product-info">
+            <div class="product-name">Virtual Twin</div>
+            <div class="product-desc">Tu espacio físico, reimaginado en digital</div>
+            <button class="product-cta">Saber más &rarr;</button>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img">
+            <img src="Imagen_Producto_Kimchi.jpg" alt="Kimchi!">
+          </div>
+          <div class="product-info">
+            <div class="product-name">Kimchi!</div>
+            <div class="product-desc">Experiencias AR que generan engagement</div>
+            <button class="product-cta">Saber más &rarr;</button>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img">
+            <img src="Imagen_Producto_Spaceship_Projects.jpg" alt="Spaceship Projects">
+          </div>
+          <div class="product-info">
+            <div class="product-name">Spaceship Projects</div>
+            <div class="product-desc">Agentes IA con datos en local</div>
+            <button class="product-cta">Saber más &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ SOLUCIONES ════ -->
+  <section class="section section-border" style="background:#f2f5f8;padding-bottom:0;">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title hero-style">Soluciones<br>para tu sector</h2>
+        <p class="section-desc" style="font-family:'PP Neue Montreal',system-ui,sans-serif;font-weight:400;font-size:0.95rem;color:#647483;text-transform:uppercase;">Cada industria tiene problemas únicos. Nosotros tenemos la tecnología para resolverlos.</p>
+      </div>
+      <div class="solutions-list">
+        <div class="solution-item">
+          <div></div>
+          <div class="solution-name">Salud</div>
+          <div class="solution-content">
+            <div class="solution-desc">¿Cómo formar a tus profesionales sanitarios sin poner en riesgo al paciente?</div>
+            <div class="solution-products">V·E·G·A, Virtual Training, Spaceship Projects</div>
+          </div>
+          <button class="solution-cta">Ver solución &rarr;</button>
+        </div>
+        <div class="solution-item">
+          <div></div>
+          <div class="solution-name">Turismo</div>
+          <div class="solution-content">
+            <div class="solution-desc">¿Cómo digitalizar tu patrimonio sin perder autenticidad?</div>
+            <div class="solution-products">Virtual Twin, V·E·G·A</div>
+          </div>
+          <button class="solution-cta">Ver solución &rarr;</button>
+        </div>
+        <div class="solution-item">
+          <div></div>
+          <div class="solution-name">Industria 5.0</div>
+          <div class="solution-content">
+            <div class="solution-desc">¿Cómo formar a tus profesionales sanitarios sin poner en riesgo al paciente?</div>
+            <div class="solution-products">V·E·G·A, Virtual Training, Spaceship Projects</div>
+          </div>
+          <button class="solution-cta">Ver solución &rarr;</button>
+        </div>
+        <div class="solution-item">
+          <div></div>
+          <div class="solution-name">Banca y Seguros</div>
+          <div class="solution-content">
+            <div class="solution-desc">¿Cómo personalizar la atención sin exponer datos sensibles?</div>
+            <div class="solution-products">Virtual Twin, V·E·G·A</div>
+          </div>
+          <button class="solution-cta">Ver solución &rarr;</button>
+        </div>
+        <div class="solution-item">
+          <div></div>
+          <div class="solution-name">Retail y Ocio</div>
+          <div class="solution-content">
+            <div class="solution-desc">¿Cómo crear experiencias en tienda que fidelicen de verdad?</div>
+            <div class="solution-products">V·E·G·A, Virtual Training, Spaceship Projects</div>
+          </div>
+          <button class="solution-cta">Ver solución &rarr;</button>
+        </div>
+        <div class="solution-item">
+          <div></div>
+          <div class="solution-name">Formación</div>
+          <div class="solution-content">
+            <div class="solution-desc">¿Cómo lograr que tus alumnos aprendan haciendo, no memorizando?</div>
+            <div class="solution-products">Virtual Twin, V·E·G·A</div>
+          </div>
+          <button class="solution-cta">Ver solución &rarr;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ PROYECTOS ════ -->
+  <section class="section section-border">
+    <div class="container">
+      <div class="projects-header">
+        <h2 class="section-title hero-style">Proyectos que hablan por sí solos.</h2>
+        <p class="projects-subtitle" style="font-family:'PP Neue Montreal',system-ui,sans-serif;font-weight:400;font-size:0.95rem;color:#647483;text-transform:uppercase;">Cada día miles de personas utilizan nuestras experiencias en todo el mundo. Descúbrelas por ti mismo.</p>
+      </div>
+      <div class="projects-grid">
+        <img src="Proyecto_Rafa-Nadal-Museum.jpg" alt="Rafa Nadal Museum">
+        <img src="Proyecto_Hispanosuiza.jpg" alt="Hispano Suiza">
+        <img src="Proyecto_Loewe.jpg" alt="Loewe">
+        <img src="Proyecto_Telefonica_MWC.jpg" alt="Telefónica">
+        <img src="Proyecto_Ibercaja.jpg" alt="Ibercaja">
+        <img src="Proyecto_Loreal.jpg" alt="L'Oréal Groupe">
+      </div>
+      <div class="projects-cta">
+        <button class="btn-primary">Ver todos los proyectos <span class="arrow">→</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ CTA / CONTACTO ════ -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-grid">
+        <h2 class="cta-title">Cuéntanos<br>y sigue<br>avanzando.</h2>
+        <form class="cta-form" onsubmit="return false;">
+          <div class="form-group">
+            <input type="text" placeholder="Nombre y Apellidos*">
+          </div>
+          <div class="form-group">
+            <input type="text" placeholder="Empresa*">
+          </div>
+          <div class="form-group">
+            <select>
+              <option value="">Elige tu sector*</option>
+              <option>Salud</option>
+              <option>Turismo</option>
+              <option>Industria</option>
+              <option>Banca y Seguros</option>
+              <option>Retail y Ocio</option>
+              <option>Formación</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Email*">
+          </div>
+          <div class="form-group">
+            <input type="tel" placeholder="Teléfono*">
+          </div>
+          <div class="form-group">
+            <textarea placeholder="Mensaje*"></textarea>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" id="consent">
+            <label for="consent">Sí, doy mi consentimiento para recibir comunicaciones informativas.</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" id="privacy">
+            <label for="privacy">Sí, estoy de acuerdo y acepto la política de privacidad.</label>
+          </div>
+          <button class="btn-primary" type="submit" style="align-self:flex-start;">Enviar <span class="arrow">→</span></button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ FOOTER ════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <img src="logo-imascono.svg" alt="Imascono" style="height:40px;width:auto;">
+          </a>
+        </div>
+        <div class="footer-col">
+          <h4>Productos</h4>
+          <a href="#">VEGA</a>
+          <a href="#">Kimchi!</a>
+          <a href="#">Virtual Twins</a>
+          <a href="#">Virtual Training</a>
+          <a href="#">Virtual Spaces</a>
+          <a href="#">Spaceship Projects</a>
+        </div>
+        <div class="footer-col">
+          <h4>Sectores</h4>
+          <a href="#">Turismo</a>
+          <a href="#">Retail &amp; Ocio</a>
+          <a href="#">Banca &amp; Seguros</a>
+          <a href="#">Salud</a>
+          <a href="#">Industria</a>
+          <a href="#">Formación</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-sede">Sede España</div>
+          <div class="footer-address">
+            © 2026 Imascono Art S.L.<br>
+            C/ Josefa Amar y Borbón 10, Planta 2<br>
+            50001 – Zaragoza, España<br>
+            (+34) 876 28 37 14
+          </div>
+          <div class="footer-sede" style="margin-top:20px;">Sede EEUU</div>
+          <div class="footer-address">
+            © 2026 Imascono Corp<br>
+            2100 Coral Way, STE 704<br>
+            Miami, FL 33145, United States<br>
+            (+1) 214 830 1405
+          </div>
+        </div>
+        <div class="footer-legal-bar">
+          <span>Copyright © 2026 Imascono Art SL</span>
+          <div class="footer-legal-links">
+            <a href="#">Política de privacidad</a>
+            <a href="#">Política de cookies</a>
+            <a href="#">Aviso legal</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-col">
+          <h4>Servicios de Imascono</h4>
+          <a href="#">Servicios de Consultoría</a>
+          <a href="#">Servicios de Inteligencia Artificial</a>
+          <a href="#">Servicios de Realidad Virtual</a>
+          <a href="#">Servicios de Realidad Aumentada</a>
+          <a href="#">Servicios de Realidad Mixta</a>
+          <a href="#">Servicios de Espacios virtuales</a>
+          <a href="#">Servicios de Showroom Virtual</a>
+          <a href="#">Servicios de WebApp</a>
+          <a href="#">Servicios de Metaverso y Web3</a>
+        </div>
+        <div class="footer-bottom-col">
+          <h4>Casos de uso</h4>
+          <a href="#">Hoteles</a>
+          <a href="#">Lujo</a>
+          <a href="#">Real Estate</a>
+          <a href="#">Branding</a>
+          <a href="#">Centros Comerciales</a>
+          <a href="#">Niños y tecnología</a>
+          <a href="#">Eventos</a>
+        </div>
+        <div class="footer-badges">
+          <img src="Logo-footer-europa.jpg" alt="Financiado por la Unión Europea · NextGenerationEU · Cámara de Comercio de España" style="width:100%;height:auto;">
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  (function() {
+    const media = document.querySelector('.hero-media');
+    const img = media.querySelector('img');
+    function onScroll() {
+      const rect = media.getBoundingClientRect();
+      const winH = window.innerHeight;
+      if (rect.bottom > 0 && rect.top < winH) {
+        const progress = (winH - rect.top) / (winH + rect.height);
+        const maxShift = rect.height * 0.5;
+        const offset = -maxShift * progress;
+        img.style.setProperty('--parallax-y', offset + 'px');
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+<script>
+  // Timeline step-by-step reveal
+  (function() {
+    var timeline = document.querySelector('.timeline');
+    if (!timeline) return;
+    var steps = timeline.querySelectorAll('.timeline-step');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          timeline.classList.add('in-view');
+          steps.forEach(function(step, i) {
+            setTimeout(function() {
+              step.classList.add('revealed');
+            }, 400 + i * 180);
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    observer.observe(timeline);
+
+    // Elastic spread effect on hover
+    var stepsContainer = timeline.querySelector('.timeline-steps');
+    var maxPush = 18;
+
+    stepsContainer.addEventListener('mouseover', function(e) {
+      var hoveredStep = e.target.closest('.timeline-step');
+      if (!hoveredStep) return;
+      var hoveredIndex = Array.prototype.indexOf.call(steps, hoveredStep);
+      steps.forEach(function(step, i) {
+        if (i === hoveredIndex) {
+          step.style.transform = 'none';
+          return;
+        }
+        var dist = Math.abs(i - hoveredIndex);
+        var push = maxPush / dist;
+        var dir = i < hoveredIndex ? -1 : 1;
+        step.style.transform = 'translateX(' + (dir * push) + 'px)';
+      });
+    });
+
+    stepsContainer.addEventListener('mouseleave', function() {
+      steps.forEach(function(step) {
+        step.style.transform = 'none';
+      });
+    });
+  })();
+</script>
+<script>
+  // Tech cards sequential reveal
+  (function() {
+    var grid = document.querySelector('.tech-grid');
+    if (!grid) return;
+    var items = grid.querySelectorAll('.tech-item');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          items.forEach(function(item, i) {
+            setTimeout(function() {
+              item.classList.add('revealed');
+            }, i * 200);
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    observer.observe(grid);
+  })();
+</script>
+<script>
+  // Typing effect for hero title
+  (function() {
+    const title = document.querySelector('.hero-title');
+    const parts = title.innerHTML.split(/<br\s*\/?>/gi);
+    title.innerHTML = '';
+    const cursor = document.createElement('span');
+    cursor.className = 'cursor';
+    title.appendChild(cursor);
+    var tokens = [];
+    parts.forEach(function(part, idx) {
+      part.split('').forEach(function(c) { tokens.push({type:'char', value:c}); });
+      if (idx < parts.length - 1) tokens.push({type:'br'});
+    });
+    let i = 0;
+    function type() {
+      if (i < tokens.length) {
+        if (tokens[i].type === 'br') {
+          title.insertBefore(document.createElement('br'), cursor);
+        } else {
+          const span = document.createElement('span');
+          span.className = tokens[i].value === ' ' ? 'char space' : 'char';
+          span.textContent = tokens[i].value;
+          title.insertBefore(span, cursor);
+        }
+        i++;
+        setTimeout(type, 60);
+      } else {
+        setTimeout(function() { cursor.style.opacity = '0'; }, 2000);
+      }
+    }
+    setTimeout(type, 500);
+  })();
+</script>
+<script>
+  // Play button follows cursor over hero-media, returns to center on leave
+  (function() {
+    var media = document.querySelector('.hero-media');
+    var btn = media.querySelector('.play-btn');
+
+    // Set initial position to center
+    btn.style.left = '50%';
+    btn.style.top = '50%';
+    btn.style.transform = 'translate(-50%, -50%)';
+
+    media.addEventListener('mousemove', function(e) {
+      var rect = media.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+      btn.style.left = x + 'px';
+      btn.style.top = y + 'px';
+      btn.style.transform = 'translate(-50%, -50%)';
+    });
+
+    media.addEventListener('mouseenter', function() {
+      media.classList.add('hovering');
+    });
+
+    media.addEventListener('mouseleave', function() {
+      media.classList.remove('hovering');
+      // Animate back to center
+      btn.style.left = '50%';
+      btn.style.top = '50%';
+      btn.style.transform = 'translate(-50%, -50%)';
+    });
+  })();
+</script>
+<script>
+  // Digital scramble effect for stat numbers
+  (function() {
+    var chars = '0123456789+ABCDEFGHIJKLMNOPQRSTUVWXYZ%#&';
+    var scrambleEls = document.querySelectorAll('[data-scramble]');
+    var animated = new Set();
+
+    function scramble(el) {
+      var target = el.getAttribute('data-scramble');
+      var length = target.length;
+      var iterations = 0;
+      var maxIterations = 20;
+      var revealed = 0;
+      var totalSteps = length * 3 + 1;
+
+      el.style.opacity = '0.2';
+      el.style.transition = 'none';
+
+      var interval = setInterval(function() {
+        var display = '';
+        for (var i = 0; i < length; i++) {
+          if (i < revealed) {
+            display += target[i];
+          } else {
+            display += chars[Math.floor(Math.random() * chars.length)];
+          }
+        }
+        el.textContent = display;
+        iterations++;
+
+        // Fade in progressively from 0.2 to 1
+        var progress = Math.min(iterations / totalSteps, 1);
+        el.style.opacity = 0.2 + (0.8 * progress);
+
+        // Progressively reveal characters
+        if (iterations % 3 === 0 && revealed < length) {
+          revealed++;
+        }
+
+        if (revealed >= length) {
+          el.textContent = target;
+          el.style.opacity = '1';
+          clearInterval(interval);
+        }
+      }, 50);
+    }
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting && !animated.has(entry.target)) {
+          animated.add(entry.target);
+          scramble(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    scrambleEls.forEach(function(el) {
+      observer.observe(el);
+    });
+  })();
+</script>
+<script>
+  // Block cursor typewriter for hero-desc
+  window._typeCursorPos = null;
+  (function() {
+    var el = document.querySelector('[data-typewrite]');
+    if (!el) return;
+    var text = el.getAttribute('data-typewrite');
+    var cursor = document.createElement('span');
+    cursor.className = 'block-cursor';
+    el.textContent = '';
+    el.appendChild(cursor);
+    var index = 0;
+    var started = false;
+
+    function updateCursorPos() {
+      var rect = cursor.getBoundingClientRect();
+      window._typeCursorPos = { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
+    }
+
+    function typeNext() {
+      if (index < text.length) {
+        var charNode = document.createTextNode(text[index]);
+        el.insertBefore(charNode, cursor);
+        index++;
+        updateCursorPos();
+        var delay = 8 + Math.random() * 6;
+        setTimeout(typeNext, delay);
+      } else {
+        // Stop blinking and hide cursor after done
+        window._typeCursorPos = null;
+        cursor.style.transition = 'opacity 0.5s';
+        setTimeout(function() { cursor.style.animation = 'none'; cursor.style.opacity = '0'; }, 1500);
+        // Show buttons after typing finishes
+        var buttons = document.querySelector('.hero-buttons');
+        if (buttons) {
+          setTimeout(function() { buttons.classList.add('visible'); }, 300);
+        }
+      }
+    }
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting && !started) {
+          started = true;
+          // Wait for hero title typing to finish first
+          setTimeout(typeNext, 2500);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    observer.observe(el);
+  })();
+</script>
+<script>
+  // Hero character dispersion effect (optimized)
+  (function() {
+    var canvas = document.getElementById('hero-particles');
+    if (!canvas) return;
+    canvas.style.willChange = 'contents';
+    var ctx = canvas.getContext('2d', { alpha: true });
+    var heroTop = canvas.parentElement;
+    var particles = [];
+    var mouseX = -9999, mouseY = -9999;
+    var mouseRadius = 120;
+    var mouseRadiusSq = mouseRadius * mouseRadius;
+    var logoPixels = null;
+    var logoW = 0, logoH = 0;
+    var logoReady = false;
+    var dpr = window.devicePixelRatio || 1;
+
+    function loadLogo() {
+      var img = new Image();
+      img.onload = function() {
+        var tmpCanvas = document.createElement('canvas');
+        var scale = 2;
+        logoW = Math.floor(img.width * scale);
+        logoH = Math.floor(img.height * scale);
+        tmpCanvas.width = logoW;
+        tmpCanvas.height = logoH;
+        var tmpCtx = tmpCanvas.getContext('2d');
+        tmpCtx.drawImage(img, 0, 0, logoW, logoH);
+        logoPixels = tmpCtx.getImageData(0, 0, logoW, logoH).data;
+        logoReady = true;
+        initParticles();
+        if (!animating) { animating = true; requestAnimationFrame(animate); }
+      };
+      img.src = 'Logo_Particles.svg';
+    }
+
+    var animating = false;
+
+    function resize() {
+      var w = canvas.offsetWidth;
+      var h = canvas.offsetHeight;
+      if (w === 0 || h === 0) {
+        setTimeout(resize, 100);
+        return;
+      }
+      dpr = window.devicePixelRatio || 1;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width = w + 'px';
+      canvas.style.height = h + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      if (logoReady) initParticles();
+    }
+
+    var gridDots = [];
+
+    function initParticles() {
+      particles = [];
+      gridDots = [];
+      if (!logoReady) return;
+      var w = canvas.width / dpr;
+      var h = canvas.height / dpr;
+
+      var targetW = w * 1.05;
+      var scaleFactor = targetW / logoW;
+      var targetH = logoH * scaleFactor;
+      var extraLeft = w - heroTop.offsetWidth;
+      var visibleCenter = extraLeft + (heroTop.offsetWidth * 0.12);
+      var offsetX = visibleCenter - (targetW / 2);
+      var offsetY = (h - targetH) / 2;
+      var step = 5;
+      for (var y = 0; y < logoH; y += step) {
+        for (var x = 0; x < logoW; x += step) {
+          var idx = (y * logoW + x) * 4;
+          if (logoPixels[idx + 3] > 50) {
+            var px = offsetX + x * scaleFactor + (Math.random() - 0.5) * 4;
+            var py = offsetY + y * scaleFactor + (Math.random() - 0.5) * 4;
+            var size = 10 + Math.random() * 8;
+            particles.push({
+              x: px, y: py, ox: px, oy: py,
+              size: size,
+              opacity: 0.25 + Math.random() * 0.4,
+              vx: 0, vy: 0,
+              tc: 0,
+              font: size + 'px PP Neue Montreal, system-ui, sans-serif'
+            });
+          }
+        }
+      }
+
+      // Grid line dots — match body::before pattern
+      var heroW = heroTop.offsetWidth;
+      var canvasOffX = (w - heroW) / 2;
+      var gridFractions = [0, 1/9, 2/9, 3/9, 4/9, 5/9, 6/9, 7/9, 8/9, 1];
+      var dashLen = 4, gapLen = 6, totalStep = dashLen + gapLen;
+      for (var gi = 0; gi < gridFractions.length; gi++) {
+        var gx = canvasOffX + gridFractions[gi] * heroW;
+        for (var gy = 0; gy < h; gy += totalStep) {
+          gridDots.push({
+            x: gx, y: gy, ox: gx, oy: gy,
+            vx: 0, vy: 0,
+            tc: 0,
+            len: dashLen
+          });
+        }
+      }
+    }
+
+    function animate() {
+      var w = canvas.width / dpr;
+      var h = canvas.height / dpr;
+      ctx.clearRect(0, 0, w, h);
+
+      var typeX = -9999, typeY = -9999;
+      if (window._typeCursorPos) {
+        var canvasRect = canvas.getBoundingClientRect();
+        typeX = window._typeCursorPos.x - canvasRect.left;
+        typeY = window._typeCursorPos.y - canvasRect.top;
+      }
+
+      var len = particles.length;
+      var mX = mouseX, mY = mouseY, mR = mouseRadius, mRsq = mouseRadiusSq;
+
+      for (var i = 0; i < len; i++) {
+        var p = particles[i];
+
+        // Mouse dispersion (avoid sqrt when possible)
+        var dx = p.x - mX;
+        var dy = p.y - mY;
+        var distSq = dx * dx + dy * dy;
+        if (distSq < mRsq && distSq > 0) {
+          var dist = Math.sqrt(distSq);
+          var force = (mR - dist) / mR;
+          var f = force * 8 / dist;
+          p.vx += dx * f;
+          p.vy += dy * f;
+        }
+
+        // Typing cursor dispersion
+        var typeHit = false;
+        var tdx = p.x - typeX;
+        var tdy = p.y - typeY;
+        var tdistSq = tdx * tdx + tdy * tdy;
+        if (tdistSq < mRsq && tdistSq > 0) {
+          var tdist = Math.sqrt(tdistSq);
+          var tf = ((mR - tdist) / mR) * 6 / tdist;
+          p.vx += tdx * tf;
+          p.vy += tdy * tf;
+          typeHit = true;
+        }
+
+        // Track type-induced color (decays over time)
+        if (typeHit) p.tc = 1;
+        else if (p.tc > 0) p.tc *= 0.96;
+        else p.tc = 0;
+
+        // Spring back + damping
+        p.vx = (p.vx + (p.ox - p.x) * 0.04) * 0.88;
+        p.vy = (p.vy + (p.oy - p.y) * 0.04) * 0.88;
+        p.x += p.vx;
+        p.y += p.vy;
+
+        ctx.font = p.font;
+        if (p.tc > 0.05) {
+          var pHue = (p.ox * 0.5 + p.oy * 0.3 + performance.now() * 0.04) % 360;
+          ctx.fillStyle = 'hsla(' + pHue + ',65%,60%,' + (p.opacity + p.tc * 0.4) + ')';
+        } else {
+          ctx.fillStyle = 'rgba(120,140,165,' + p.opacity + ')';
+        }
+        ctx.fillText('>', p.x, p.y);
+      }
+
+      // Grid line dots with dispersion
+      ctx.strokeStyle = 'rgba(200,210,220,0.45)';
+      ctx.lineWidth = 1;
+      var glen = gridDots.length;
+      for (var g = 0; g < glen; g++) {
+        var d = gridDots[g];
+
+        var gdx = d.x - mX;
+        var gdy = d.y - mY;
+        var gdistSq = gdx * gdx + gdy * gdy;
+        if (gdistSq < mRsq && gdistSq > 0) {
+          var gdist = Math.sqrt(gdistSq);
+          var gf = ((mR - gdist) / mR) * 5 / gdist;
+          d.vx += gdx * gf;
+          d.vy += gdy * gf;
+        }
+
+        var gtypeHit = false;
+        var gtdx = d.x - typeX;
+        var gtdy = d.y - typeY;
+        var gtdistSq = gtdx * gtdx + gtdy * gtdy;
+        if (gtdistSq < mRsq && gtdistSq > 0) {
+          var gtdist = Math.sqrt(gtdistSq);
+          var gtf = ((mR - gtdist) / mR) * 4 / gtdist;
+          d.vx += gtdx * gtf;
+          d.vy += gtdy * gtf;
+          gtypeHit = true;
+        }
+
+        if (gtypeHit) d.tc = 1;
+        else if (d.tc > 0) d.tc *= 0.96;
+        else d.tc = 0;
+
+        d.vx = (d.vx + (d.ox - d.x) * 0.04) * 0.88;
+        d.vy = (d.vy + (d.oy - d.y) * 0.04) * 0.88;
+        d.x += d.vx;
+        d.y += d.vy;
+
+        if (d.tc > 0.05) {
+          var hue = (d.ox * 0.3 + d.oy * 0.2 + performance.now() * 0.05) % 360;
+          ctx.strokeStyle = 'hsla(' + hue + ',70%,65%,' + (0.3 + d.tc * 0.5) + ')';
+          ctx.lineWidth = 1 + d.tc;
+        } else {
+          ctx.strokeStyle = 'rgba(200,210,220,0.45)';
+          ctx.lineWidth = 1;
+        }
+        ctx.beginPath();
+        ctx.moveTo(d.x, d.y);
+        ctx.lineTo(d.x, d.y + d.len);
+        ctx.stroke();
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    heroTop.addEventListener('mousemove', function(e) {
+      var rect = canvas.getBoundingClientRect();
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
+    }, { passive: true });
+
+    heroTop.addEventListener('mouseleave', function() {
+      mouseX = -9999;
+      mouseY = -9999;
+    });
+
+    window.addEventListener('resize', resize);
+    resize();
+    loadLogo();
+  })();
+</script>
+<script>
+  // Mega dropdowns
+  (function() {
+    var megas = [
+      { label: 'PRODUCTOS', id: 'nav-mega-productos' },
+      { label: 'SECTORES', id: 'nav-mega-sectores' }
+    ];
+    var links = document.querySelectorAll('.nav-links a');
+
+    megas.forEach(function(cfg) {
+      var navLink = null;
+      links.forEach(function(a) { if (a.textContent.trim() === cfg.label) navLink = a; });
+      if (!navLink) return;
+      var mega = document.getElementById(cfg.id);
+      if (!mega) return;
+      var megaContent = mega.querySelector('.nav-mega-content');
+      var timeout;
+
+      function closeAll() {
+        megas.forEach(function(other) {
+          var m = document.getElementById(other.id);
+          if (m) m.classList.remove('active');
+        });
+        links.forEach(function(a) { a.classList.remove('nav-active'); });
+      }
+
+      function show() { clearTimeout(timeout); closeAll(); mega.classList.add('active'); navLink.classList.add('nav-active'); }
+      function hide() { timeout = setTimeout(function() { mega.classList.remove('active'); navLink.classList.remove('nav-active'); }, 150); }
+
+      navLink.addEventListener('mouseenter', show);
+      navLink.addEventListener('mouseleave', hide);
+      megaContent.addEventListener('mouseenter', function() { clearTimeout(timeout); });
+      megaContent.addEventListener('mouseleave', hide);
+
+      mega.addEventListener('click', function(e) {
+        if (e.target === mega || !e.target.closest('.nav-mega-links')) {
+          mega.classList.remove('active');
+          navLink.classList.remove('nav-active');
+        }
+      });
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.nav-mega') && !e.target.closest('.nav-links')) {
+        megas.forEach(function(cfg) {
+          var m = document.getElementById(cfg.id);
+          if (m) m.classList.remove('active');
+        });
+        links.forEach(function(a) { a.classList.remove('nav-active'); });
+      }
+    });
+  })();
+</script>
+<script>
+  // Scroll reveal with IntersectionObserver
+  (function() {
+    // Auto-apply reveal classes to key elements
+    var selectors = [
+      { sel: '.section-header .section-title', cls: 'reveal from-left' },
+      { sel: '.section-header .section-desc', cls: 'reveal from-right' },
+      { sel: '.section-header .products-subtitle', cls: 'reveal' },
+      { sel: '.products-subtitle', cls: 'reveal' },
+      { sel: '.projects-subtitle', cls: 'reveal' },
+      { sel: '.product-card', cls: 'reveal' },
+      { sel: '.solution-item', cls: 'reveal' },
+      { sel: '.stat-item', cls: 'reveal' },
+      { sel: '.clients-logos', cls: 'reveal scale-in' },
+      { sel: '.projects-grid img', cls: 'reveal scale-in' },
+      { sel: '.projects-cta', cls: 'reveal' },
+      { sel: '.cta-title', cls: 'reveal from-left' },
+      { sel: '.cta-form', cls: 'reveal from-right' },
+      { sel: '.hero-media', cls: 'reveal scale-in' },
+      { sel: '.scroll-hint', cls: 'reveal' },
+      { sel: '.footer-top', cls: 'reveal' },
+      { sel: '.footer-bottom', cls: 'reveal' }
+    ];
+
+    selectors.forEach(function(item) {
+      document.querySelectorAll(item.sel).forEach(function(el) {
+        if (!el.classList.contains('reveal')) {
+          item.cls.split(' ').forEach(function(c) { el.classList.add(c); });
+        }
+      });
+    });
+
+    // Add stagger to grids
+    document.querySelectorAll('.products-grid, .stats-grid, .projects-grid').forEach(function(g) {
+      g.classList.add('stagger');
+    });
+
+    // Observe all reveal elements
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      observer.observe(el);
+    });
+  })();
+</script>
+</body>
+</html>

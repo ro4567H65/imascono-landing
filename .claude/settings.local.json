@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash",
+      "Edit",
+      "Write",
+      "Read",
+      "Glob",
+      "Grep",
+      "mcp__Claude_Preview__preview_start",
+      "mcp__Claude_Preview__preview_stop",
+      "mcp__Claude_Preview__preview_screenshot",
+      "mcp__Claude_Preview__preview_eval",
+      "mcp__Claude_Preview__preview_inspect",
+      "mcp__Claude_Preview__preview_click",
+      "mcp__Claude_Preview__preview_snapshot",
+      "mcp__Claude_Preview__preview_console_logs",
+      "mcp__Claude_Preview__preview_network",
+      "mcp__Claude_Preview__preview_logs",
+      "mcp__Claude_Preview__preview_fill",
+      "mcp__Claude_Preview__preview_resize",
+      "Skill(update-config)",
+      "Skill(update-config:*)",
+      "Bash(cp \"/Volumes/Imascono/003_Claude/Claude/%_002_Web_Imascono/000_Raul_Files/009_Footer/Logo-footer-europa.jpg\" \"/Volumes/Imascono/003_Claude/Claude/%_002_Web_Imascono/Logo-footer-europa.jpg\")",
+      "Bash(cp \"/Volumes/Imascono/003_Claude/Claude/%_002_Web_Imascono/000_Raul_Files/009_Footer/Logo-footer-europa.jpg\" \"/tmp/imascono-web/Logo-footer-europa.jpg\")",
+      "WebFetch(domain:evasanchez.info)"
+    ]
+  }
+}
