@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Imascono — Humanizamos la tecnología</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;700;900&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     /* ── PP Neue Montreal Font ── */
     @font-face { font-family: 'PP Neue Montreal'; src: url('fonts/montrealbook.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
@@ -15,6 +18,16 @@
     @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
     @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
     @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Black.ttf') format('truetype'); font-weight: 900; font-style: normal; font-display: swap; }
+
+    /* ── Graphik Font ── */
+    @font-face { font-family: 'Graphik'; src: url('fonts/GraphikLCG-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+
+    /* ── DIN Pro Font ── */
+    @font-face { font-family: 'DIN Pro'; src: url('fonts/DINPro-Light.otf') format('opentype'); font-weight: 300; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'DIN Pro'; src: url('fonts/DINPro-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'DIN Pro'; src: url('fonts/DINPro-Medium.otf') format('opentype'); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'DIN Pro'; src: url('fonts/DINPro-Bold.otf') format('opentype'); font-weight: 700; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'DIN Pro'; src: url('fonts/DINPro-Black.otf') format('opentype'); font-weight: 900; font-style: normal; font-display: swap; }
 
     /* ── Reset & Base ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1328,6 +1341,32 @@
       color: #647483;
       font-weight: 500;
     }
+    .font-switcher {
+      display: flex;
+      gap: 10px;
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid #e0e4e8;
+    }
+    .font-btn {
+      padding: 10px 28px;
+      border: 1px solid #647483;
+      background: transparent;
+      color: #647483;
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+    .font-btn.active {
+      background: #647483;
+      color: #ffffff;
+    }
+    .font-btn:hover:not(.active) {
+      background: rgba(74,90,104,0.1);
+    }
     .footer-social {
       display: flex;
       gap: 16px;
@@ -1897,6 +1936,12 @@
         <div class="footer-badges">
           <img src="Logo-footer-europa.jpg" alt="Financiado por la Unión Europea · NextGenerationEU · Cámara de Comercio de España" style="width:100%;height:auto;">
         </div>
+      </div>
+      <div class="font-switcher">
+        <button class="font-btn active" data-font="1">OP-1</button>
+        <button class="font-btn" data-font="2">OP-2</button>
+        <button class="font-btn" data-font="3">OP-3</button>
+        <button class="font-btn" data-font="color" style="margin-left:20px;border-color:#e5321e;color:#e5321e;">OP-Color</button>
       </div>
     </div>
   </footer>
@@ -2575,6 +2620,88 @@
 
     document.querySelectorAll('.reveal').forEach(function(el) {
       observer.observe(el);
+    });
+  })();
+</script>
+<script>
+  // Font switcher
+  (function() {
+    var fonts = {
+      '1': {
+        heading: "'Visuelt Pro', system-ui, sans-serif",
+        body: "'PP Neue Montreal', system-ui, sans-serif"
+      },
+      '2': {
+        heading: "'DIN Pro', system-ui, sans-serif",
+        body: "'PP Neue Montreal', system-ui, sans-serif"
+      },
+      '3': {
+        heading: "'Public Sans', system-ui, sans-serif",
+        body: "'DM Mono', monospace"
+      }
+    };
+
+    var accentColor = '#e5321e';
+    var defaultBtnBg = '#647483';
+    var ctaSelectors = '.btn-primary, .product-cta, .solution-cta, .header-actions .btn-primary';
+    var outlineSelectors = '.btn-outline, .product-cta, .solution-cta';
+
+    function applyAccent(on) {
+      document.querySelectorAll('.btn-primary').forEach(function(el) {
+        el.style.background = on ? accentColor : '';
+        el.style.borderColor = on ? accentColor : '';
+      });
+      document.querySelectorAll('.product-cta, .solution-cta').forEach(function(el) {
+        el.style.borderColor = on ? accentColor : '';
+        el.style.color = on ? accentColor : '';
+      });
+      // Header CTA
+      var headerCta = document.querySelector('.header-actions .btn-primary');
+      if (headerCta) {
+        headerCta.style.background = on ? accentColor : '';
+        headerCta.style.borderColor = on ? accentColor : '';
+      }
+    }
+
+    var btns = document.querySelectorAll('.font-btn');
+    btns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var opt = btn.getAttribute('data-font');
+
+        btns.forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+
+        if (opt === 'color') {
+          // OP-Color: same as OP-1 fonts + accent color on CTAs
+          var f = fonts['1'];
+          document.querySelectorAll('.hero-title, .section-title, .stat-number, .nav-mega-title, .tech-label').forEach(function(el) {
+            el.style.fontFamily = f.heading;
+          });
+          document.body.style.fontFamily = f.heading;
+          document.querySelectorAll('.hero-desc, .section-desc, .product-desc, .tech-desc, .tech-name, .sector-question, .footer-col, .nav-links a, .btn-primary, .btn-outline, .product-cta, .solution-cta').forEach(function(el) {
+            el.style.fontFamily = f.body;
+          });
+          applyAccent(true);
+          return;
+        }
+
+        var f = fonts[opt];
+        if (!f) return;
+
+        // Reset accent
+        applyAccent(false);
+
+        // Apply heading font to titles
+        document.querySelectorAll('.hero-title, .section-title, .stat-number, .nav-mega-title, .tech-label').forEach(function(el) {
+          el.style.fontFamily = f.heading;
+        });
+
+        // Apply body font to body elements
+        document.body.style.fontFamily = f.heading;
+        document.querySelectorAll('.hero-desc, .section-desc, .product-desc, .tech-desc, .tech-name, .sector-question, .footer-col, .nav-links a, .btn-primary, .btn-outline, .product-cta, .solution-cta').forEach(function(el) {
+          el.style.fontFamily = f.body;
+        });
+      });
     });
   })();
 </script>
