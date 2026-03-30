@@ -1152,7 +1152,8 @@
       aspect-ratio: 16/9;
       object-fit: cover;
       display: block;
-      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), filter 0.5s ease;
+      transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.8s ease;
+      will-change: transform;
     }
     .projects-grid a {
       display: block;
@@ -1164,14 +1165,14 @@
       position: absolute;
       inset: 0;
       background: rgba(100,116,131,0);
-      transition: background 0.5s ease;
+      transition: background 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       pointer-events: none;
     }
     .projects-grid a:hover::after {
-      background: rgba(100,116,131,0.15);
+      background: rgba(100,116,131,0.12);
     }
     .projects-grid a:hover img {
-      transform: scale(1.05);
+      transform: scale(1.03);
     }
     .projects-cta {
       text-align: center;
