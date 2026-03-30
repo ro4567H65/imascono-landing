@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rafa Nadal Museum — Imascono</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;700;900&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    @font-face { font-family: 'PP Neue Montreal'; src: url('fonts/montrealbook.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'PP Neue Montreal'; src: url('fonts/montreal.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Graphik'; src: url('fonts/GraphikLCG-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: 'Visuelt Pro', system-ui, -apple-system, sans-serif;
+      color: #647483;
+      background: #ffffff;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* ── Header ── */
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #8a9baa;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: #647483; }
+    .header-actions { display: flex; align-items: center; gap: 16px; }
+    .btn-primary {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #fff;
+      background: #647483;
+      border: 1px solid #647483;
+      padding: 10px 24px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s;
+    }
+    .btn-primary:hover { background: #4a5a68; }
+    .btn-primary .arrow { transition: transform 0.3s; display: inline-block; }
+    .btn-primary:hover .arrow { transform: translateX(4px); }
+
+    /* ── Project Hero ── */
+    .project-hero {
+      margin-top: 72px;
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/7;
+      overflow: hidden;
+    }
+    .project-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .project-hero-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 60px 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+    }
+    .project-hero-overlay h1 {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      color: #fff;
+      line-height: 1.1;
+    }
+
+    /* ── Project Content ── */
+    .project-section {
+      padding: 80px 0;
+    }
+    .project-meta {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+      padding: 80px 0;
+      border-bottom: 1px solid rgba(100,116,131,0.15);
+    }
+    .project-meta-label {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8a9baa;
+      margin-bottom: 8px;
+    }
+    .project-meta-value {
+      font-size: 1rem;
+      color: #647483;
+      line-height: 1.8;
+    }
+    .project-description {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+      padding: 80px 0;
+    }
+    .project-description h2 {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      color: #647483;
+      line-height: 1.15;
+    }
+    .project-description p {
+      font-size: 1.1rem;
+      color: #8a9baa;
+      line-height: 1.8;
+    }
+
+    /* ── Project Gallery ── */
+    .project-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      padding: 40px 0;
+    }
+    .project-gallery img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+    .project-gallery .full-width {
+      grid-column: 1 / -1;
+      aspect-ratio: 21/9;
+    }
+
+    /* ── Project Stats ── */
+    .project-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      padding: 80px 0;
+      border-top: 1px solid rgba(100,116,131,0.15);
+      border-bottom: 1px solid rgba(100,116,131,0.15);
+    }
+    .project-stat-number {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: 3.5rem;
+      color: #647483;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .project-stat-label {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.85rem;
+      color: #8a9baa;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── Technologies Used ── */
+    .project-tech {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 40px 0;
+    }
+    .project-tech-tag {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #647483;
+      border: 1px solid rgba(100,116,131,0.3);
+      padding: 8px 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── Next Project ── */
+    .next-project {
+      padding: 80px 0;
+      border-top: 1px solid rgba(100,116,131,0.15);
+    }
+    .next-project-label {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8a9baa;
+      margin-bottom: 16px;
+    }
+    .next-project a {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      color: #647483;
+      transition: color 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .next-project a:hover { color: #4a5a68; }
+    .next-project a .arrow {
+      font-size: 1.5rem;
+      transition: transform 0.3s;
+    }
+    .next-project a:hover .arrow { transform: translateX(8px); }
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #8a9baa;
+      margin-bottom: 40px;
+      transition: color 0.3s;
+    }
+    .back-link:hover { color: #647483; }
+
+    /* ── Footer ── */
+    .footer {
+      background: #647483;
+      color: rgba(255,255,255,0.7);
+      padding: 60px 0 40px;
+    }
+    .footer h4 {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .footer a {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      transition: color 0.3s;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .footer a:hover { color: #fff; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+    .footer-bottom {
+      padding-top: 30px;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    @media (max-width: 768px) {
+      .project-meta, .project-description { grid-template-columns: 1fr; gap: 30px; }
+      .project-gallery { grid-template-columns: 1fr; }
+      .project-stats { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════ HEADER ════ -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="logo-imascono.svg" alt="Imascono" style="height:52px;width:auto;">
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">HOME</a>
+        <a href="index.html#productos">PRODUCTOS</a>
+        <a href="index.html#sectores">SECTORES</a>
+        <a href="index.html#proyectos" style="font-weight:600;color:#647483;">PROYECTOS</a>
+        <a href="#">BLOG</a>
+        <a href="#">RESEARCH</a>
+      </nav>
+      <div class="header-actions">
+        <span style="font-size:0.85rem;color:#8a9baa;cursor:pointer;">EN</span>
+        <span style="font-size:0.85rem;font-weight:600;color:#647483;cursor:pointer;">ES</span>
+        <button class="btn-primary">Hablemos <span class="arrow">→</span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ════ PROJECT HERO ════ -->
+  <div class="project-hero">
+    <img src="Proyecto_Rafa-Nadal-Museum.jpg" alt="Rafa Nadal Museum">
+    <div class="project-hero-overlay">
+      <div class="container">
+        <h1>Rafa Nadal<br>Museum</h1>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ PROJECT CONTENT ════ -->
+  <div class="container">
+
+    <!-- Meta -->
+    <div class="project-meta">
+      <div>
+        <div class="project-meta-label">Cliente</div>
+        <div class="project-meta-value">Rafa Nadal Museum Xperience</div>
+        <br>
+        <div class="project-meta-label">Sector</div>
+        <div class="project-meta-value">Turismo &amp; Cultura</div>
+        <br>
+        <div class="project-meta-label">Fecha</div>
+        <div class="project-meta-value">2023</div>
+      </div>
+      <div>
+        <div class="project-meta-label">Tecnologías</div>
+        <div class="project-tech">
+          <span class="project-tech-tag">XR</span>
+          <span class="project-tech-tag">IA</span>
+          <span class="project-tech-tag">UX</span>
+          <span class="project-tech-tag">Data</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="project-description">
+      <h2>Un museo que se vive, no solo se visita.</h2>
+      <div>
+        <p>Transformamos el Rafa Nadal Museum Xperience en un espacio donde la tecnología y el deporte se fusionan para crear una experiencia inmersiva única. Los visitantes pueden revivir los momentos más icónicos de la carrera de Rafa Nadal a través de experiencias interactivas que combinan realidad aumentada, inteligencia artificial y diseño de experiencia de usuario.</p>
+        <br>
+        <p>El proyecto incluye instalaciones interactivas que permiten a los visitantes competir virtualmente, explorar contenido exclusivo mediante AR y descubrir datos en tiempo real sobre la trayectoria del tenista.</p>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="project-stats">
+      <div>
+        <div class="project-stat-number">500K+</div>
+        <div class="project-stat-label">Visitantes anuales</div>
+      </div>
+      <div>
+        <div class="project-stat-number">12</div>
+        <div class="project-stat-label">Experiencias interactivas</div>
+      </div>
+      <div>
+        <div class="project-stat-number">4.8</div>
+        <div class="project-stat-label">Valoración media</div>
+      </div>
+    </div>
+
+    <!-- Next project -->
+    <div class="next-project">
+      <div class="next-project-label">Siguiente proyecto</div>
+      <a href="#">Hispano Suiza <span class="arrow">→</span></a>
+    </div>
+
+  </div>
+
+  <!-- ════ FOOTER ════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <a href="index.html" class="logo">
+            <img src="logo-imascono.svg" alt="Imascono" style="height:40px;width:auto;filter:brightness(10);">
+          </a>
+        </div>
+        <div>
+          <h4>Productos</h4>
+          <a href="#">VEGA</a>
+          <a href="#">Kimchi!</a>
+          <a href="#">Virtual Twins</a>
+          <a href="#">Virtual Training</a>
+          <a href="#">Spaceship Projects</a>
+        </div>
+        <div>
+          <h4>Sectores</h4>
+          <a href="#">Turismo</a>
+          <a href="#">Retail &amp; Ocio</a>
+          <a href="#">Banca &amp; Seguros</a>
+          <a href="#">Salud</a>
+          <a href="#">Industria</a>
+          <a href="#">Formación</a>
+        </div>
+        <div>
+          <div style="font-size:0.85rem;margin-bottom:4px;">Copyright © 2026 Imascono Art SL</div>
+          <div style="display:flex;gap:16px;font-size:0.8rem;">
+            <a href="#">Política de privacidad</a>
+            <a href="#">Política de cookies</a>
+            <a href="#">Aviso legal</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
