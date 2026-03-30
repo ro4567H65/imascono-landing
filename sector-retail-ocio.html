@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retail &amp; Ocio — Imascono</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;700;900&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    @font-face { font-family: 'PP Neue Montreal'; src: url('fonts/montrealbook.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'PP Neue Montreal'; src: url('fonts/montreal.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Graphik'; src: url('fonts/GraphikLCG-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: 'Visuelt Pro', system-ui, -apple-system, sans-serif;
+      color: #647483;
+      background: #ffffff;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    .container { max-width: 1440px; margin: 0 auto; padding: 0 40px; }
+
+    /* ── Header ── */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .header .container { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.8rem; font-weight: 500; color: #8a9baa;
+      text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.3s;
+    }
+    .nav-links a:hover { color: #647483; }
+    .header-actions { display: flex; align-items: center; gap: 16px; }
+    .btn-primary {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.8rem; font-weight: 500; color: #fff;
+      background: #647483; border: 1px solid #647483;
+      padding: 10px 24px; cursor: pointer;
+      text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.3s;
+    }
+    .btn-primary:hover { background: #4a5a68; }
+    .btn-primary .arrow { transition: transform 0.3s; display: inline-block; }
+    .btn-primary:hover .arrow { transform: translateX(4px); }
+
+    /* ── Sector Hero ── */
+    .sector-hero {
+      margin-top: 72px;
+      padding: 120px 0 80px;
+      background: #f2f5f8;
+    }
+    .sector-hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: end;
+    }
+    .sector-hero h1 {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      color: #647483;
+      line-height: 1.05;
+    }
+    .sector-hero-desc {
+      font-size: 1.1rem;
+      color: #8a9baa;
+      line-height: 1.8;
+      max-width: 500px;
+    }
+
+    /* ── Stats ── */
+    .sector-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      padding: 80px 0;
+      border-bottom: 1px solid rgba(100,116,131,0.15);
+    }
+    .stat-number {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: 3.5rem;
+      color: #647483;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-label {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.85rem;
+      color: #8a9baa;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── Image + Text ── */
+    .sector-feature {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      padding: 80px 0;
+      align-items: center;
+    }
+    .sector-feature img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+    .sector-feature h2 {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      color: #647483;
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+    .sector-feature p {
+      font-size: 1.05rem;
+      color: #8a9baa;
+      line-height: 1.8;
+    }
+
+    /* ── CTA Section ── */
+    .cta-section {
+      padding: 80px 0;
+      background: linear-gradient(to bottom, #ffffff, #f2f5f8);
+    }
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .cta-title {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      color: #647483;
+      line-height: 1.1;
+    }
+    .cta-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .cta-form input, .cta-form select, .cta-form textarea {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.9rem;
+      padding: 14px 16px;
+      border: 1px solid rgba(100,116,131,0.25);
+      background: #fff;
+      color: #647483;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .cta-form input:focus, .cta-form select:focus, .cta-form textarea:focus {
+      border-color: #647483;
+    }
+    .cta-form textarea { min-height: 120px; resize: vertical; }
+    .form-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.8rem;
+      color: #8a9baa;
+    }
+    .form-check input[type="checkbox"] { margin-top: 3px; }
+
+    /* ── Tendencias ── */
+    .sector-trends {
+      padding: 80px 0;
+    }
+    .sector-trends-header {
+      margin-bottom: 60px;
+    }
+    .sector-trends-header h2 {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      color: #647483;
+      line-height: 1.1;
+    }
+    .trends-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+    .trend-item {
+      padding: 32px;
+      border: 1px solid rgba(100,116,131,0.12);
+      transition: all 0.4s ease;
+    }
+    .trend-item:hover {
+      border-color: rgba(100,116,131,0.3);
+      box-shadow: 0 8px 30px rgba(100,116,131,0.08);
+    }
+    .trend-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 20px;
+      color: #647483;
+    }
+    .trend-icon svg { width: 100%; height: 100%; }
+    .trend-item h3 {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #647483;
+      margin-bottom: 12px;
+    }
+    .trend-item p {
+      font-size: 0.9rem;
+      color: #8a9baa;
+      line-height: 1.7;
+    }
+
+    /* ── Casos de uso / Proyectos ── */
+    .sector-cases {
+      padding: 80px 0;
+      background: #f2f5f8;
+    }
+    .sector-cases-header {
+      margin-bottom: 50px;
+    }
+    .sector-cases-header h2 {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      color: #647483;
+      line-height: 1.15;
+    }
+    .sector-cases-header p {
+      font-size: 1rem;
+      color: #8a9baa;
+      margin-top: 12px;
+    }
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .case-card {
+      display: block;
+      overflow: hidden;
+      position: relative;
+    }
+    .case-card img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .case-card:hover img {
+      transform: scale(1.03);
+    }
+    .case-card-info {
+      padding: 20px 0;
+    }
+    .case-card-info h3 {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #647483;
+      margin-bottom: 4px;
+    }
+    .case-card-info p {
+      font-size: 0.85rem;
+      color: #8a9baa;
+    }
+
+    /* ── CTA Necesitas ── */
+    .cta-need {
+      padding: 80px 0;
+      text-align: center;
+    }
+    .cta-need h2 {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      color: #647483;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .cta-need p {
+      font-size: 1.05rem;
+      color: #8a9baa;
+      margin-bottom: 32px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── Imascono Tech ── */
+    .imascono-tech {
+      padding: 80px 0;
+      border-top: 1px solid rgba(100,116,131,0.15);
+    }
+    .imascono-tech-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+    }
+    .imascono-tech h2 {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      color: #647483;
+      line-height: 1.1;
+    }
+    .imascono-tech h2 span {
+      display: block;
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8a9baa;
+      margin-bottom: 12px;
+    }
+    .imascono-tech p {
+      font-size: 1.05rem;
+      color: #8a9baa;
+      line-height: 1.8;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      background: #647483;
+      color: rgba(255,255,255,0.7);
+      padding: 60px 0 40px;
+    }
+    .footer h4 {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.75rem; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 1px;
+      color: #fff; margin-bottom: 16px;
+    }
+    .footer a {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      transition: color 0.3s;
+      display: block; margin-bottom: 6px;
+    }
+    .footer a:hover { color: #fff; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+    .footer-sede {
+      font-size: 0.85rem; font-weight: 500; color: #fff; margin-bottom: 6px;
+    }
+    .footer-address {
+      font-size: 0.8rem; color: rgba(255,255,255,0.5); line-height: 1.7;
+    }
+    .footer-legal-bar {
+      grid-column: 1 / -1;
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+    }
+    .footer-legal-links { display: flex; gap: 20px; }
+    .footer-legal-links a { font-size: 0.8rem; margin-bottom: 0; }
+    .footer-bottom {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+      padding-top: 30px;
+    }
+    .footer-bottom h4 { margin-top: 10px; }
+    .footer-bottom a { font-size: 0.8rem; }
+
+    @media (max-width: 768px) {
+      .sector-hero-content { grid-template-columns: 1fr; gap: 30px; }
+      .sector-stats { grid-template-columns: 1fr; }
+      .sector-feature { grid-template-columns: 1fr; }
+      .trends-grid { grid-template-columns: 1fr; }
+      .cases-grid { grid-template-columns: 1fr; }
+      .cta-grid { grid-template-columns: 1fr; }
+      .imascono-tech-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-bottom { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════ HEADER ════ -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="logo-imascono.svg" alt="Imascono" style="height:52px;width:auto;">
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">HOME</a>
+        <a href="index.html#productos">PRODUCTOS</a>
+        <a href="#" style="font-weight:600;color:#647483;">SECTORES</a>
+        <a href="index.html#proyectos">PROYECTOS</a>
+        <a href="#">BLOG</a>
+        <a href="#">RESEARCH</a>
+      </nav>
+      <div class="header-actions">
+        <span style="font-size:0.85rem;color:#8a9baa;cursor:pointer;">EN</span>
+        <span style="font-size:0.85rem;font-weight:600;color:#647483;cursor:pointer;">ES</span>
+        <button class="btn-primary">Hablemos <span class="arrow">→</span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ════ HERO ════ -->
+  <section class="sector-hero">
+    <div class="container">
+      <div class="sector-hero-content">
+        <h1>Retail &amp; Ocio.</h1>
+        <p class="sector-hero-desc">Experiencias phygital que transforman tiendas en destinos. Combinamos tecnología inmersiva con diseño sensorial para crear espacios que enamoran y fidelizan.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ STATS ════ -->
+  <div class="container">
+    <div class="sector-stats">
+      <div>
+        <div class="stat-number">85%</div>
+        <div class="stat-label">Consumidores prefieren experiencias</div>
+      </div>
+      <div>
+        <div class="stat-number">4.2x</div>
+        <div class="stat-label">Mayor tiempo en tienda con XR</div>
+      </div>
+      <div>
+        <div class="stat-number">60%</div>
+        <div class="stat-label">Aumento en recuerdo de marca</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ FEATURE IMAGE + TEXT ════ -->
+  <div class="container">
+    <div class="sector-feature">
+      <img src="Proyecto_Loewe.jpg" alt="Retail experiencial">
+      <div>
+        <h2>Crear experiencias en tienda que fidelicen de verdad.</h2>
+        <p>La tecnología inmersiva transforma los espacios comerciales en destinos memorables. Desde escaparates interactivos hasta probadores virtuales con realidad aumentada, cada punto de contacto está diseñado para sorprender al cliente, aumentar el tiempo de permanencia y convertir cada visita en una experiencia que se comparte y se recuerda.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ CTA FORMULARIO ════ -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-grid">
+        <h2 class="cta-title">Cuéntanos<br>y sigue<br>avanzando.</h2>
+        <form class="cta-form" onsubmit="return false;">
+          <div class="form-group"><input type="text" placeholder="Nombre y Apellidos*"></div>
+          <div class="form-group"><input type="text" placeholder="Empresa*"></div>
+          <div class="form-group">
+            <select>
+              <option value="">Elige tu sector*</option>
+              <option>Turismo</option>
+              <option>Salud</option>
+              <option>Industria</option>
+              <option>Banca y Seguros</option>
+              <option selected>Retail y Ocio</option>
+              <option>Formación</option>
+            </select>
+          </div>
+          <div class="form-group"><input type="email" placeholder="Email*"></div>
+          <div class="form-group"><input type="tel" placeholder="Teléfono*"></div>
+          <div class="form-group"><textarea placeholder="Mensaje*"></textarea></div>
+          <div class="form-check">
+            <input type="checkbox" id="consent">
+            <label for="consent">Sí, doy mi consentimiento para recibir comunicaciones informativas.</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" id="privacy">
+            <label for="privacy">Sí, estoy de acuerdo y acepto la política de privacidad.</label>
+          </div>
+          <button class="btn-primary" type="submit" style="align-self:flex-start;">Enviar <span class="arrow">→</span></button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ TENDENCIAS ════ -->
+  <section class="sector-trends">
+    <div class="container">
+      <div class="sector-trends-header">
+        <h2>Tendencias en retail y ocio.</h2>
+      </div>
+      <div class="trends-grid">
+        <div class="trend-item">
+          <div class="trend-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="8" y="8" width="32" height="32" rx="2"/><circle cx="24" cy="20" r="6"/><path d="M16 36c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div>
+          <h3>Photocall AR</h3>
+          <p>Experiencias de realidad aumentada que permiten a los clientes crear contenido compartible en redes sociales directamente desde la tienda, amplificando el alcance de marca de forma orgánica.</p>
+        </div>
+        <div class="trend-item">
+          <div class="trend-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="10" width="40" height="28" rx="2"/><path d="M4 18h40"/><path d="M24 18v20"/><circle cx="16" cy="28" r="3"/><circle cx="32" cy="28" r="3"/></svg></div>
+          <h3>Escaparates interactivos</h3>
+          <p>Pantallas y proyecciones que reaccionan al movimiento de los transeúntes, transformando la fachada de la tienda en un imán que atrae visitantes y aumenta el tráfico en tienda.</p>
+        </div>
+        <div class="trend-item">
+          <div class="trend-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 4v8M32 4v8"/><rect x="8" y="8" width="32" height="36" rx="2"/><path d="M14 24h6m8 0h6M14 32h6m8 0h6"/><path d="M24 20v16"/></svg></div>
+          <h3>Probadores virtuales</h3>
+          <p>Espejos inteligentes y aplicaciones de realidad aumentada que permiten probarse ropa, maquillaje o accesorios sin contacto físico, mejorando la experiencia de compra y reduciendo devoluciones.</p>
+        </div>
+        <div class="trend-item">
+          <div class="trend-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M24 4l6 12 14 2-10 10 2 14-12-6-12 6 2-14L4 18l14-2z"/></svg></div>
+          <h3>Gamificación en tienda</h3>
+          <p>Mecánicas de juego integradas en el recorrido comercial que incentivan la exploración de productos, aumentan el tiempo de permanencia y fomentan la repetición de visitas.</p>
+        </div>
+        <div class="trend-item">
+          <div class="trend-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 38l10-14 8 8 8-12 10 18"/><rect x="4" y="6" width="40" height="36" rx="2"/><path d="M4 38h40"/></svg></div>
+          <h3>Analytics de visitante</h3>
+          <p>Sensores y sistemas de visión artificial que analizan flujos de tráfico, zonas calientes y comportamiento del comprador para optimizar el layout y la experiencia en tienda.</p>
+        </div>
+        <div class="trend-item">
+          <div class="trend-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M24 4v8m0 24v8M4 24h8m24 0h8"/><circle cx="24" cy="24" r="8"/><path d="M10.3 10.3l5.7 5.7m16 16l5.7 5.7M37.7 10.3l-5.7 5.7m-16 16l-5.7 5.7"/></svg></div>
+          <h3>Personalización IA</h3>
+          <p>Algoritmos de inteligencia artificial que adaptan la experiencia de compra en tiempo real según el perfil, historial y preferencias de cada cliente, ofreciendo recomendaciones hiperpersonalizadas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ CASOS DE USO ════ -->
+  <section class="sector-cases">
+    <div class="container">
+      <div class="sector-cases-header">
+        <h2>Tecnología aplicada al retail.</h2>
+        <p>Proyectos reales donde la innovación transforma la experiencia comercial.</p>
+      </div>
+      <div class="cases-grid">
+        <a href="proyecto-loewe.html" class="case-card">
+          <img src="Proyecto_Loewe.jpg" alt="Loewe">
+          <div class="case-card-info">
+            <h3>Loewe</h3>
+            <p>Experiencia inmersiva en retail de lujo</p>
+          </div>
+        </a>
+        <a href="proyecto-loreal.html" class="case-card">
+          <img src="Proyecto_Loreal.jpg" alt="L'Oréal">
+          <div class="case-card-info">
+            <h3>L'Oréal</h3>
+            <p>Innovación digital en punto de venta</p>
+          </div>
+        </a>
+        <a href="proyecto-hispano-suiza.html" class="case-card">
+          <img src="Proyecto_Hispano-Suiza.jpg" alt="Hispano Suiza">
+          <div class="case-card-info">
+            <h3>Hispano Suiza</h3>
+            <p>Showroom interactivo de automoción</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ CTA NECESITAS ════ -->
+  <section class="cta-need">
+    <div class="container">
+      <h2>Necesitas un proyecto.</h2>
+      <p>Cuéntanos tu reto y diseñamos juntos la solución tecnológica que tu espacio comercial necesita.</p>
+      <a href="#cta-form"><button class="btn-primary" style="padding:18px 48px;font-size:1rem;">Hablemos <span class="arrow">→</span></button></a>
+    </div>
+  </section>
+
+  <!-- ════ IMASCONO TECH ════ -->
+  <section class="imascono-tech">
+    <div class="container">
+      <div class="imascono-tech-grid">
+        <h2><span>Tecnología propia</span>Imascono Tech</h2>
+        <p>No solo desarrollamos productos, también innovamos a través de la tecnología en el retail. Nuestro equipo de tecnólogos e ingenieros se dedica a imaginar y crear códigos, frameworks, programas y herramientas que enriquecen nuestras experiencias en el sector comercial. Nos especializamos en áreas como Inteligencia Artificial, programación web, arte 3D, ciberseguridad, Business Intelligence y Big Data. Descubre todo el ecosistema tech de Imascono.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ FOOTER ════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <a href="index.html" class="logo">
+            <img src="logo-imascono.svg" alt="Imascono" style="height:40px;width:auto;filter:brightness(10);">
+          </a>
+        </div>
+        <div>
+          <h4>Productos</h4>
+          <a href="#">VEGA</a>
+          <a href="#">Kimchi!</a>
+          <a href="#">Virtual Twins</a>
+          <a href="#">Virtual Training</a>
+          <a href="#">Virtual Spaces</a>
+          <a href="#">Spaceship Projects</a>
+        </div>
+        <div>
+          <h4>Sectores</h4>
+          <a href="sector-turismo.html">Turismo</a>
+          <a href="sector-retail-ocio.html">Retail &amp; Ocio</a>
+          <a href="sector-banca-seguros.html">Banca &amp; Seguros</a>
+          <a href="sector-salud.html">Salud</a>
+          <a href="sector-industria.html">Industria</a>
+          <a href="sector-formacion.html">Formación</a>
+        </div>
+        <div>
+          <div class="footer-sede">Sede España</div>
+          <div class="footer-address">
+            © 2026 Imascono Art S.L.<br>
+            C/ Josefa Amar y Borbón 10, Planta 2<br>
+            50001 – Zaragoza, España<br>
+            (+34) 876 28 37 14
+          </div>
+          <div class="footer-sede" style="margin-top:20px;">Sede EEUU</div>
+          <div class="footer-address">
+            © 2026 Imascono Corp<br>
+            2100 Coral Way, STE 704<br>
+            Miami, FL 33145, United States<br>
+            (+1) 214 830 1405
+          </div>
+        </div>
+        <div class="footer-legal-bar">
+          <span>Copyright © 2026 Imascono Art SL</span>
+          <div class="footer-legal-links">
+            <a href="#">Política de privacidad</a>
+            <a href="#">Política de cookies</a>
+            <a href="#">Aviso legal</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>
+          <h4>Servicios de Imascono</h4>
+          <a href="#">Servicios de Consultoría</a>
+          <a href="#">Servicios de Inteligencia Artificial</a>
+          <a href="#">Servicios de Realidad Virtual</a>
+          <a href="#">Servicios de Realidad Aumentada</a>
+          <a href="#">Servicios de Realidad Mixta</a>
+        </div>
+        <div>
+          <h4>Casos de uso</h4>
+          <a href="#">Hoteles</a>
+          <a href="#">Lujo</a>
+          <a href="#">Real Estate</a>
+          <a href="#">Branding</a>
+          <a href="#">Centros Comerciales</a>
+          <a href="#">Eventos</a>
+        </div>
+        <div>
+          <img src="Logo-footer-europa.jpg" alt="Financiado por la Unión Europea" style="width:100%;height:auto;">
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
