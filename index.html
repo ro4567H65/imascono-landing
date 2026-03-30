@@ -1152,9 +1152,26 @@
       aspect-ratio: 16/9;
       object-fit: cover;
       display: block;
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), filter 0.5s ease;
     }
     .projects-grid a {
       display: block;
+      overflow: hidden;
+      position: relative;
+    }
+    .projects-grid a::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(100,116,131,0);
+      transition: background 0.5s ease;
+      pointer-events: none;
+    }
+    .projects-grid a:hover::after {
+      background: rgba(100,116,131,0.15);
+    }
+    .projects-grid a:hover img {
+      transform: scale(1.05);
     }
     .projects-cta {
       text-align: center;
