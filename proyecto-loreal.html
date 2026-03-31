@@ -294,11 +294,57 @@
       color: rgba(255,255,255,0.4);
     }
 
+    /* ── CTA Section ── */
+    .cta-section {
+      padding: 80px 0;
+      background: linear-gradient(to bottom, #f2f5f8 0%, #ffffff 50%);
+    }
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .cta-title {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      color: #647483;
+      line-height: 1.1;
+    }
+    .cta-form { display: flex; flex-direction: column; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; }
+    .form-group input, .form-group select, .form-group textarea {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.9rem; padding: 14px 16px;
+      border: 1px solid rgba(100,116,131,0.25);
+      background: #fff; color: #647483; outline: none;
+      transition: border-color 0.3s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #647483; }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-check {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 0.8rem; color: #8a9baa;
+    }
+    .form-check input[type="checkbox"] { margin-top: 3px; }
+
+    .footer-sede { font-size: 0.85rem; font-weight: 500; color: #fff; margin-bottom: 6px; }
+    .footer-address { font-size: 0.8rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .footer-legal-bar {
+      grid-column: 1 / -1; padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.8rem; color: rgba(255,255,255,0.4);
+    }
+    .footer-legal-links { display: flex; gap: 20px; }
+    .footer-legal-links a { font-size: 0.8rem; margin-bottom: 0; }
+
     @media (max-width: 768px) {
       .project-meta, .project-description { grid-template-columns: 1fr; gap: 30px; }
       .project-gallery { grid-template-columns: 1fr; }
       .project-stats { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr 1fr; }
+      .cta-grid { grid-template-columns: 1fr; gap: 40px; }
     }
   </style>
 </head>
