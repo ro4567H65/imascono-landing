@@ -82,50 +82,66 @@
 
     /* ── Blog Hero ── */
     .blog-hero {
-      margin-top: 0;
+      margin-top: 72px;
       position: relative;
-      padding: 0 0 60px;
-      background: #f2f5f8;
+      padding: 0;
       overflow: hidden;
     }
     .blog-hero-image {
       width: 100%;
       aspect-ratio: 21/9;
       overflow: hidden;
-      margin-bottom: 48px;
-      margin-top: 72px;
+      position: relative;
     }
     .blog-hero-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    .blog-hero-content {
-      max-width: 800px;
+    .blog-hero-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.5) 100%);
+    }
+    .blog-hero-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 60px 0;
+      z-index: 1;
+    }
+    .blog-hero-overlay .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 40px;
     }
     .blog-meta {
       font-family: 'PP Neue Montreal', system-ui, sans-serif;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: 500;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #8a9baa;
-      margin-bottom: 24px;
+      letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 20px;
       display: flex;
       gap: 24px;
     }
     .blog-hero h1 {
       font-family: 'Visuelt Pro', system-ui, sans-serif;
       font-weight: 300;
-      font-size: clamp(2.2rem, 4vw, 3.5rem);
-      color: #647483;
-      line-height: 1.15;
-      margin-bottom: 24px;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      color: #fff;
+      line-height: 1.2;
+      max-width: 700px;
     }
     .blog-hero-intro {
-      font-size: 1.15rem;
-      color: #8a9baa;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.75);
       line-height: 1.8;
+      max-width: 600px;
+      margin-top: 20px;
     }
 
     /* ── Blog Layout ── */
@@ -338,19 +354,17 @@
 
   <!-- ════ BLOG HERO ════ -->
   <section class="blog-hero">
-    <div class="container">
-    </div>
     <div class="blog-hero-image">
       <img src="https://imascono.com/wp-content/uploads/2026/03/espacios-de-datos.jpg" alt="Espacios de datos para empresas">
-    </div>
-    <div class="container">
-      <div class="blog-hero-content">
-        <div class="blog-meta">
-          <span>Data & IA</span>
-          <span>8 min lectura</span>
+      <div class="blog-hero-overlay">
+        <div class="container">
+          <div class="blog-meta">
+            <span>Data & IA</span>
+            <span>8 min lectura</span>
+          </div>
+          <h1>El espacio de datos: la clave para gestionar y analizar información a gran escala.</h1>
+          <p class="blog-hero-intro">En un mundo donde los datos crecen a velocidad vertiginosa, las organizaciones que saben gestionarlos se convierten en líderes digitales. Tener la información no basta, el verdadero valor está en conectarla, analizarla y transformarla en conocimiento accionable.</p>
         </div>
-        <h1>El espacio de datos: la clave para gestionar y analizar información a gran escala.</h1>
-        <p class="blog-hero-intro">En un mundo donde los datos crecen a velocidad vertiginosa, las organizaciones que saben gestionarlos se convierten en líderes digitales. Tener la información no basta, el verdadero valor está en conectarla, analizarla y transformarla en conocimiento accionable.</p>
       </div>
     </div>
   </section>
