@@ -197,6 +197,40 @@
     .cta-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: start; }
     .cta-title { font-family: 'Visuelt Pro', system-ui, sans-serif; font-weight: 300; font-size: clamp(2.5rem, 4vw, 4rem); color: #647483; line-height: 1.1; }
 
+    /* ── Blog Filter ── */
+    .blog-filter {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding-bottom: 40px;
+      margin-bottom: 40px;
+      border-bottom: 1px solid rgba(100,116,131,0.12);
+    }
+    .blog-filter-btn {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #647483;
+      background: transparent;
+      border: 1px solid rgba(100,116,131,0.25);
+      padding: 8px 20px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s;
+      white-space: nowrap;
+    }
+    .blog-filter-btn:hover {
+      border-color: #647483;
+    }
+    .blog-filter-btn.active {
+      background: #647483;
+      color: #fff;
+      border-color: #647483;
+    }
+    .blog-card.hidden {
+      display: none;
+    }
+
     @media (max-width: 1024px) {
       .blog-grid { grid-template-columns: repeat(2, 1fr); }
     }
@@ -227,9 +261,20 @@
   <!-- ════ BLOG GRID ════ -->
   <section class="blog-list-section">
     <div class="container">
+      <div class="blog-filter">
+        <button class="blog-filter-btn active" data-filter="all">Todos</button>
+        <button class="blog-filter-btn" data-filter="ia">IA</button>
+        <button class="blog-filter-btn" data-filter="xr">XR</button>
+        <button class="blog-filter-btn" data-filter="industria">Industria</button>
+        <button class="blog-filter-btn" data-filter="salud">Salud</button>
+        <button class="blog-filter-btn" data-filter="data">Data</button>
+        <button class="blog-filter-btn" data-filter="formacion">Formación</button>
+        <button class="blog-filter-btn" data-filter="negocio">Negocio</button>
+      </div>
+
       <div class="blog-grid">
 
-        <a href="espacios-datos-empresas.html" class="blog-card">
+        <a href="espacios-datos-empresas.html" class="blog-card" data-tags="data ia">
           <div class="blog-card-image">
             <img src="https://imascono.com/wp-content/uploads/2026/03/espacios-de-datos.jpg" alt="Espacios de datos">
           </div>
@@ -244,7 +289,7 @@
           </div>
         </a>
 
-        <a href="realidad-aumentada-fabricacion.html" class="blog-card">
+        <a href="realidad-aumentada-fabricacion.html" class="blog-card" data-tags="xr industria">
           <div class="blog-card-image">
             <img src="https://imascono.com/wp-content/uploads/2026/03/AR-manufacturing.jpg" alt="Realidad aumentada en fabricación">
           </div>
@@ -259,7 +304,7 @@
           </div>
         </a>
 
-        <a href="inteligencia-artificial-dermatologia.html" class="blog-card">
+        <a href="inteligencia-artificial-dermatologia.html" class="blog-card" data-tags="ia salud">
           <div class="blog-card-image">
             <img src="https://imascono.com/wp-content/uploads/2026/02/IA-dermatology.jpg" alt="IA en dermatología">
           </div>
@@ -274,7 +319,7 @@
           </div>
         </a>
 
-        <a href="optimizacion-industrial-con-tecnologias-inmersivas-ejemplos-reales.html" class="blog-card">
+        <a href="optimizacion-industrial-con-tecnologias-inmersivas-ejemplos-reales.html" class="blog-card" data-tags="xr industria">
           <div class="blog-card-image">
             <img src="https://imascono.com/wp-content/uploads/2026/02/Optimizacion-Industrial.jpg" alt="Optimización industrial">
           </div>
@@ -289,7 +334,7 @@
           </div>
         </a>
 
-        <a href="5g-realidad-aumentada-usos.html" class="blog-card">
+        <a href="5g-realidad-aumentada-usos.html" class="blog-card" data-tags="xr industria">
           <div class="blog-card-image">
             <img src="https://imascono.com/wp-content/uploads/2026/02/11222222.jpg" alt="5G y realidad aumentada">
           </div>
@@ -304,7 +349,7 @@
           </div>
         </a>
 
-        <a href="como-ayuda-asistente-virtual-negocio.html" class="blog-card">
+        <a href="como-ayuda-asistente-virtual-negocio.html" class="blog-card" data-tags="ia negocio">
           <div class="blog-card-image">
             <img src="https://imascono.com/wp-content/uploads/2026/02/iria-iveco-1-2.jpg" alt="Asistente virtual para negocio">
           </div>
@@ -319,7 +364,7 @@
           </div>
         </a>
 
-        <a href="odontologia-realidad-aumentada.html" class="blog-card">
+        <a href="odontologia-realidad-aumentada.html" class="blog-card" data-tags="xr salud">
           <div class="blog-card-image">
             <img src="https://imascono.com/wp-content/uploads/2026/01/14.jpg" alt="Odontología y realidad aumentada">
           </div>
@@ -334,7 +379,7 @@
           </div>
         </a>
 
-        <a href="inteligencia-artificial-onboarding.html" class="blog-card">
+        <a href="inteligencia-artificial-onboarding.html" class="blog-card" data-tags="ia formacion">
           <div class="blog-card-image">
             <img src="https://imascono.com/wp-content/uploads/2026/02/Portada-blog-NAIMA.png" alt="IA en onboarding">
           </div>
@@ -349,7 +394,7 @@
           </div>
         </a>
 
-        <a href="crear-programa-formacion-virtual.html" class="blog-card">
+        <a href="crear-programa-formacion-virtual.html" class="blog-card" data-tags="xr formacion">
           <div class="blog-card-image">
             <img src="https://imascono.com/wp-content/uploads/2026/01/13.jpg" alt="Formación virtual">
           </div>
@@ -374,6 +419,35 @@
   <div id="site-footer"></div>
   <script src="components/footer.js"></script>
   <script src="components/scroll-reveal.js"></script>
+  <script>
+    // Blog tag filter
+    (function() {
+      var btns = document.querySelectorAll('.blog-filter-btn');
+      var cards = document.querySelectorAll('.blog-card');
+
+      btns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var filter = btn.getAttribute('data-filter');
+
+          btns.forEach(function(b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+
+          cards.forEach(function(card) {
+            if (filter === 'all') {
+              card.classList.remove('hidden');
+            } else {
+              var tags = card.getAttribute('data-tags') || '';
+              if (tags.indexOf(filter) !== -1) {
+                card.classList.remove('hidden');
+              } else {
+                card.classList.add('hidden');
+              }
+            }
+          });
+        });
+      });
+    })();
+  </script>
 
 </body>
 </html>
