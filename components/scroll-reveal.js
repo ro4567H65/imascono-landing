@@ -20,7 +20,7 @@
     .stagger>.reveal:nth-child(5){transition-delay:0.48s}\
     .stagger>.reveal:nth-child(6){transition-delay:0.6s}\
     body.has-transparent-nav .project-hero{margin-top:0!important}\
-    .header.header-transparent{background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-bottom-color:transparent!important;transition:background 0.4s ease,border-bottom-color 0.4s ease}\
+    .header.header-transparent{background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-bottom:1px solid rgba(255,255,255,0.3)!important;transition:background 0.4s ease,border-bottom-color 0.4s ease}\
     .header.header-transparent .nav-links a{color:rgba(255,255,255,0.75)!important}\
     .header.header-transparent .nav-links a:hover{color:#fff!important}\
     .header.header-transparent .header-actions span{color:rgba(255,255,255,0.6)!important}\
