@@ -70,6 +70,16 @@
     { sel: '.cta-need p', cls: 'reveal' },
     { sel: '.imascono-tech-grid > h2', cls: 'reveal from-left' },
     { sel: '.imascono-tech-grid > p', cls: 'reveal from-right' },
+    // Blog page elements
+    { sel: '.blog-hero h1', cls: 'reveal' },
+    { sel: '.blog-hero-intro', cls: 'reveal' },
+    { sel: '.blog-meta', cls: 'reveal' },
+    { sel: '.blog-content h2', cls: 'reveal' },
+    { sel: '.blog-content > p', cls: 'reveal' },
+    { sel: '.blog-content > ul', cls: 'reveal' },
+    { sel: '.blog-content .blog-image', cls: 'reveal scale-in' },
+    { sel: '.blog-cta-inline', cls: 'reveal' },
+    { sel: '.blog-tags', cls: 'reveal' },
     // Portfolio page elements
     { sel: '.portfolio-hero h1', cls: 'reveal' },
     { sel: '.portfolio-hero-desc', cls: 'reveal from-right' },
