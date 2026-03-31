@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <title>Inteligencia artificial en el onboarding empresarial — Imascono</title>
+  <meta name="description" content="Descubre cómo la inteligencia artificial transforma el onboarding empresarial. Acelera la integración de nuevos empleados con IA">
+  <meta name="author" content="Ana">
+  <link rel="canonical" href="https://imascono.com/inteligencia-artificial-onboarding/">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Inteligencia artificial en el onboarding empresarial — Imascono">
+  <meta property="og:description" content="Descubre cómo la inteligencia artificial transforma el onboarding empresarial. Acelera la integración de nuevos empleados con IA">
+  <meta property="og:url" content="https://imascono.com/inteligencia-artificial-onboarding/">
+  <meta property="og:site_name" content="Imascono | Desarrollo de productos interactivos para empresas">
+  <meta property="article:publisher" content="https://www.facebook.com/imascono/">
+  <meta property="article:published_time" content="2026-02-12T07:00:00+00:00">
+  <meta property="og:image" content="https://imascono.com/wp-content/uploads/2026/02/IA-onboarding.jpg">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@imascono">
+  <meta name="twitter:site" content="@imascono">
+  <meta name="twitter:label1" content="Escrito por">
+  <meta name="twitter:data1" content="Ana">
+  <meta name="twitter:label2" content="Tiempo de lectura">
+  <meta name="twitter:data2" content="8 minutos">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Inteligencia artificial en el onboarding empresarial","datePublished":"2026-02-12T07:00:00+00:00","author":{"@type":"Person","name":"Ana"},"publisher":{"@type":"Organization","name":"Imascono","url":"https://imascono.com/","logo":{"@type":"ImageObject","url":"https://imascono.com/wp-content/uploads/2023/04/Logo_Imascono_Corp_White_Margin-3.png"}},"image":"https://imascono.com/wp-content/uploads/2026/02/IA-onboarding.jpg","articleSection":["Inteligencia Artificial","Onboarding","Formación","VEGA","Recursos Humanos"],"inLanguage":"es","mainEntityOfPage":{"@type":"WebPage","@id":"https://imascono.com/inteligencia-artificial-onboarding/"}}]}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;700;900&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    @font-face { font-family: 'PP Neue Montreal'; src: url('fonts/montrealbook.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'PP Neue Montreal'; src: url('fonts/montreal.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: 'Visuelt Pro', system-ui, -apple-system, sans-serif;
+      color: #647483;
+      background: #ffffff;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    .container { max-width: 1440px; margin: 0 auto; padding: 0 40px; }
+
+    /* ── Header ── */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .header .container { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.8rem; font-weight: 500; color: #8a9baa;
+      text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.3s;
+    }
+    .nav-links a:hover { color: #647483; }
+    .header-actions { display: flex; align-items: center; gap: 16px; }
+    .btn-primary {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.8rem; font-weight: 500; color: #fff;
+      background: #647483; border: 1px solid #647483;
+      padding: 10px 24px; cursor: pointer;
+      text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.3s;
+    }
+    .btn-primary:hover { background: #4a5a68; }
+    .btn-primary .arrow { transition: transform 0.3s; display: inline-block; }
+    .btn-primary:hover .arrow { transform: translateX(4px); }
+
+    /* ── Blog Hero ── */
+    .blog-hero {
+      margin-top: 72px;
+      position: relative;
+      padding: 0;
+      overflow: hidden;
+    }
+    .blog-hero-image {
+      width: 100%;
+      aspect-ratio: 21/9;
+      overflow: hidden;
+      position: relative;
+    }
+    .blog-hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .blog-hero-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.5) 100%);
+    }
+    .blog-hero-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 60px 0;
+      z-index: 1;
+    }
+    .blog-hero-overlay .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    .blog-meta {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 20px;
+      display: flex;
+      gap: 24px;
+    }
+    .blog-hero h1 {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      color: #fff;
+      line-height: 1.2;
+      max-width: 700px;
+    }
+    .blog-hero-intro {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.8;
+      max-width: 600px;
+      margin-top: 20px;
+    }
+
+    /* ── Blog Layout ── */
+    .blog-layout {
+      display: grid;
+      grid-template-columns: 240px 800px;
+      gap: 60px;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 80px 40px;
+      align-items: start;
+    }
+
+    /* ── Blog TOC ── */
+    .blog-toc {
+      position: sticky;
+      top: 92px;
+    }
+    .blog-toc-title {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8a9baa;
+      margin-bottom: 16px;
+    }
+    .blog-toc a {
+      display: block;
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.8rem;
+      color: #8a9baa;
+      line-height: 1.5;
+      padding: 8px 0;
+      border-left: 2px solid transparent;
+      padding-left: 12px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .blog-toc a:hover {
+      color: #647483;
+    }
+    .blog-toc a.active {
+      color: #3a4f5f;
+      border-left-color: #647483;
+    }
+
+    /* ── Blog Content ── */
+    .blog-content {
+      max-width: 800px;
+    }
+    .blog-content h2 {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      color: #647483;
+      line-height: 1.2;
+      margin-top: 60px;
+      margin-bottom: 24px;
+    }
+    .blog-content h2:first-child {
+      margin-top: 0;
+    }
+    .blog-content p {
+      font-size: 1.05rem;
+      color: #647483;
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+    .blog-content ul {
+      list-style: none;
+      margin-bottom: 24px;
+    }
+    .blog-content ul li {
+      font-size: 1.05rem;
+      color: #647483;
+      line-height: 1.9;
+      padding-left: 20px;
+      position: relative;
+      margin-bottom: 16px;
+    }
+    .blog-content ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 6px;
+      height: 6px;
+      background: #8a9baa;
+      border-radius: 50%;
+    }
+    .blog-content ul li strong {
+      color: #3a4f5f;
+    }
+    .blog-content .blog-image {
+      margin: 40px 0;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .blog-content .blog-image img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+    .blog-content .blog-image-caption {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.8rem;
+      color: #8a9baa;
+      margin-top: 12px;
+      font-style: italic;
+    }
+
+    /* ── Blog CTA inline ── */
+    .blog-cta-inline {
+      background: #f2f5f8;
+      padding: 40px;
+      margin: 48px 0;
+      border-left: 3px solid #647483;
+    }
+    .blog-cta-inline h3 {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 1.3rem;
+      color: #647483;
+      margin-bottom: 8px;
+    }
+    .blog-cta-inline p {
+      font-size: 0.95rem;
+      color: #8a9baa;
+      margin-bottom: 16px;
+    }
+    .blog-cta-inline .btn-primary {
+      display: inline-block;
+    }
+
+    /* ── Blog Tags ── */
+    .blog-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 40px 0;
+      border-top: 1px solid rgba(100,116,131,0.15);
+      margin-top: 40px;
+    }
+    .blog-tag {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #647483;
+      border: 1px solid rgba(100,116,131,0.3);
+      padding: 6px 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── Footer/CTA ── */
+    .footer {
+      position: relative; z-index: auto;
+      background: #fff; padding: 60px 0 40px;
+      border-top: 1px solid #d0d5dd;
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 40px; margin-bottom: 60px; padding-bottom: 60px;
+      border-bottom: 1px solid #d0d5dd;
+    }
+    .footer-col h4 { font-size: 0.9rem; font-weight: 600; color: #3a4f5f; margin-bottom: 16px; }
+    .footer-col a { display: block; font-size: 0.85rem; color: #647483; line-height: 1.7; margin-bottom: 8px; transition: color 0.2s; }
+    .footer-col a:hover { color: #3a4f5f; }
+    .footer-col .footer-sede { font-size: 0.85rem; font-weight: 600; color: #3a4f5f; margin-bottom: 8px; }
+    .footer-col .footer-address { font-size: 0.85rem; color: #647483; line-height: 1.7; margin-bottom: 8px; }
+    .footer-legal-bar {
+      grid-column: 2 / -1; padding: 20px 0 0;
+      font-size: 0.75rem; color: #647483;
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .footer-legal-bar span::after { content: '|'; margin-left: 8px; color: #647483; }
+    .footer-legal-links { display: flex; gap: 8px; flex-wrap: wrap; }
+    .footer-legal-links a { color: #647483; transition: color 0.2s; }
+    .footer-legal-links a:hover { color: #3a4f5f; }
+    .footer-legal-links a:not(:last-child)::after { content: '|'; margin-left: 8px; color: #647483; }
+    .footer-bottom {
+      display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 40px; align-items: start;
+    }
+    .footer-bottom-col h4 { font-size: 0.9rem; font-weight: 600; color: #3a4f5f; margin-bottom: 12px; }
+    .footer-bottom-col a { display: block; font-size: 0.85rem; color: #647483; line-height: 1.7; margin-bottom: 8px; transition: color 0.2s; }
+    .footer-bottom-col a:hover { color: #3a4f5f; }
+    .footer-badges { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; grid-column: 3 / 5; }
+    .footer-badges img { height: 50px; object-fit: contain; }
+
+    .cta-section { padding: 80px 0; background: linear-gradient(to bottom, #f2f5f8 0%, #ffffff 50%); }
+    .cta-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: start; }
+    .cta-title { font-family: 'Visuelt Pro', system-ui, sans-serif; font-weight: 300; font-size: clamp(2.5rem, 4vw, 4rem); color: #647483; line-height: 1.1; }
+
+    @media (max-width: 768px) {
+      .blog-layout { grid-template-columns: 1fr; padding: 40px 20px; }
+      .blog-toc { position: static; display: none; }
+      .blog-cta-inline { padding: 24px; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-bottom { grid-template-columns: 1fr; }
+      .cta-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-nav"></div>
+  <script src="components/nav.js"></script>
+
+  <!-- ════ BLOG HERO ════ -->
+  <section class="blog-hero">
+    <div class="blog-hero-image">
+      <img src="https://imascono.com/wp-content/uploads/2026/02/IA-onboarding.jpg" alt="Inteligencia artificial en el onboarding empresarial">
+      <div class="blog-hero-overlay">
+        <div class="container">
+          <div class="blog-meta">
+            <span>IA & Formación</span>
+            <span>8 min lectura</span>
+          </div>
+          <h1>Inteligencia artificial en el onboarding empresarial.</h1>
+          <p class="blog-hero-intro">El onboarding es uno de los momentos más críticos en la experiencia del empleado. La inteligencia artificial está transformando este proceso para hacerlo más eficiente, personalizado y memorable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ BLOG CONTENT ════ -->
+  <div class="blog-layout">
+
+    <nav class="blog-toc">
+      <div class="blog-toc-title">Contenido</div>
+      <a href="#reto-onboarding">El reto del onboarding</a>
+      <a href="#ia-bienvenida">IA en la bienvenida</a>
+      <a href="#asistentes-virtuales">Asistentes virtuales</a>
+      <a href="#formacion-personalizada">Formación personalizada</a>
+      <a href="#imascono-onboarding">Imascono y el onboarding</a>
+    </nav>
+
+    <article class="blog-content">
+
+    <p>La llegada de un nuevo empleado a una organización marca el inicio de una relación que puede durar años. Sin embargo, muchas empresas siguen abordando este momento con procesos genéricos, manuales densos y una avalancha de información difícil de asimilar. La inteligencia artificial abre una nueva vía para transformar el onboarding en una experiencia fluida, personalizada y medible.</p>
+
+    <p>En este artículo exploraremos los principales retos del onboarding tradicional, cómo la IA está revolucionando cada fase del proceso, el papel de los asistentes virtuales, las posibilidades de la formación personalizada y cómo Imascono aplica estas tecnologías para crear experiencias de integración memorables.</p>
+
+    <h2 id="reto-onboarding">El reto del onboarding: por qué el modelo tradicional ya no funciona.</h2>
+
+    <p>El onboarding tradicional presenta carencias que impactan directamente en la productividad y la retención del talento. Según diversos estudios del sector de recursos humanos, hasta un 20% de la rotación de personal se produce durante los primeros 45 días de incorporación, lo que evidencia que una mala experiencia inicial tiene consecuencias medibles y costosas para la organización.</p>
+
+    <p>Entre los principales problemas del onboarding convencional destacan:</p>
+
+    <ul>
+      <li><strong>Altos costes operativos:</strong> La formación presencial, los materiales impresos y la dedicación de equipos internos suponen una inversión significativa que se multiplica con cada nueva incorporación.</li>
+      <li><strong>Inconsistencia en la experiencia:</strong> Dependiendo del departamento, el responsable asignado o la época del año, la calidad del onboarding varía enormemente, generando desigualdades en la preparación de los nuevos empleados.</li>
+      <li><strong>Tiempo de adaptación excesivo:</strong> Sin un proceso estructurado y adaptado al perfil de cada persona, el tiempo necesario para alcanzar la productividad plena puede extenderse durante meses.</li>
+      <li><strong>Falta de seguimiento:</strong> Una vez superados los primeros días, muchas organizaciones pierden visibilidad sobre el progreso real del empleado, sin métricas claras ni indicadores de éxito.</li>
+    </ul>
+
+    <div class="blog-cta-inline">
+      <h3>¿Quieres transformar el onboarding de tu empresa?</h3>
+      <p>Descubre cómo la inteligencia artificial puede acelerar la integración de nuevos empleados.</p>
+      <button class="btn-primary">Hablemos <span class="arrow">→</span></button>
+    </div>
+
+    <h2 id="ia-bienvenida">Cómo la IA transforma la bienvenida desde el primer día.</h2>
+
+    <p>La inteligencia artificial permite rediseñar la experiencia de bienvenida para que sea dinámica, adaptativa y centrada en el empleado. Desde antes del primer día, los sistemas basados en IA pueden anticipar las necesidades del nuevo miembro del equipo, preparar itinerarios personalizados y automatizar las tareas administrativas que tradicionalmente consumían horas de trabajo manual.</p>
+
+    <p>Un onboarding potenciado por IA es capaz de analizar el perfil del empleado, su puesto, su departamento y su nivel de experiencia para generar un plan de integración a medida. Esto incluye la selección automática de contenidos formativos relevantes, la programación de reuniones clave con las personas adecuadas y la activación de flujos de comunicación que mantienen al nuevo empleado informado y acompañado en cada fase.</p>
+
+    <p>Además, la IA permite crear experiencias de bienvenida inmersivas. Mediante entornos virtuales, el empleado puede recorrer las instalaciones de la empresa, conocer la cultura corporativa a través de narrativas interactivas y familiarizarse con los procesos internos antes de pisar la oficina. Todo ello contribuye a reducir la ansiedad del primer día y a acelerar el sentimiento de pertenencia.</p>
+
+    <div class="blog-image">
+      <img src="Proyecto_Telefonica_MWC.jpg" alt="Experiencia inmersiva de onboarding con IA">
+      <div class="blog-image-caption">Experiencia inmersiva desarrollada por Imascono para procesos de integración corporativa</div>
+    </div>
+
+    <h2 id="asistentes-virtuales">Asistentes virtuales: un compañero disponible las 24 horas.</h2>
+
+    <p>Uno de los avances más significativos de la IA aplicada al onboarding es la incorporación de asistentes virtuales inteligentes. Estos agentes conversacionales, impulsados por modelos de lenguaje avanzados, actúan como un compañero permanente para el nuevo empleado, resolviendo dudas, guiando procesos y ofreciendo soporte en tiempo real sin depender de la disponibilidad de otras personas.</p>
+
+    <p>Los asistentes virtuales pueden integrarse en múltiples canales: plataformas de mensajería corporativa, intranets, aplicaciones móviles o incluso entornos virtuales 3D. Su capacidad para comprender el contexto y aprender de las interacciones les permite ofrecer respuestas cada vez más precisas y personalizadas, adaptándose al ritmo y estilo de aprendizaje de cada empleado.</p>
+
+    <p>En Imascono hemos desarrollado avatares virtuales como Iria Iveco y Fabiola Saphir, asistentes con personalidad propia diseñados para acompañar a los empleados en procesos de formación interna. Estos avatares no se limitan a responder preguntas: generan interacciones naturales que refuerzan el engagement y convierten la formación en una experiencia memorable, combinando inteligencia artificial con narrativa de marca.</p>
+
+    <ul>
+      <li><strong>Disponibilidad continua:</strong> Responden en cualquier momento, eliminando los cuellos de botella habituales cuando el nuevo empleado necesita ayuda fuera del horario laboral o en diferentes zonas horarias.</li>
+      <li><strong>Escalabilidad:</strong> Un mismo asistente puede atender simultáneamente a cientos de empleados en proceso de incorporación, manteniendo la calidad y la coherencia de la información.</li>
+      <li><strong>Aprendizaje continuo:</strong> Cada interacción mejora su base de conocimiento, detectando patrones de dudas frecuentes que permiten optimizar el proceso de onboarding de forma iterativa.</li>
+    </ul>
+
+    <div class="blog-image">
+      <img src="Proyecto_Ibercaja.jpg" alt="Asistente virtual de onboarding empresarial">
+      <div class="blog-image-caption">Avatar virtual inteligente para formación y onboarding corporativo</div>
+    </div>
+
+    <h2 id="formacion-personalizada">Formación personalizada: itinerarios que se adaptan al empleado.</h2>
+
+    <p>La formación durante el onboarding deja de ser un proceso lineal y genérico cuando se incorpora inteligencia artificial. Los sistemas de IA pueden evaluar el nivel de conocimiento previo del empleado, identificar lagunas formativas y diseñar itinerarios de aprendizaje que se ajustan en tiempo real según el progreso y el rendimiento de cada persona.</p>
+
+    <p>Esta personalización se extiende también al formato del contenido. La IA determina si un empleado aprende mejor a través de vídeo, texto interactivo, simulaciones prácticas o sesiones gamificadas, y ajusta la oferta formativa en consecuencia. El resultado es una experiencia de aprendizaje más eficiente, con tasas de retención del conocimiento significativamente superiores a las del e-learning tradicional.</p>
+
+    <p>La gamificación juega un papel fundamental en esta transformación. Mediante plataformas como VEGA, desarrollada por Imascono, es posible crear experiencias formativas que incorporan mecánicas de juego: desafíos, puntuaciones, logros desbloqueables y rankings que motivan al empleado y convierten la formación en una actividad atractiva. VEGA permite además medir el progreso con datos en tiempo real, generando informes detallados sobre el avance de cada participante.</p>
+
+    <div class="blog-cta-inline">
+      <h3>¿Conoces VEGA, nuestra plataforma de experiencias virtuales?</h3>
+      <p>Gamificación, formación personalizada y analítica en tiempo real para tu equipo.</p>
+      <button class="btn-primary">Descubre VEGA <span class="arrow">→</span></button>
+    </div>
+
+    <p>La medición continua es otro pilar esencial. Los sistemas basados en IA generan dashboards con métricas de progreso, niveles de engagement y predicciones sobre el tiempo estimado hasta la plena productividad. Estos datos permiten a los responsables de recursos humanos intervenir de forma proactiva cuando se detectan señales de desconexión o dificultades, evitando que pequeños problemas se conviertan en motivos de abandono.</p>
+
+    <div class="blog-image">
+      <img src="Proyecto_Hispanosuiza.jpg" alt="Plataforma de formación gamificada">
+      <div class="blog-image-caption">Plataforma VEGA de Imascono para formación gamificada y personalizada</div>
+    </div>
+
+    <h2 id="imascono-onboarding">Cómo Imascono transforma el onboarding con IA y experiencias inmersivas.</h2>
+
+    <p>En Imascono combinamos inteligencia artificial, tecnologías inmersivas y diseño de experiencias para crear procesos de onboarding que realmente funcionan. Nuestra metodología de imaginación aplicada nos permite abordar cada proyecto desde la estrategia hasta la implementación, asegurando que la tecnología sirva a los objetivos de negocio y no al revés.</p>
+
+    <p>Nuestro enfoque integra varios elementos clave: avatares virtuales inteligentes que guían y acompañan al empleado, entornos 3D donde vivir la cultura de la empresa de forma inmersiva, contenidos formativos personalizados mediante IA y plataformas de gamificación como VEGA que transforman el aprendizaje en una experiencia motivadora y medible.</p>
+
+    <p>Proyectos como los avatares Iria Iveco y Fabiola Saphir demuestran cómo la combinación de IA y narrativa de marca puede crear experiencias de formación interna que conectan emocionalmente con los empleados. Estos asistentes virtuales no solo transmiten conocimiento, sino que representan los valores y la personalidad de la empresa, reforzando la identidad corporativa desde el primer contacto.</p>
+
+    <p>El resultado es un onboarding más rápido, más consistente y más memorable. Los empleados alcanzan antes su nivel de productividad óptimo, se sienten más integrados en la cultura de la organización y desarrollan un vínculo más fuerte con la empresa desde el primer día. Para los equipos de recursos humanos, esto se traduce en una reducción medible de los costes de rotación y una mejora significativa de los indicadores de satisfacción y compromiso.</p>
+
+    <p>En Imascono estamos preparados para ayudarte a diseñar el onboarding del futuro. Contacta con nosotros y descubre cómo la inteligencia artificial y las experiencias inmersivas pueden transformar la forma en que tu organización acoge e integra al talento.</p>
+
+    <div class="blog-tags">
+      <span class="blog-tag">Inteligencia Artificial</span>
+      <span class="blog-tag">Onboarding</span>
+      <span class="blog-tag">Formación</span>
+      <span class="blog-tag">VEGA</span>
+      <span class="blog-tag">Recursos Humanos</span>
+    </div>
+
+  </article>
+
+  </div><!-- /blog-layout -->
+
+  <div id="contact-form"></div>
+  <script src="components/contact-form.js"></script>
+
+  <div id="site-footer"></div>
+  <script src="components/footer.js"></script>
+  <script src="components/scroll-reveal.js"></script>
+  <script>
+    // TOC active state on scroll
+    (function() {
+      var tocLinks = document.querySelectorAll('.blog-toc a');
+      var sections = [];
+      tocLinks.forEach(function(link) {
+        var id = link.getAttribute('href').replace('#', '');
+        var el = document.getElementById(id);
+        if (el) sections.push({ id: id, el: el, link: link });
+      });
+      if (!sections.length) return;
+
+      function onScroll() {
+        var scrollPos = window.scrollY + 120;
+        var active = sections[0];
+        for (var i = 0; i < sections.length; i++) {
+          if (sections[i].el.offsetTop <= scrollPos) {
+            active = sections[i];
+          }
+        }
+        tocLinks.forEach(function(l) { l.classList.remove('active'); });
+        if (active) active.link.classList.add('active');
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
+
+</body>
+</html>

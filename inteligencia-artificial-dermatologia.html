@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <title>IA en dermatología: mejorando el cuidado de la piel | Imascono</title>
+  <meta name="description" content="Descubre cómo la IA en dermatología está transformando el cuidado de la piel desde el diagnóstico hasta el tratamiento. Ejemplos de uso">
+  <meta name="author" content="Ana">
+  <link rel="canonical" href="https://imascono.com/inteligencia-artificial-dermatologia/">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="IA en dermatología: mejorando el cuidado de la piel | Imascono">
+  <meta property="og:description" content="Descubre cómo la IA en dermatología está transformando el cuidado de la piel desde el diagnóstico hasta el tratamiento. Ejemplos de uso">
+  <meta property="og:url" content="https://imascono.com/inteligencia-artificial-dermatologia/">
+  <meta property="og:site_name" content="Imascono | Desarrollo de productos interactivos para empresas">
+  <meta property="article:publisher" content="https://www.facebook.com/imascono/">
+  <meta property="article:published_time" content="2026-03-19T07:00:00+00:00">
+  <meta property="og:image" content="https://imascono.com/wp-content/uploads/2026/02/IA-dermatology.jpg">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@imascono">
+  <meta name="twitter:site" content="@imascono">
+  <meta name="twitter:label1" content="Escrito por">
+  <meta name="twitter:data1" content="Ana">
+  <meta name="twitter:label2" content="Tiempo de lectura">
+  <meta name="twitter:data2" content="8 minutos">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"IA en dermatología: mejorando el cuidado de la piel","datePublished":"2026-03-19T07:00:00+00:00","author":{"@type":"Person","name":"Ana"},"publisher":{"@type":"Organization","name":"Imascono","url":"https://imascono.com/","logo":{"@type":"ImageObject","url":"https://imascono.com/wp-content/uploads/2023/04/Logo_Imascono_Corp_White_Margin-3.png"}},"image":"https://imascono.com/wp-content/uploads/2026/02/IA-dermatology.jpg","articleSection":["Inteligencia Artificial","Dermatología","Salud"],"inLanguage":"es","mainEntityOfPage":{"@type":"WebPage","@id":"https://imascono.com/inteligencia-artificial-dermatologia/"}}]}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;700;900&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    @font-face { font-family: 'PP Neue Montreal'; src: url('fonts/montrealbook.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'PP Neue Montreal'; src: url('fonts/montreal.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: 'Visuelt Pro', system-ui, -apple-system, sans-serif;
+      color: #647483;
+      background: #ffffff;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    .container { max-width: 1440px; margin: 0 auto; padding: 0 40px; }
+
+    /* ── Header ── */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .header .container { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.8rem; font-weight: 500; color: #8a9baa;
+      text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.3s;
+    }
+    .nav-links a:hover { color: #647483; }
+    .header-actions { display: flex; align-items: center; gap: 16px; }
+    .btn-primary {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.8rem; font-weight: 500; color: #fff;
+      background: #647483; border: 1px solid #647483;
+      padding: 10px 24px; cursor: pointer;
+      text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.3s;
+    }
+    .btn-primary:hover { background: #4a5a68; }
+    .btn-primary .arrow { transition: transform 0.3s; display: inline-block; }
+    .btn-primary:hover .arrow { transform: translateX(4px); }
+
+    /* ── Blog Hero ── */
+    .blog-hero {
+      margin-top: 72px;
+      position: relative;
+      padding: 0;
+      overflow: hidden;
+    }
+    .blog-hero-image {
+      width: 100%;
+      aspect-ratio: 21/9;
+      overflow: hidden;
+      position: relative;
+    }
+    .blog-hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .blog-hero-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.5) 100%);
+    }
+    .blog-hero-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 60px 0;
+      z-index: 1;
+    }
+    .blog-hero-overlay .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    .blog-meta {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 20px;
+      display: flex;
+      gap: 24px;
+    }
+    .blog-hero h1 {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      color: #fff;
+      line-height: 1.2;
+      max-width: 700px;
+    }
+    .blog-hero-intro {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.8;
+      max-width: 600px;
+      margin-top: 20px;
+    }
+
+    /* ── Blog Layout ── */
+    .blog-layout {
+      display: grid;
+      grid-template-columns: 240px 800px;
+      gap: 60px;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 80px 40px;
+      align-items: start;
+    }
+
+    /* ── Blog TOC ── */
+    .blog-toc {
+      position: sticky;
+      top: 92px;
+    }
+    .blog-toc-title {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8a9baa;
+      margin-bottom: 16px;
+    }
+    .blog-toc a {
+      display: block;
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.8rem;
+      color: #8a9baa;
+      line-height: 1.5;
+      padding: 8px 0;
+      border-left: 2px solid transparent;
+      padding-left: 12px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .blog-toc a:hover {
+      color: #647483;
+    }
+    .blog-toc a.active {
+      color: #3a4f5f;
+      border-left-color: #647483;
+    }
+
+    /* ── Blog Content ── */
+    .blog-content {
+      max-width: 800px;
+    }
+    .blog-content h2 {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      color: #647483;
+      line-height: 1.2;
+      margin-top: 60px;
+      margin-bottom: 24px;
+    }
+    .blog-content h2:first-child {
+      margin-top: 0;
+    }
+    .blog-content p {
+      font-size: 1.05rem;
+      color: #647483;
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+    .blog-content ul {
+      list-style: none;
+      margin-bottom: 24px;
+    }
+    .blog-content ul li {
+      font-size: 1.05rem;
+      color: #647483;
+      line-height: 1.9;
+      padding-left: 20px;
+      position: relative;
+      margin-bottom: 16px;
+    }
+    .blog-content ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 6px;
+      height: 6px;
+      background: #8a9baa;
+      border-radius: 50%;
+    }
+    .blog-content ul li strong {
+      color: #3a4f5f;
+    }
+    .blog-content .blog-image {
+      margin: 40px 0;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .blog-content .blog-image img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+    .blog-content .blog-image-caption {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.8rem;
+      color: #8a9baa;
+      margin-top: 12px;
+      font-style: italic;
+    }
+
+    /* ── Blog CTA inline ── */
+    .blog-cta-inline {
+      background: #f2f5f8;
+      padding: 40px;
+      margin: 48px 0;
+      border-left: 3px solid #647483;
+    }
+    .blog-cta-inline h3 {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 1.3rem;
+      color: #647483;
+      margin-bottom: 8px;
+    }
+    .blog-cta-inline p {
+      font-size: 0.95rem;
+      color: #8a9baa;
+      margin-bottom: 16px;
+    }
+    .blog-cta-inline .btn-primary {
+      display: inline-block;
+    }
+
+    /* ── Blog Tags ── */
+    .blog-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 40px 0;
+      border-top: 1px solid rgba(100,116,131,0.15);
+      margin-top: 40px;
+    }
+    .blog-tag {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #647483;
+      border: 1px solid rgba(100,116,131,0.3);
+      padding: 6px 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── Footer/CTA ── */
+    .footer {
+      position: relative; z-index: auto;
+      background: #fff; padding: 60px 0 40px;
+      border-top: 1px solid #d0d5dd;
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 40px; margin-bottom: 60px; padding-bottom: 60px;
+      border-bottom: 1px solid #d0d5dd;
+    }
+    .footer-col h4 { font-size: 0.9rem; font-weight: 600; color: #3a4f5f; margin-bottom: 16px; }
+    .footer-col a { display: block; font-size: 0.85rem; color: #647483; line-height: 1.7; margin-bottom: 8px; transition: color 0.2s; }
+    .footer-col a:hover { color: #3a4f5f; }
+    .footer-col .footer-sede { font-size: 0.85rem; font-weight: 600; color: #3a4f5f; margin-bottom: 8px; }
+    .footer-col .footer-address { font-size: 0.85rem; color: #647483; line-height: 1.7; margin-bottom: 8px; }
+    .footer-legal-bar {
+      grid-column: 2 / -1; padding: 20px 0 0;
+      font-size: 0.75rem; color: #647483;
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .footer-legal-bar span::after { content: '|'; margin-left: 8px; color: #647483; }
+    .footer-legal-links { display: flex; gap: 8px; flex-wrap: wrap; }
+    .footer-legal-links a { color: #647483; transition: color 0.2s; }
+    .footer-legal-links a:hover { color: #3a4f5f; }
+    .footer-legal-links a:not(:last-child)::after { content: '|'; margin-left: 8px; color: #647483; }
+    .footer-bottom {
+      display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 40px; align-items: start;
+    }
+    .footer-bottom-col h4 { font-size: 0.9rem; font-weight: 600; color: #3a4f5f; margin-bottom: 12px; }
+    .footer-bottom-col a { display: block; font-size: 0.85rem; color: #647483; line-height: 1.7; margin-bottom: 8px; transition: color 0.2s; }
+    .footer-bottom-col a:hover { color: #3a4f5f; }
+    .footer-badges { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; grid-column: 3 / 5; }
+    .footer-badges img { height: 50px; object-fit: contain; }
+
+    .cta-section { padding: 80px 0; background: linear-gradient(to bottom, #f2f5f8 0%, #ffffff 50%); }
+    .cta-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: start; }
+    .cta-title { font-family: 'Visuelt Pro', system-ui, sans-serif; font-weight: 300; font-size: clamp(2.5rem, 4vw, 4rem); color: #647483; line-height: 1.1; }
+
+    @media (max-width: 768px) {
+      .blog-layout { grid-template-columns: 1fr; padding: 40px 20px; }
+      .blog-toc { position: static; display: none; }
+      .blog-cta-inline { padding: 24px; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-bottom { grid-template-columns: 1fr; }
+      .cta-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-nav"></div>
+  <script src="components/nav.js"></script>
+
+  <!-- ════ BLOG HERO ════ -->
+  <section class="blog-hero">
+    <div class="blog-hero-image">
+      <img src="https://imascono.com/wp-content/uploads/2026/02/IA-dermatology.jpg" alt="IA en dermatología">
+      <div class="blog-hero-overlay">
+        <div class="container">
+          <div class="blog-meta">
+            <span>IA & Salud</span>
+            <span>8 min lectura</span>
+          </div>
+          <h1>IA en dermatología: mejorando el cuidado de la piel.</h1>
+          <p class="blog-hero-intro">Imagina un mundo donde la inteligencia artificial y la dermatología se unen para transformar por completo el cuidado de la piel.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ BLOG CONTENT ════ -->
+  <div class="blog-layout">
+
+    <nav class="blog-toc">
+      <div class="blog-toc-title">Contenido</div>
+      <a href="#aplicaciones">Aplicaciones de IA en dermatología</a>
+      <a href="#diagnostico">IA en el diagnóstico</a>
+      <a href="#tratamientos">Tratamientos personalizados</a>
+      <a href="#clinicas">IA en clínicas dermatológicas</a>
+      <a href="#partner">Imascono como partner</a>
+    </nav>
+
+    <article class="blog-content">
+
+    <p>La inteligencia artificial está abriendo nuevas fronteras en el ámbito de la dermatología. Desde el diagnóstico temprano de patologías cutáneas hasta la personalización de tratamientos, los algoritmos de aprendizaje profundo están demostrando una capacidad sin precedentes para analizar imágenes de la piel con una precisión comparable a la de los especialistas más experimentados.</p>
+
+    <p>En este artículo exploraremos las principales aplicaciones de la IA en dermatología, cómo está transformando el diagnóstico y los tratamientos personalizados, de qué forma las clínicas están adoptando esta tecnología y cómo Imascono se posiciona como partner tecnológico para llevar estas soluciones al mercado de la salud y la belleza.</p>
+
+    <h2 id="aplicaciones">Aplicaciones de la inteligencia artificial en dermatología.</h2>
+
+    <p>La IA en dermatología abarca un espectro amplio de aplicaciones que van desde la detección precoz de melanomas hasta la recomendación automatizada de rutinas de cuidado facial. Los sistemas basados en visión por computador pueden analizar miles de imágenes dermatoscópicas en segundos, identificando patrones que al ojo humano le resultarían imperceptibles. Esta capacidad permite realizar cribados masivos, priorizar casos urgentes y reducir los tiempos de espera en consultas especializadas.</p>
+
+    <p>Más allá del diagnóstico, la IA se aplica en la monitorización continua de enfermedades crónicas como la psoriasis o el eczema, en la predicción de la evolución de lesiones cutáneas y en la formulación personalizada de cosméticos y tratamientos tópicos. La combinación de datos clínicos, genéticos y ambientales permite a los algoritmos ofrecer recomendaciones cada vez más precisas y adaptadas al perfil único de cada paciente.</p>
+
+    <div class="blog-image">
+      <img src="Proyecto_Hispanosuiza.jpg" alt="Tecnología de IA aplicada a la salud">
+      <div class="blog-image-caption">Solución tecnológica de inteligencia artificial para el sector salud</div>
+    </div>
+
+    <div class="blog-cta-inline">
+      <h3>¿Quieres integrar IA en tu solución dermatológica?</h3>
+      <p>Descubre cómo nuestro equipo puede ayudarte a desarrollar experiencias de salud digital.</p>
+      <button class="btn-primary">Hablemos <span class="arrow">→</span></button>
+    </div>
+
+    <h2 id="diagnostico">Cómo la IA está transformando el diagnóstico dermatológico.</h2>
+
+    <p>El diagnóstico asistido por inteligencia artificial representa uno de los avances más significativos en la práctica dermatológica moderna. Los modelos de deep learning entrenados con millones de imágenes clínicas son capaces de clasificar lesiones cutáneas con una sensibilidad y especificidad que igualan o superan a los dermatólogos certificados. Esto no significa reemplazar al especialista, sino dotarle de una herramienta de apoyo que amplifica su capacidad diagnóstica y reduce la variabilidad entre observadores.</p>
+
+    <p>En la práctica clínica, estos sistemas funcionan como un segundo par de ojos que analiza cada imagen en busca de signos de malignidad, inflamación o infección. El profesional recibe una evaluación probabilística junto con las regiones de interés destacadas, lo que le permite tomar decisiones más informadas y rápidas. Además, la IA facilita la teledermatología, permitiendo que pacientes en zonas rurales o con acceso limitado a especialistas reciban evaluaciones de calidad sin necesidad de desplazamiento.</p>
+
+    <div class="blog-image">
+      <img src="Proyecto_Ibercaja.jpg" alt="Diagnóstico dermatológico asistido por IA">
+      <div class="blog-image-caption">Plataforma de diagnóstico dermatológico con inteligencia artificial</div>
+    </div>
+
+    <h2 id="tratamientos">Tratamientos personalizados con inteligencia artificial.</h2>
+
+    <p>La personalización de tratamientos dermatológicos mediante IA supone un cambio de paradigma en el cuidado de la piel. Los algoritmos analizan variables como el tipo de piel, el historial clínico, las condiciones ambientales, los hábitos de vida e incluso la respuesta previa a tratamientos anteriores para generar recomendaciones terapéuticas altamente individualizadas. Este enfoque de medicina de precisión maximiza la eficacia del tratamiento y minimiza los efectos adversos.</p>
+
+    <p>En el ámbito cosmético, la IA permite a las marcas ofrecer diagnósticos de piel instantáneos a través de aplicaciones móviles que capturan y analizan la textura, la pigmentación, las líneas de expresión y la hidratación del rostro. A partir de este análisis, se recomiendan productos y rutinas específicas que se ajustan a las necesidades reales de cada usuario. Empresas como L'Oréal ya están integrando estas capacidades en sus plataformas digitales para transformar la experiencia de compra y fidelizar a sus clientes con soluciones verdaderamente personalizadas.</p>
+
+    <h2 id="clinicas">La adopción de la IA en clínicas dermatológicas.</h2>
+
+    <p>La integración de la inteligencia artificial en las clínicas dermatológicas está avanzando de forma progresiva pero decidida. Los centros más innovadores ya utilizan sistemas de triaje automatizado que priorizan las citas según la gravedad estimada de las lesiones, herramientas de documentación clínica que transcriben y estructuran las consultas en tiempo real, y plataformas de seguimiento remoto que permiten monitorizar la evolución de los pacientes entre visitas presenciales.</p>
+
+    <p>La adopción de estas tecnologías requiere un enfoque cuidadoso que contemple la validación clínica, la protección de datos sensibles, la formación del personal sanitario y la integración con los sistemas de historia clínica electrónica existentes. Las clínicas que consiguen implementar la IA de forma efectiva reportan mejoras significativas en la satisfacción del paciente, la eficiencia operativa y la precisión diagnóstica. Empresas como Vivacy están liderando la innovación en este espacio, desarrollando soluciones que combinan IA con tratamientos estéticos avanzados para ofrecer resultados más predecibles y personalizados.</p>
+
+    <div class="blog-image">
+      <img src="Proyecto_Telefonica_MWC.jpg" alt="Tecnología digital en el sector salud">
+      <div class="blog-image-caption">Experiencia digital inmersiva aplicada al sector salud y bienestar</div>
+    </div>
+
+    <div class="blog-cta-inline">
+      <h3>¿Buscas un partner tecnológico para tu proyecto de salud digital?</h3>
+      <p>Nuestro equipo te acompaña desde la conceptualización hasta el lanzamiento de tu solución.</p>
+      <button class="btn-primary">Hablemos <span class="arrow">→</span></button>
+    </div>
+
+    <h2 id="partner">Imascono como partner tecnológico en salud y dermatología.</h2>
+
+    <p>En Imascono Health desarrollamos soluciones tecnológicas que conectan la inteligencia artificial con la experiencia del paciente y del profesional sanitario. Nuestra experiencia con clientes como L'Oréal Pharma, para quienes hemos creado plataformas interactivas de diagnóstico y recomendación de productos dermatológicos basadas en IA, nos ha permitido comprender en profundidad los retos y las oportunidades que ofrece la tecnología en el ámbito de la salud de la piel.</p>
+
+    <p>Trabajamos también con empresas como Vivacy en el desarrollo de experiencias digitales que acercan los tratamientos estéticos al usuario final mediante visualizaciones interactivas y simulaciones basadas en datos reales. Nuestro enfoque combina diseño centrado en el usuario, desarrollo tecnológico de vanguardia y un conocimiento profundo del sector salud para crear productos digitales que generen impacto real tanto en la práctica clínica como en la experiencia del paciente. Si buscas llevar la inteligencia artificial a tu proyecto dermatológico, en Imascono estamos preparados para ser tu partner tecnológico.</p>
+
+    <div class="blog-tags">
+      <span class="blog-tag">Inteligencia Artificial</span>
+      <span class="blog-tag">Dermatología</span>
+      <span class="blog-tag">Salud</span>
+      <span class="blog-tag">IA</span>
+      <span class="blog-tag">Diagnóstico</span>
+    </div>
+
+  </article>
+
+  </div><!-- /blog-layout -->
+
+  <div id="contact-form"></div>
+  <script src="components/contact-form.js"></script>
+
+  <div id="site-footer"></div>
+  <script src="components/footer.js"></script>
+  <script src="components/scroll-reveal.js"></script>
+  <script>
+    // TOC active state on scroll
+    (function() {
+      var tocLinks = document.querySelectorAll('.blog-toc a');
+      var sections = [];
+      tocLinks.forEach(function(link) {
+        var id = link.getAttribute('href').replace('#', '');
+        var el = document.getElementById(id);
+        if (el) sections.push({ id: id, el: el, link: link });
+      });
+      if (!sections.length) return;
+
+      function onScroll() {
+        var scrollPos = window.scrollY + 120;
+        var active = sections[0];
+        for (var i = 0; i < sections.length; i++) {
+          if (sections[i].el.offsetTop <= scrollPos) {
+            active = sections[i];
+          }
+        }
+        tocLinks.forEach(function(l) { l.classList.remove('active'); });
+        if (active) active.link.classList.add('active');
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
+
+</body>
+</html>

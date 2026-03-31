@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <title>Odontología y realidad aumentada: el futuro dental | Imascono</title>
+  <meta name="description" content="Descubre cómo la realidad aumentada está transformando la odontología. Aplicaciones y beneficios para clínicas dentales">
+  <meta name="author" content="Ana">
+  <link rel="canonical" href="https://imascono.com/odontologia-realidad-aumentada/">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Odontología y realidad aumentada: el futuro dental | Imascono">
+  <meta property="og:description" content="Descubre cómo la realidad aumentada está transformando la odontología. Aplicaciones y beneficios para clínicas dentales">
+  <meta property="og:url" content="https://imascono.com/odontologia-realidad-aumentada/">
+  <meta property="og:site_name" content="Imascono | Desarrollo de productos interactivos para empresas">
+  <meta property="article:publisher" content="https://www.facebook.com/imascono/">
+  <meta property="article:published_time" content="2026-02-19T07:00:00+00:00">
+  <meta property="og:image" content="https://imascono.com/wp-content/uploads/2026/02/odontologia-AR.jpg">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@imascono">
+  <meta name="twitter:site" content="@imascono">
+  <meta name="twitter:label1" content="Escrito por">
+  <meta name="twitter:data1" content="Ana">
+  <meta name="twitter:label2" content="Tiempo de lectura">
+  <meta name="twitter:data2" content="7 minutos">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Odontología y realidad aumentada: el futuro dental","datePublished":"2026-02-19T07:00:00+00:00","author":{"@type":"Person","name":"Ana"},"publisher":{"@type":"Organization","name":"Imascono","url":"https://imascono.com/","logo":{"@type":"ImageObject","url":"https://imascono.com/wp-content/uploads/2023/04/Logo_Imascono_Corp_White_Margin-3.png"}},"image":"https://imascono.com/wp-content/uploads/2026/02/odontologia-AR.jpg","articleSection":["Realidad Aumentada","Salud","XR"],"inLanguage":"es","mainEntityOfPage":{"@type":"WebPage","@id":"https://imascono.com/odontologia-realidad-aumentada/"}}]}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;700;900&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    @font-face { font-family: 'PP Neue Montreal'; src: url('fonts/montrealbook.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'PP Neue Montreal'; src: url('fonts/montreal.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: 'Visuelt Pro', system-ui, -apple-system, sans-serif;
+      color: #647483;
+      background: #ffffff;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    .container { max-width: 1440px; margin: 0 auto; padding: 0 40px; }
+
+    /* ── Header ── */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .header .container { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.8rem; font-weight: 500; color: #8a9baa;
+      text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.3s;
+    }
+    .nav-links a:hover { color: #647483; }
+    .header-actions { display: flex; align-items: center; gap: 16px; }
+    .btn-primary {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.8rem; font-weight: 500; color: #fff;
+      background: #647483; border: 1px solid #647483;
+      padding: 10px 24px; cursor: pointer;
+      text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.3s;
+    }
+    .btn-primary:hover { background: #4a5a68; }
+    .btn-primary .arrow { transition: transform 0.3s; display: inline-block; }
+    .btn-primary:hover .arrow { transform: translateX(4px); }
+
+    /* ── Blog Hero ── */
+    .blog-hero {
+      margin-top: 72px;
+      position: relative;
+      padding: 0;
+      overflow: hidden;
+    }
+    .blog-hero-image {
+      width: 100%;
+      aspect-ratio: 21/9;
+      overflow: hidden;
+      position: relative;
+    }
+    .blog-hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .blog-hero-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.5) 100%);
+    }
+    .blog-hero-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 60px 0;
+      z-index: 1;
+    }
+    .blog-hero-overlay .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    .blog-meta {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 20px;
+      display: flex;
+      gap: 24px;
+    }
+    .blog-hero h1 {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      color: #fff;
+      line-height: 1.2;
+      max-width: 700px;
+    }
+    .blog-hero-intro {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.8;
+      max-width: 600px;
+      margin-top: 20px;
+    }
+
+    /* ── Blog Layout ── */
+    .blog-layout {
+      display: grid;
+      grid-template-columns: 240px 800px;
+      gap: 60px;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 80px 40px;
+      align-items: start;
+    }
+
+    /* ── Blog TOC ── */
+    .blog-toc {
+      position: sticky;
+      top: 92px;
+    }
+    .blog-toc-title {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8a9baa;
+      margin-bottom: 16px;
+    }
+    .blog-toc a {
+      display: block;
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.8rem;
+      color: #8a9baa;
+      line-height: 1.5;
+      padding: 8px 0;
+      border-left: 2px solid transparent;
+      padding-left: 12px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .blog-toc a:hover {
+      color: #647483;
+    }
+    .blog-toc a.active {
+      color: #3a4f5f;
+      border-left-color: #647483;
+    }
+
+    /* ── Blog Content ── */
+    .blog-content {
+      max-width: 800px;
+    }
+    .blog-content h2 {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      color: #647483;
+      line-height: 1.2;
+      margin-top: 60px;
+      margin-bottom: 24px;
+    }
+    .blog-content h2:first-child {
+      margin-top: 0;
+    }
+    .blog-content p {
+      font-size: 1.05rem;
+      color: #647483;
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+    .blog-content ul {
+      list-style: none;
+      margin-bottom: 24px;
+    }
+    .blog-content ul li {
+      font-size: 1.05rem;
+      color: #647483;
+      line-height: 1.9;
+      padding-left: 20px;
+      position: relative;
+      margin-bottom: 16px;
+    }
+    .blog-content ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 6px;
+      height: 6px;
+      background: #8a9baa;
+      border-radius: 50%;
+    }
+    .blog-content ul li strong {
+      color: #3a4f5f;
+    }
+    .blog-content .blog-image {
+      margin: 40px 0;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .blog-content .blog-image img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+    .blog-content .blog-image-caption {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.8rem;
+      color: #8a9baa;
+      margin-top: 12px;
+      font-style: italic;
+    }
+
+    /* ── Blog CTA inline ── */
+    .blog-cta-inline {
+      background: #f2f5f8;
+      padding: 40px;
+      margin: 48px 0;
+      border-left: 3px solid #647483;
+    }
+    .blog-cta-inline h3 {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 1.3rem;
+      color: #647483;
+      margin-bottom: 8px;
+    }
+    .blog-cta-inline p {
+      font-size: 0.95rem;
+      color: #8a9baa;
+      margin-bottom: 16px;
+    }
+    .blog-cta-inline .btn-primary {
+      display: inline-block;
+    }
+
+    /* ── Blog Tags ── */
+    .blog-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 40px 0;
+      border-top: 1px solid rgba(100,116,131,0.15);
+      margin-top: 40px;
+    }
+    .blog-tag {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #647483;
+      border: 1px solid rgba(100,116,131,0.3);
+      padding: 6px 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── Footer/CTA ── */
+    .footer {
+      position: relative; z-index: auto;
+      background: #fff; padding: 60px 0 40px;
+      border-top: 1px solid #d0d5dd;
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 40px; margin-bottom: 60px; padding-bottom: 60px;
+      border-bottom: 1px solid #d0d5dd;
+    }
+    .footer-col h4 { font-size: 0.9rem; font-weight: 600; color: #3a4f5f; margin-bottom: 16px; }
+    .footer-col a { display: block; font-size: 0.85rem; color: #647483; line-height: 1.7; margin-bottom: 8px; transition: color 0.2s; }
+    .footer-col a:hover { color: #3a4f5f; }
+    .footer-col .footer-sede { font-size: 0.85rem; font-weight: 600; color: #3a4f5f; margin-bottom: 8px; }
+    .footer-col .footer-address { font-size: 0.85rem; color: #647483; line-height: 1.7; margin-bottom: 8px; }
+    .footer-legal-bar {
+      grid-column: 2 / -1; padding: 20px 0 0;
+      font-size: 0.75rem; color: #647483;
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .footer-legal-bar span::after { content: '|'; margin-left: 8px; color: #647483; }
+    .footer-legal-links { display: flex; gap: 8px; flex-wrap: wrap; }
+    .footer-legal-links a { color: #647483; transition: color 0.2s; }
+    .footer-legal-links a:hover { color: #3a4f5f; }
+    .footer-legal-links a:not(:last-child)::after { content: '|'; margin-left: 8px; color: #647483; }
+    .footer-bottom {
+      display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 40px; align-items: start;
+    }
+    .footer-bottom-col h4 { font-size: 0.9rem; font-weight: 600; color: #3a4f5f; margin-bottom: 12px; }
+    .footer-bottom-col a { display: block; font-size: 0.85rem; color: #647483; line-height: 1.7; margin-bottom: 8px; transition: color 0.2s; }
+    .footer-bottom-col a:hover { color: #3a4f5f; }
+    .footer-badges { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; grid-column: 3 / 5; }
+    .footer-badges img { height: 50px; object-fit: contain; }
+
+    .cta-section { padding: 80px 0; background: linear-gradient(to bottom, #f2f5f8 0%, #ffffff 50%); }
+    .cta-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: start; }
+    .cta-title { font-family: 'Visuelt Pro', system-ui, sans-serif; font-weight: 300; font-size: clamp(2.5rem, 4vw, 4rem); color: #647483; line-height: 1.1; }
+
+    @media (max-width: 768px) {
+      .blog-layout { grid-template-columns: 1fr; padding: 40px 20px; }
+      .blog-toc { position: static; display: none; }
+      .blog-cta-inline { padding: 24px; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-bottom { grid-template-columns: 1fr; }
+      .cta-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-nav"></div>
+  <script src="components/nav.js"></script>
+
+  <!-- ════ BLOG HERO ════ -->
+  <section class="blog-hero">
+    <div class="blog-hero-image">
+      <img src="https://imascono.com/wp-content/uploads/2026/02/odontologia-AR.jpg" alt="Odontología y realidad aumentada">
+      <div class="blog-hero-overlay">
+        <div class="container">
+          <div class="blog-meta">
+            <span>XR & Salud</span>
+            <span>7 min lectura</span>
+          </div>
+          <h1>Odontología y realidad aumentada.</h1>
+          <p class="blog-hero-intro">La realidad aumentada está abriendo nuevas posibilidades en la odontología, desde la planificación de tratamientos hasta la formación de profesionales.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ BLOG CONTENT ════ -->
+  <div class="blog-layout">
+
+    <nav class="blog-toc">
+      <div class="blog-toc-title">Contenido</div>
+      <a href="#consulta-dental">AR en la consulta dental</a>
+      <a href="#planificacion">Planificación de tratamientos</a>
+      <a href="#formacion">Formación de profesionales</a>
+      <a href="#experiencia-paciente">Experiencia del paciente</a>
+      <a href="#imascono-health">Imascono Health</a>
+    </nav>
+
+    <article class="blog-content">
+
+    <p>El sector de la salud está viviendo una revolución tecnológica sin precedentes, y la odontología no es una excepción. La realidad aumentada (AR) se está posicionando como una de las herramientas más prometedoras para transformar la forma en que los profesionales dentales planifican tratamientos, se forman y se relacionan con sus pacientes.</p>
+
+    <p>En este artículo exploraremos cómo la AR está impactando en cada fase de la práctica odontológica, desde la consulta inicial hasta la formación avanzada, y cómo Imascono Health está liderando esta transformación con soluciones tecnológicas innovadoras.</p>
+
+    <h2 id="consulta-dental">La realidad aumentada en la consulta dental: un nuevo paradigma.</h2>
+
+    <p>La incorporación de la realidad aumentada en las clínicas dentales está cambiando radicalmente la dinámica de las consultas. Gracias a dispositivos de AR, los odontólogos pueden superponer información digital sobre la visión real del paciente, obteniendo una perspectiva enriquecida que facilita el diagnóstico y la comunicación.</p>
+
+    <p>Durante una exploración inicial, por ejemplo, el profesional puede visualizar en tiempo real modelos 3D de la dentadura del paciente, señalar áreas problemáticas y mostrar al propio paciente exactamente qué está ocurriendo en su boca. Este nivel de transparencia no solo mejora la comprensión del tratamiento, sino que genera confianza y facilita la toma de decisiones compartida entre profesional y paciente.</p>
+
+    <p>Además, la AR permite acceder a historiales clínicos, radiografías y escáneres intraorales de forma integrada en el campo de visión del profesional, eliminando la necesidad de alternar entre pantallas y optimizando el flujo de trabajo durante la consulta.</p>
+
+    <div class="blog-image">
+      <img src="https://imascono.com/wp-content/uploads/2026/02/odontologia-AR.jpg" alt="Realidad aumentada en consulta dental">
+      <div class="blog-image-caption">Aplicación de realidad aumentada en una consulta odontológica</div>
+    </div>
+
+    <div class="blog-cta-inline">
+      <h3>¿Quieres llevar la innovación a tu clínica dental?</h3>
+      <p>Descubre las soluciones de Imascono Health para el sector sanitario.</p>
+      <button class="btn-primary">Hablemos <span class="arrow">→</span></button>
+    </div>
+
+    <h2 id="planificacion">Planificación de tratamientos con realidad aumentada.</h2>
+
+    <p>Una de las aplicaciones más potentes de la AR en odontología es la planificación de tratamientos complejos. Procedimientos como la colocación de implantes, las ortodoncias avanzadas o las cirugías maxilofaciales requieren una precisión milimétrica que la realidad aumentada puede facilitar de manera significativa.</p>
+
+    <p>Mediante la superposición de modelos digitales tridimensionales sobre la anatomía real del paciente, los profesionales pueden simular el resultado final de un tratamiento antes de iniciarlo. En el caso de los implantes dentales, la AR permite visualizar exactamente dónde se colocarán, verificar la angulación y la profundidad óptimas, y anticipar posibles complicaciones.</p>
+
+    <ul>
+      <li><strong>Implantología guiada:</strong> Visualización en tiempo real de la posición exacta del implante sobre la mandíbula del paciente, reduciendo el margen de error y acortando tiempos quirúrgicos.</li>
+      <li><strong>Diseño de sonrisa digital:</strong> Proyección del resultado estético final directamente sobre el rostro del paciente, permitiendo ajustes antes de iniciar cualquier procedimiento.</li>
+      <li><strong>Planificación ortodóntica:</strong> Simulación del movimiento dental progresivo, ayudando tanto al profesional como al paciente a visualizar las fases del tratamiento y el resultado esperado.</li>
+      <li><strong>Guía quirúrgica en tiempo real:</strong> Durante intervenciones complejas, la AR proporciona al cirujano indicaciones superpuestas sobre estructuras anatómicas críticas, mejorando la seguridad del procedimiento.</li>
+    </ul>
+
+    <p>Esta capacidad de previsualización y guía en tiempo real reduce significativamente los riesgos, acorta los tiempos de intervención y mejora los resultados clínicos, beneficiando tanto a profesionales como a pacientes.</p>
+
+    <h2 id="formacion">Formación de profesionales: aprender haciendo con XR.</h2>
+
+    <p>La formación odontológica tradicional se enfrenta a limitaciones inherentes: el acceso a casos clínicos variados es limitado, la práctica en pacientes reales conlleva riesgos y los modelos anatómicos convencionales no replican la complejidad de la realidad. La realidad aumentada y la realidad virtual están resolviendo estos desafíos de forma innovadora.</p>
+
+    <p>Los entornos de formación basados en XR permiten a los estudiantes y profesionales en formación practicar procedimientos en simulaciones hiperrealistas, con retroalimentación inmediata sobre su técnica. Desde endodoncias hasta extracciones complejas, los futuros odontólogos pueden repetir cada procedimiento tantas veces como necesiten, en un entorno seguro y controlado.</p>
+
+    <ul>
+      <li><strong>Simulaciones quirúrgicas inmersivas:</strong> Recreación fiel de procedimientos dentales completos donde el profesional puede practicar técnicas avanzadas sin riesgo para el paciente.</li>
+      <li><strong>Anatomía aumentada:</strong> Visualización tridimensional de estructuras dentales, nerviosas y vasculares que complementa el estudio teórico con una comprensión espacial profunda.</li>
+      <li><strong>Evaluación objetiva:</strong> Los sistemas de XR pueden medir parámetros como la presión ejercida, la precisión del movimiento y el tiempo empleado, ofreciendo métricas objetivas de rendimiento.</li>
+      <li><strong>Formación continua:</strong> Los profesionales en activo pueden actualizarse en nuevas técnicas y tecnologías sin necesidad de desplazarse a centros especializados.</li>
+    </ul>
+
+    <p>Este modelo formativo no solo acelera la curva de aprendizaje, sino que contribuye a elevar los estándares de calidad asistencial en el sector odontológico.</p>
+
+    <div class="blog-cta-inline">
+      <h3>¿Buscas soluciones formativas con tecnología XR?</h3>
+      <p>Nuestro equipo desarrolla experiencias de formación inmersiva a medida.</p>
+      <button class="btn-primary">Contacta con nosotros <span class="arrow">→</span></button>
+    </div>
+
+    <h2 id="experiencia-paciente">Mejorando la experiencia del paciente con tecnología.</h2>
+
+    <p>Uno de los mayores retos de la odontología es la ansiedad que muchos pacientes experimentan ante los tratamientos dentales. La realidad aumentada ofrece herramientas poderosas para transformar esta experiencia, convirtiendo la visita al dentista en algo más comprensible, transparente y menos intimidante.</p>
+
+    <p>Con la AR, los pacientes pueden ver una representación visual de su diagnóstico y entender exactamente qué tratamiento se les propone y por qué. Esta capacidad de visualización elimina gran parte de la incertidumbre que genera ansiedad. Cuando un paciente comprende lo que va a suceder y puede ver el resultado esperado, su nivel de confianza y colaboración aumenta significativamente.</p>
+
+    <p>Además, durante los procedimientos, la realidad aumentada puede utilizarse como herramienta de distracción terapéutica, especialmente en pacientes pediátricos. Entornos inmersivos y contenidos interactivos ayudan a reducir la percepción del dolor y la incomodidad, mejorando la experiencia global del tratamiento.</p>
+
+    <p>La tecnología también facilita el seguimiento post-tratamiento, permitiendo a los pacientes visualizar la evolución de su recuperación y comprender las pautas de cuidado de forma más intuitiva que con las explicaciones tradicionales.</p>
+
+    <h2 id="imascono-health">Imascono Health: tecnología al servicio de la salud dental.</h2>
+
+    <p>En Imascono llevamos años desarrollando soluciones tecnológicas para el sector sanitario a través de nuestra división Imascono Health. Nuestra experiencia en realidad aumentada, realidad virtual y tecnologías inmersivas nos permite diseñar herramientas que responden a las necesidades reales de los profesionales de la salud.</p>
+
+    <p>Trabajamos en estrecha colaboración con clínicas, hospitales y centros de formación para desarrollar aplicaciones de AR que se integren de forma natural en los flujos de trabajo existentes. Desde la visualización de tratamientos hasta simuladores de formación avanzada, cada solución se diseña a medida para maximizar su impacto clínico y pedagógico.</p>
+
+    <p>Nuestro enfoque combina el rigor científico con la innovación tecnológica, asegurando que cada herramienta no solo sea técnicamente avanzada, sino también intuitiva, accesible y orientada a resultados. Creemos que la tecnología debe estar al servicio de los profesionales y los pacientes, facilitando mejores diagnósticos, tratamientos más precisos y experiencias más humanas.</p>
+
+    <p>Si eres profesional de la odontología y quieres explorar cómo la realidad aumentada puede transformar tu práctica, o si representas a una institución educativa interesada en incorporar simuladores de formación, contacta con nuestro equipo. Juntos podemos diseñar la solución que tu proyecto necesita.</p>
+
+    <div class="blog-tags">
+      <span class="blog-tag">Realidad Aumentada</span>
+      <span class="blog-tag">Odontología</span>
+      <span class="blog-tag">Salud</span>
+      <span class="blog-tag">XR</span>
+      <span class="blog-tag">Formación</span>
+    </div>
+
+  </article>
+
+  </div><!-- /blog-layout -->
+
+  <div id="contact-form"></div>
+  <script src="components/contact-form.js"></script>
+
+  <div id="site-footer"></div>
+  <script src="components/footer.js"></script>
+  <script src="components/scroll-reveal.js"></script>
+  <script>
+    // TOC active state on scroll
+    (function() {
+      var tocLinks = document.querySelectorAll('.blog-toc a');
+      var sections = [];
+      tocLinks.forEach(function(link) {
+        var id = link.getAttribute('href').replace('#', '');
+        var el = document.getElementById(id);
+        if (el) sections.push({ id: id, el: el, link: link });
+      });
+      if (!sections.length) return;
+
+      function onScroll() {
+        var scrollPos = window.scrollY + 120;
+        var active = sections[0];
+        for (var i = 0; i < sections.length; i++) {
+          if (sections[i].el.offsetTop <= scrollPos) {
+            active = sections[i];
+          }
+        }
+        tocLinks.forEach(function(l) { l.classList.remove('active'); });
+        if (active) active.link.classList.add('active');
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
+
+</body>
+</html>
