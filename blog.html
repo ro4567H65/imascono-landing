@@ -233,50 +233,38 @@
     .blog-card.featured {
       grid-column: 1 / -1;
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
+      grid-template-columns: 1.8fr 1fr;
+      grid-template-rows: 1fr auto;
       border: none;
       gap: 0;
     }
     .blog-card.featured .blog-card-image {
-      aspect-ratio: 16/10;
+      aspect-ratio: auto;
+      grid-row: 1 / -1;
+      min-height: 480px;
     }
     .blog-card.featured .blog-card-body {
-      padding: 48px 48px 20px;
+      padding: 48px 48px 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
     .blog-card.featured .blog-card-body h2 {
-      font-size: 1.8rem;
+      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
       font-weight: 300;
       line-height: 1.25;
+      margin-bottom: 0;
     }
     .blog-card.featured .blog-card-footer {
-      padding: 0 48px 40px;
+      padding: 0 48px 48px;
+      align-self: end;
     }
     .blog-card.featured .blog-card-intro {
-      font-size: 0.95rem;
-      color: #8a9baa;
-      line-height: 1.7;
-      margin-top: 16px;
+      display: none;
     }
     .blog-card.featured .blog-card-read {
-      display: inline-block;
-      margin-top: 24px;
-      font-family: 'PP Neue Montreal', system-ui, sans-serif;
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: #647483;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      transition: color 0.3s;
+      display: none;
     }
-    .blog-card.featured .blog-card-read span {
-      display: inline-block;
-      transition: transform 0.3s;
-    }
-    .blog-card.featured:hover .blog-card-read { color: #3a4f5f; }
-    .blog-card.featured:hover .blog-card-read span { transform: translateX(4px); }
 
     @media (max-width: 1024px) {
       .blog-grid { grid-template-columns: repeat(2, 1fr); }
@@ -284,7 +272,8 @@
     @media (max-width: 768px) {
       .blog-list-hero-content { grid-template-columns: 1fr; gap: 30px; }
       .blog-grid { grid-template-columns: 1fr; }
-      .blog-card.featured { grid-template-columns: 1fr; }
+      .blog-card.featured { grid-template-columns: 1fr; grid-template-rows: auto auto auto; }
+      .blog-card.featured .blog-card-image { min-height: auto; aspect-ratio: 16/10; grid-row: auto; }
       .blog-card.featured .blog-card-body { padding: 24px 24px 12px; }
       .blog-card.featured .blog-card-body h2 { font-size: 1.4rem; }
       .blog-card.featured .blog-card-footer { padding: 0 24px 24px; }
