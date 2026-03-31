@@ -102,18 +102,16 @@
       heroes.forEach(function(hero) {
         var rect = hero.getBoundingClientRect();
         var height = hero.offsetHeight;
-        var threshold = height * 0.6; // 40% hidden = 60% visible
+        var threshold = height * 0.7; // 30% hidden = 70% visible
         var scrolled = -rect.top;
+        var img = hero.querySelector('img, video');
 
-        if (scrolled > threshold) {
+        if (scrolled > threshold && img) {
           var progress = Math.min((scrolled - threshold) / (height - threshold), 1);
-          var blur = progress * 12;
-          var opacity = 1 - progress * 0.4;
-          hero.style.filter = 'blur(' + blur + 'px)';
-          hero.style.opacity = opacity;
-        } else {
-          hero.style.filter = '';
-          hero.style.opacity = '';
+          var blur = progress * 24;
+          img.style.filter = 'blur(' + blur + 'px)';
+        } else if (img) {
+          img.style.filter = '';
         }
       });
     }
