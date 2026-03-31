@@ -20,13 +20,16 @@
     .stagger>.reveal:nth-child(5){transition-delay:0.48s}\
     .stagger>.reveal:nth-child(6){transition-delay:0.6s}\
     body.has-transparent-nav .project-hero{margin-top:0!important}\
-    .header.header-transparent{background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-bottom:1px solid rgba(255,255,255,0.3)!important;transition:background 0.4s ease,border-bottom-color 0.4s ease}\
+    .header.header-transparent{background:linear-gradient(to bottom,rgba(0,0,0,0.35),transparent)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-bottom:1px solid rgba(255,255,255,0.3)!important;transition:background 0.4s ease,border-bottom-color 0.4s ease}\
+    .header.header-transparent .btn-primary{background:#fff!important;color:#647483!important;border-color:#fff!important}\
+    .header.header-transparent .btn-primary:hover{background:#f0f2f4!important}\
     .header.header-transparent .nav-links a{color:rgba(255,255,255,0.75)!important}\
     .header.header-transparent .nav-links a:hover{color:#fff!important}\
     .header.header-transparent .header-actions span{color:rgba(255,255,255,0.6)!important}\
     .header.header-transparent .header-actions span[style*="font-weight:600"]{color:#fff!important}\
     .header.header-transparent .logo img{filter:brightness(10)}\
-    .header.header-transparent:hover{background:rgba(255,255,255,0.95)!important;backdrop-filter:blur(10px)!important;-webkit-backdrop-filter:blur(10px)!important;border-bottom-color:rgba(0,0,0,0.06)!important}\
+    .header.header-transparent:hover{background:rgba(255,255,255,0.95)!important;backdrop-filter:blur(10px)!important;-webkit-backdrop-filter:blur(10px)!important;border-bottom:1px solid rgba(0,0,0,0.06)!important}\
+    .header.header-transparent:hover .btn-primary{background:linear-gradient(135deg,#546878 0%,#546878 50%,#748a97 50%,#546878 100%)!important;color:#fff!important;border-color:#546878!important}\
     .header.header-transparent:hover .nav-links a{color:#8a9baa!important}\
     .header.header-transparent:hover .nav-links a:hover{color:#647483!important}\
     .header.header-transparent:hover .header-actions span{color:#8a9baa!important}\
