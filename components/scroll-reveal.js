@@ -102,7 +102,7 @@
       heroes.forEach(function(hero) {
         var rect = hero.getBoundingClientRect();
         var height = hero.offsetHeight;
-        var threshold = height * 0.7; // 30% hidden = 70% visible
+        var threshold = height * 0.3; // 70% hidden = 30% visible
         var scrolled = -rect.top;
         var img = hero.querySelector('img, video');
 
