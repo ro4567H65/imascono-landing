@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <title>Blog — Imascono</title>
+  <meta name="description" content="Descubre las últimas tendencias en tecnología inmersiva, inteligencia artificial, realidad aumentada y transformación digital en el blog de Imascono.">
+  <meta property="og:title" content="Blog — Imascono">
+  <meta property="og:description" content="Últimas tendencias en XR, IA, Data y tecnología inmersiva para empresas.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;700;900&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    @font-face { font-family: 'PP Neue Montreal'; src: url('fonts/montrealbook.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'PP Neue Montreal'; src: url('fonts/montreal.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: 'Visuelt Pro', system-ui, -apple-system, sans-serif;
+      color: #647483;
+      background: #ffffff;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    .container { max-width: 1440px; margin: 0 auto; padding: 0 40px; }
+
+    /* ── Header ── */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .header .container { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.8rem; font-weight: 500; color: #8a9baa;
+      text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.3s;
+    }
+    .nav-links a:hover { color: #647483; }
+    .header-actions { display: flex; align-items: center; gap: 16px; }
+    .btn-primary {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.8rem; font-weight: 500; color: #fff;
+      background: #647483; border: 1px solid #647483;
+      padding: 10px 24px; cursor: pointer;
+      text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.3s;
+    }
+    .btn-primary:hover { background: #4a5a68; }
+    .btn-primary .arrow { transition: transform 0.3s; display: inline-block; }
+    .btn-primary:hover .arrow { transform: translateX(4px); }
+
+    /* ── Blog Hero ── */
+    .blog-list-hero {
+      margin-top: 72px;
+      padding: 120px 0 80px;
+      background: #f2f5f8;
+    }
+    .blog-list-hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: end;
+    }
+    .blog-list-hero h1 {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      color: #647483;
+      line-height: 1.05;
+    }
+    .blog-list-hero-desc {
+      font-size: 1.1rem;
+      color: #8a9baa;
+      line-height: 1.8;
+      max-width: 500px;
+    }
+
+    /* ── Blog Grid ── */
+    .blog-list-section {
+      padding: 80px 0;
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .blog-card {
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border: 1px solid rgba(100,116,131,0.1);
+      transition: box-shadow 0.4s ease, transform 0.4s ease;
+      overflow: hidden;
+    }
+    .blog-card:hover {
+      box-shadow: 0 12px 40px rgba(100,116,131,0.12);
+      transform: translateY(-4px);
+    }
+    .blog-card-image {
+      overflow: hidden;
+      aspect-ratio: 16/10;
+    }
+    .blog-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .blog-card:hover .blog-card-image img {
+      transform: scale(1.03);
+    }
+    .blog-card-body {
+      padding: 28px 28px 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .blog-card-body h2 {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 1.15rem;
+      color: #3a4f5f;
+      line-height: 1.4;
+      margin-bottom: auto;
+      transition: color 0.3s;
+    }
+    .blog-card:hover .blog-card-body h2 {
+      color: #647483;
+    }
+    .blog-card-footer {
+      padding: 0 28px 24px;
+    }
+    .blog-card-meta {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.75rem;
+      color: #8a9baa;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .blog-card-meta .blog-card-time {
+      font-weight: 500;
+    }
+    .blog-card-meta .blog-card-tags {
+      color: #a0adb8;
+    }
+
+    /* ── Footer/CTA ── */
+    .footer {
+      position: relative; z-index: auto;
+      background: #fff; padding: 60px 0 40px;
+      border-top: 1px solid #d0d5dd;
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 40px; margin-bottom: 60px; padding-bottom: 60px;
+      border-bottom: 1px solid #d0d5dd;
+    }
+    .footer-col h4 { font-size: 0.9rem; font-weight: 600; color: #3a4f5f; margin-bottom: 16px; }
+    .footer-col a { display: block; font-size: 0.85rem; color: #647483; line-height: 1.7; margin-bottom: 8px; transition: color 0.2s; }
+    .footer-col a:hover { color: #3a4f5f; }
+    .footer-col .footer-sede { font-size: 0.85rem; font-weight: 600; color: #3a4f5f; margin-bottom: 8px; }
+    .footer-col .footer-address { font-size: 0.85rem; color: #647483; line-height: 1.7; margin-bottom: 8px; }
+    .footer-legal-bar {
+      grid-column: 2 / -1; padding: 20px 0 0;
+      font-size: 0.75rem; color: #647483;
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .footer-legal-bar span::after { content: '|'; margin-left: 8px; color: #647483; }
+    .footer-legal-links { display: flex; gap: 8px; flex-wrap: wrap; }
+    .footer-legal-links a { color: #647483; transition: color 0.2s; }
+    .footer-legal-links a:hover { color: #3a4f5f; }
+    .footer-legal-links a:not(:last-child)::after { content: '|'; margin-left: 8px; color: #647483; }
+    .footer-bottom {
+      display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 40px; align-items: start;
+    }
+    .footer-bottom-col h4 { font-size: 0.9rem; font-weight: 600; color: #3a4f5f; margin-bottom: 12px; }
+    .footer-bottom-col a { display: block; font-size: 0.85rem; color: #647483; line-height: 1.7; margin-bottom: 8px; transition: color 0.2s; }
+    .footer-bottom-col a:hover { color: #3a4f5f; }
+    .footer-badges { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; grid-column: 3 / 5; }
+    .footer-badges img { height: 50px; object-fit: contain; }
+
+    .cta-section { padding: 80px 0; background: linear-gradient(to bottom, #f2f5f8 0%, #ffffff 50%); }
+    .cta-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: start; }
+    .cta-title { font-family: 'Visuelt Pro', system-ui, sans-serif; font-weight: 300; font-size: clamp(2.5rem, 4vw, 4rem); color: #647483; line-height: 1.1; }
+
+    @media (max-width: 1024px) {
+      .blog-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .blog-list-hero-content { grid-template-columns: 1fr; gap: 30px; }
+      .blog-grid { grid-template-columns: 1fr; }
+      .cta-grid { grid-template-columns: 1fr; gap: 40px; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-bottom { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-nav"></div>
+  <script src="components/nav.js"></script>
+
+  <!-- ════ HERO ════ -->
+  <section class="blog-list-hero">
+    <div class="container">
+      <div class="blog-list-hero-content">
+        <h1>Blog.</h1>
+        <p class="blog-list-hero-desc">Tendencias, casos de uso y reflexiones sobre tecnología inmersiva, inteligencia artificial y transformación digital.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ BLOG GRID ════ -->
+  <section class="blog-list-section">
+    <div class="container">
+      <div class="blog-grid">
+
+        <a href="espacios-datos-empresas.html" class="blog-card">
+          <div class="blog-card-image">
+            <img src="https://imascono.com/wp-content/uploads/2026/03/espacios-de-datos.jpg" alt="Espacios de datos">
+          </div>
+          <div class="blog-card-body">
+            <h2>El espacio de datos: la clave para gestionar y analizar información a gran escala.</h2>
+          </div>
+          <div class="blog-card-footer">
+            <div class="blog-card-meta">
+              <span class="blog-card-time">8 min</span>
+              <span class="blog-card-tags">Data, Big Data, IA, Gemelos Virtuales</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="realidad-aumentada-fabricacion.html" class="blog-card">
+          <div class="blog-card-image">
+            <img src="https://imascono.com/wp-content/uploads/2026/03/AR-manufacturing.jpg" alt="Realidad aumentada en fabricación">
+          </div>
+          <div class="blog-card-body">
+            <h2>Realidad aumentada en la fabricación.</h2>
+          </div>
+          <div class="blog-card-footer">
+            <div class="blog-card-meta">
+              <span class="blog-card-time">10 min</span>
+              <span class="blog-card-tags">Realidad Aumentada, Industria, XR</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="inteligencia-artificial-dermatologia.html" class="blog-card">
+          <div class="blog-card-image">
+            <img src="https://imascono.com/wp-content/uploads/2026/02/IA-dermatology.jpg" alt="IA en dermatología">
+          </div>
+          <div class="blog-card-body">
+            <h2>IA en dermatología: mejorando el cuidado de la piel.</h2>
+          </div>
+          <div class="blog-card-footer">
+            <div class="blog-card-meta">
+              <span class="blog-card-time">8 min</span>
+              <span class="blog-card-tags">IA, Dermatología, Salud</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="optimizacion-industrial-con-tecnologias-inmersivas-ejemplos-reales.html" class="blog-card">
+          <div class="blog-card-image">
+            <img src="https://imascono.com/wp-content/uploads/2026/02/Optimizacion-Industrial.jpg" alt="Optimización industrial">
+          </div>
+          <div class="blog-card-body">
+            <h2>Optimización industrial con tecnologías inmersivas: ejemplos reales.</h2>
+          </div>
+          <div class="blog-card-footer">
+            <div class="blog-card-meta">
+              <span class="blog-card-time">9 min</span>
+              <span class="blog-card-tags">Tecnologías Inmersivas, Industria, XR</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="5g-realidad-aumentada-usos.html" class="blog-card">
+          <div class="blog-card-image">
+            <img src="https://imascono.com/wp-content/uploads/2026/02/5G-AR.jpg" alt="5G y realidad aumentada">
+          </div>
+          <div class="blog-card-body">
+            <h2>5G y realidad aumentada: usos y aplicaciones.</h2>
+          </div>
+          <div class="blog-card-footer">
+            <div class="blog-card-meta">
+              <span class="blog-card-time">7 min</span>
+              <span class="blog-card-tags">5G, Realidad Aumentada, Conectividad</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="como-ayuda-asistente-virtual-negocio.html" class="blog-card">
+          <div class="blog-card-image">
+            <img src="https://imascono.com/wp-content/uploads/2026/02/iria-iveco-1-2.jpg" alt="Asistente virtual para negocio">
+          </div>
+          <div class="blog-card-body">
+            <h2>Cómo puede ayudar un asistente virtual a tu negocio.</h2>
+          </div>
+          <div class="blog-card-footer">
+            <div class="blog-card-meta">
+              <span class="blog-card-time">10 min</span>
+              <span class="blog-card-tags">IA, VEGA, Negocio, Avatares</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="odontologia-realidad-aumentada.html" class="blog-card">
+          <div class="blog-card-image">
+            <img src="https://imascono.com/wp-content/uploads/2026/02/odontologia-AR.jpg" alt="Odontología y realidad aumentada">
+          </div>
+          <div class="blog-card-body">
+            <h2>Odontología y realidad aumentada.</h2>
+          </div>
+          <div class="blog-card-footer">
+            <div class="blog-card-meta">
+              <span class="blog-card-time">7 min</span>
+              <span class="blog-card-tags">Realidad Aumentada, Odontología, Salud</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="inteligencia-artificial-onboarding.html" class="blog-card">
+          <div class="blog-card-image">
+            <img src="https://imascono.com/wp-content/uploads/2026/02/IA-onboarding.jpg" alt="IA en onboarding">
+          </div>
+          <div class="blog-card-body">
+            <h2>Inteligencia artificial en el onboarding empresarial.</h2>
+          </div>
+          <div class="blog-card-footer">
+            <div class="blog-card-meta">
+              <span class="blog-card-time">8 min</span>
+              <span class="blog-card-tags">IA, Onboarding, Formación, VEGA</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="crear-programa-formacion-virtual.html" class="blog-card">
+          <div class="blog-card-image">
+            <img src="https://imascono.com/wp-content/uploads/2026/02/formacion-virtual.jpg" alt="Formación virtual">
+          </div>
+          <div class="blog-card-body">
+            <h2>Cómo crear un programa de formación virtual efectivo.</h2>
+          </div>
+          <div class="blog-card-footer">
+            <div class="blog-card-meta">
+              <span class="blog-card-time">9 min</span>
+              <span class="blog-card-tags">Formación Virtual, XR, Gamificación</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <div id="contact-form"></div>
+  <script src="components/contact-form.js"></script>
+
+  <div id="site-footer"></div>
+  <script src="components/footer.js"></script>
+  <script src="components/scroll-reveal.js"></script>
+
+</body>
+</html>

@@ -80,6 +80,10 @@
     { sel: '.blog-content .blog-image', cls: 'reveal scale-in' },
     { sel: '.blog-cta-inline', cls: 'reveal' },
     { sel: '.blog-tags', cls: 'reveal' },
+    // Blog list page elements
+    { sel: '.blog-list-hero h1', cls: 'reveal' },
+    { sel: '.blog-list-hero-desc', cls: 'reveal from-right' },
+    { sel: '.blog-card', cls: 'reveal' },
     // Portfolio page elements
     { sel: '.portfolio-hero h1', cls: 'reveal' },
     { sel: '.portfolio-hero-desc', cls: 'reveal from-right' },
@@ -100,7 +104,7 @@
   });
 
   // Add stagger to grids
-  document.querySelectorAll('.project-stats, .sector-stats, .trends-grid, .cases-grid, .portfolio-grid').forEach(function(g) {
+  document.querySelectorAll('.project-stats, .sector-stats, .trends-grid, .cases-grid, .portfolio-grid, .blog-grid').forEach(function(g) {
     g.classList.add('stagger');
   });
 
