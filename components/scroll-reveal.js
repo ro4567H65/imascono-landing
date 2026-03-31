@@ -102,13 +102,13 @@
       heroes.forEach(function(hero) {
         var rect = hero.getBoundingClientRect();
         var height = hero.offsetHeight;
-        var threshold = height * 0.3; // 70% hidden = 30% visible
+        var threshold = height * 0.1; // 90% hidden = 10% visible
         var scrolled = -rect.top;
         var img = hero.querySelector('img, video');
 
         if (scrolled > threshold && img) {
           var progress = Math.min((scrolled - threshold) / (height - threshold), 1);
-          var blur = progress * 24;
+          var blur = progress * 36;
           img.style.filter = 'blur(' + blur + 'px)';
         } else if (img) {
           img.style.filter = '';
