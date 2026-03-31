@@ -106,11 +106,6 @@
         var scrolled = -rect.top;
         var img = hero.querySelector('img, video');
 
-        var parallax = Math.max(scrolled, 0) * 0.3;
-        if (img) {
-          img.style.transform = 'scale(' + (hero.classList.contains('hero-revealed') ? 1 : 1.25) + ') translateY(' + parallax + 'px)';
-        }
-
         if (scrolled > threshold && img) {
           var progress = Math.min((scrolled - threshold) / (height - threshold), 1);
           var blur = progress * 36;
