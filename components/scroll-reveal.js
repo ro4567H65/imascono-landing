@@ -20,7 +20,9 @@
     .stagger>.reveal:nth-child(5){transition-delay:0.48s}\
     .stagger>.reveal:nth-child(6){transition-delay:0.6s}\
     body.has-transparent-nav .project-hero{margin-top:0!important}\
-    .header.header-transparent{background:linear-gradient(to bottom,rgba(0,0,0,0.35),transparent)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-bottom:1px solid rgba(255,255,255,0.3)!important;transition:background 0.4s ease,border-bottom-color 0.4s ease}\
+    .header.header-transparent{background:linear-gradient(to bottom,rgba(0,0,0,0.35),transparent)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-bottom:none!important;transition:background 0.4s ease,border-bottom-color 0.4s ease}\
+    .header.header-transparent::after{content:"";position:absolute;bottom:0;left:0;right:0;height:1px;background:rgba(255,255,255,0.3);z-index:1}\
+    .header.header-transparent:hover::after,.header.header-scrolled::after{display:none}\
     .header.header-transparent .btn-primary{background:#fff!important;color:#647483!important;border-color:#fff!important}\
     .header.header-transparent .btn-primary:hover{background:#f0f2f4!important}\
     .header.header-transparent .nav-links a{color:rgba(255,255,255,0.75)!important}\
