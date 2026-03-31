@@ -230,6 +230,53 @@
     .blog-card.hidden {
       display: none;
     }
+    .blog-card.featured {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      border: none;
+      gap: 0;
+    }
+    .blog-card.featured .blog-card-image {
+      aspect-ratio: 16/10;
+    }
+    .blog-card.featured .blog-card-body {
+      padding: 48px 48px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .blog-card.featured .blog-card-body h2 {
+      font-size: 1.8rem;
+      font-weight: 300;
+      line-height: 1.25;
+    }
+    .blog-card.featured .blog-card-footer {
+      padding: 0 48px 40px;
+    }
+    .blog-card.featured .blog-card-intro {
+      font-size: 0.95rem;
+      color: #8a9baa;
+      line-height: 1.7;
+      margin-top: 16px;
+    }
+    .blog-card.featured .blog-card-read {
+      display: inline-block;
+      margin-top: 24px;
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #647483;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: color 0.3s;
+    }
+    .blog-card.featured .blog-card-read span {
+      display: inline-block;
+      transition: transform 0.3s;
+    }
+    .blog-card.featured:hover .blog-card-read { color: #3a4f5f; }
+    .blog-card.featured:hover .blog-card-read span { transform: translateX(4px); }
 
     @media (max-width: 1024px) {
       .blog-grid { grid-template-columns: repeat(2, 1fr); }
@@ -237,6 +284,10 @@
     @media (max-width: 768px) {
       .blog-list-hero-content { grid-template-columns: 1fr; gap: 30px; }
       .blog-grid { grid-template-columns: 1fr; }
+      .blog-card.featured { grid-template-columns: 1fr; }
+      .blog-card.featured .blog-card-body { padding: 24px 24px 12px; }
+      .blog-card.featured .blog-card-body h2 { font-size: 1.4rem; }
+      .blog-card.featured .blog-card-footer { padding: 0 24px 24px; }
       .cta-grid { grid-template-columns: 1fr; gap: 40px; }
       .footer-top { grid-template-columns: 1fr 1fr; }
       .footer-bottom { grid-template-columns: 1fr; }
@@ -274,12 +325,14 @@
 
       <div class="blog-grid">
 
-        <a href="espacios-datos-empresas.html" class="blog-card" data-tags="data ia">
+        <a href="espacios-datos-empresas.html" class="blog-card featured" data-tags="data ia">
           <div class="blog-card-image">
             <img src="https://imascono.com/wp-content/uploads/2026/03/espacios-de-datos.jpg" alt="Espacios de datos">
           </div>
           <div class="blog-card-body">
             <h2>El espacio de datos: la clave para gestionar y analizar información a gran escala.</h2>
+            <p class="blog-card-intro">Los espacios de datos son la clave del cambio digital, permitiendo compartir información de forma segura, interoperable y controlada.</p>
+            <div class="blog-card-read">Leer artículo <span>→</span></div>
           </div>
           <div class="blog-card-footer">
             <div class="blog-card-meta">
