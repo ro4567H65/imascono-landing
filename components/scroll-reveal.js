@@ -19,6 +19,24 @@
     .stagger>.reveal:nth-child(4){transition-delay:0.36s}\
     .stagger>.reveal:nth-child(5){transition-delay:0.48s}\
     .stagger>.reveal:nth-child(6){transition-delay:0.6s}\
+    body.has-transparent-nav .project-hero{margin-top:0!important}\
+    .header.header-transparent{background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-bottom-color:transparent!important;transition:background 0.4s ease,border-bottom-color 0.4s ease}\
+    .header.header-transparent .nav-links a{color:rgba(255,255,255,0.75)!important}\
+    .header.header-transparent .nav-links a:hover{color:#fff!important}\
+    .header.header-transparent .header-actions span{color:rgba(255,255,255,0.6)!important}\
+    .header.header-transparent .header-actions span[style*="font-weight:600"]{color:#fff!important}\
+    .header.header-transparent .logo img{filter:brightness(10)}\
+    .header.header-transparent:hover{background:rgba(255,255,255,0.95)!important;backdrop-filter:blur(10px)!important;-webkit-backdrop-filter:blur(10px)!important;border-bottom-color:rgba(0,0,0,0.06)!important}\
+    .header.header-transparent:hover .nav-links a{color:#8a9baa!important}\
+    .header.header-transparent:hover .nav-links a:hover{color:#647483!important}\
+    .header.header-transparent:hover .header-actions span{color:#8a9baa!important}\
+    .header.header-transparent:hover .header-actions span[style*="font-weight:600"]{color:#647483!important}\
+    .header.header-transparent:hover .logo img{filter:none}\
+    .header.header-scrolled{background:rgba(255,255,255,0.95)!important;backdrop-filter:blur(10px)!important;-webkit-backdrop-filter:blur(10px)!important;border-bottom-color:rgba(0,0,0,0.06)!important}\
+    .header.header-scrolled .nav-links a{color:#8a9baa!important}\
+    .header.header-scrolled .header-actions span{color:#8a9baa!important}\
+    .header.header-scrolled .header-actions span[style*="font-weight:600"]{color:#647483!important}\
+    .header.header-scrolled .logo img{filter:none}\
     ';
     document.head.appendChild(style);
   }
@@ -92,6 +110,31 @@
       }, 200);
     });
   }
+
+  // Transparent nav on project pages only
+  (function() {
+    var projectHero = document.querySelector('.project-hero');
+    if (!projectHero) return;
+    var header = document.querySelector('.header');
+    if (!header) return;
+
+    header.classList.add('header-transparent');
+    document.body.classList.add('has-transparent-nav');
+
+    function checkScroll() {
+      var heroBottom = projectHero.getBoundingClientRect().bottom;
+      if (heroBottom <= 72) {
+        header.classList.add('header-scrolled');
+        header.classList.remove('header-transparent');
+      } else {
+        header.classList.remove('header-scrolled');
+        header.classList.add('header-transparent');
+      }
+    }
+
+    window.addEventListener('scroll', checkScroll, { passive: true });
+    checkScroll();
+  })();
 
   // Hero blur on scroll - starts when 40% hidden
   (function() {
