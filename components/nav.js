@@ -18,7 +18,7 @@
       <div class="header-actions">\
         <span style="font-size:0.85rem;color:#8a9baa;cursor:pointer;">EN</span>\
         <span style="font-size:0.85rem;font-weight:600;color:#647483;cursor:pointer;">ES</span>\
-        <button class="btn-primary">Hablemos <span class="arrow">→</span></button>\
+        <button class="btn-primary" style="background:linear-gradient(135deg,#546878 0%,#546878 50%,#748a97 50%,#546878 100%);background-size:250% 250%;background-position:0 0;transition:all 0.6s ease,background-position 0.6s ease;" onmouseover="this.style.backgroundPosition=\'100% 100%\'" onmouseout="this.style.backgroundPosition=\'0 0\'">Hablemos <span class="arrow">→</span></button>\
       </div>\
     </div>\
   </header>\
