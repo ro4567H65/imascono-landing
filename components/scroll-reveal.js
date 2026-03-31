@@ -24,6 +24,7 @@
     .header.header-transparent::after{content:"";position:absolute;bottom:0;left:0;right:0;height:1px;background:rgba(255,255,255,0.3);z-index:1}\
     .header.header-transparent:hover::after,.header.header-scrolled::after{display:none}\
     .header.header-transparent .btn-primary{background:#fff!important;color:#647483!important;border-color:#fff!important}\
+    .header.header-transparent .btn-primary .arrow{color:#647483!important}\
     .header.header-transparent .btn-primary:hover{background:#f0f2f4!important}\
     .header.header-transparent .nav-links a{color:rgba(255,255,255,0.75)!important}\
     .header.header-transparent .nav-links a:hover{color:#fff!important}\
