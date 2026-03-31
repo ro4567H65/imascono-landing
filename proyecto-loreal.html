@@ -260,38 +260,114 @@
 
     /* ── Footer ── */
     .footer {
-      background: #647483;
-      color: rgba(255,255,255,0.7);
+      position: relative;
+      z-index: auto;
+      background: #fff;
       padding: 60px 0 40px;
+      border-top: 1px solid #d0d5dd;
     }
-    .footer h4 {
-      font-family: 'PP Neue Montreal', system-ui, sans-serif;
-      font-size: 0.75rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #fff;
-      margin-bottom: 16px;
-    }
-    .footer a {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.6);
-      transition: color 0.3s;
-      display: block;
-      margin-bottom: 6px;
-    }
-    .footer a:hover { color: #fff; }
     .footer-top {
       display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
       gap: 40px;
-      padding-bottom: 40px;
-      border-bottom: 1px solid rgba(255,255,255,0.15);
+      margin-bottom: 60px;
+      padding-bottom: 60px;
+      border-bottom: 1px solid #d0d5dd;
+    }
+    .footer-brand p {
+      font-size: 0.8rem;
+      color: #8a9baa;
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+    .footer-col h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #3a4f5f;
+      margin-bottom: 16px;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 0.85rem;
+      color: #647483;
+      line-height: 1.7;
+      margin-bottom: 8px;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: #3a4f5f; }
+    .footer-col .footer-address {
+      font-size: 0.85rem;
+      color: #647483;
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+    .footer-col .footer-sede {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #3a4f5f;
+      margin-bottom: 8px;
+    }
+    .footer-legal-bar {
+      grid-column: 2 / -1;
+      padding: 20px 0 0;
+      font-size: 0.75rem;
+      color: #647483;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .footer-legal-bar span::after {
+      content: '|';
+      margin-left: 8px;
+      color: #647483;
+    }
+    .footer-legal-links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .footer-legal-links a {
+      color: #647483;
+      transition: color 0.2s;
+    }
+    .footer-legal-links a:hover { color: #3a4f5f; }
+    .footer-legal-links a:not(:last-child)::after {
+      content: '|';
+      margin-left: 8px;
+      color: #647483;
     }
     .footer-bottom {
-      padding-top: 30px;
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.4);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .footer-bottom-col h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #3a4f5f;
+      margin-bottom: 12px;
+    }
+    .footer-bottom-col a {
+      display: block;
+      font-size: 0.85rem;
+      color: #647483;
+      line-height: 1.7;
+      margin-bottom: 8px;
+      transition: color 0.2s;
+    }
+    .footer-bottom-col a:hover { color: #3a4f5f; }
+    .footer-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      grid-column: 3 / 5;
+    }
+    .footer-badges img {
+      height: 50px;
+      object-fit: contain;
     }
 
     /* ── CTA Section ── */
@@ -329,15 +405,6 @@
     }
     .form-check input[type="checkbox"] { margin-top: 3px; }
 
-    .footer-sede { font-size: 0.85rem; font-weight: 500; color: #fff; margin-bottom: 6px; }
-    .footer-address { font-size: 0.8rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
-    .footer-legal-bar {
-      grid-column: 1 / -1; padding-top: 24px;
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: 0.8rem; color: rgba(255,255,255,0.4);
-    }
-    .footer-legal-links { display: flex; gap: 20px; }
-    .footer-legal-links a { font-size: 0.8rem; margin-bottom: 0; }
 
     @media (max-width: 768px) {
       .project-meta, .project-description { grid-template-columns: 1fr; gap: 30px; }
@@ -442,39 +509,117 @@
 
   </div>
 
+  <!-- ════ CTA / CONTACTO ════ -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-grid">
+        <h2 class="cta-title">Cuéntanos<br>y sigue<br>avanzando.</h2>
+        <form class="cta-form" onsubmit="return false;">
+          <div class="form-group"><input type="text" placeholder="Nombre y Apellidos*"></div>
+          <div class="form-group"><input type="text" placeholder="Empresa*"></div>
+          <div class="form-group">
+            <select>
+              <option value="">Elige tu sector*</option>
+              <option>Salud</option>
+              <option>Turismo</option>
+              <option>Industria</option>
+              <option>Banca y Seguros</option>
+              <option>Retail y Ocio</option>
+              <option>Formación</option>
+            </select>
+          </div>
+          <div class="form-group"><input type="email" placeholder="Email*"></div>
+          <div class="form-group"><input type="tel" placeholder="Teléfono*"></div>
+          <div class="form-group"><textarea placeholder="Mensaje*"></textarea></div>
+          <div class="form-check">
+            <input type="checkbox" id="consent"><label for="consent">Sí, doy mi consentimiento para recibir comunicaciones informativas.</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" id="privacy"><label for="privacy">Sí, estoy de acuerdo y acepto la política de privacidad.</label>
+          </div>
+          <button class="btn-primary" type="submit" style="align-self:flex-start;">Enviar <span class="arrow">→</span></button>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <!-- ════ FOOTER ════ -->
   <footer class="footer">
     <div class="container">
       <div class="footer-top">
-        <div>
+        <div class="footer-brand">
           <a href="index.html" class="logo">
-            <img src="logo-imascono.svg" alt="Imascono" style="height:40px;width:auto;filter:brightness(10);">
+            <img src="logo-imascono.svg" alt="Imascono" style="height:40px;width:auto;">
           </a>
         </div>
-        <div>
+        <div class="footer-col">
           <h4>Productos</h4>
           <a href="#">VEGA</a>
           <a href="#">Kimchi!</a>
           <a href="#">Virtual Twins</a>
           <a href="#">Virtual Training</a>
+          <a href="#">Virtual Spaces</a>
           <a href="#">Spaceship Projects</a>
         </div>
-        <div>
+        <div class="footer-col">
           <h4>Sectores</h4>
-          <a href="#">Turismo</a>
-          <a href="#">Retail &amp; Ocio</a>
-          <a href="#">Banca &amp; Seguros</a>
-          <a href="#">Salud</a>
-          <a href="#">Industria</a>
-          <a href="#">Formación</a>
+          <a href="sector-turismo.html">Turismo</a>
+          <a href="sector-retail-ocio.html">Retail &amp; Ocio</a>
+          <a href="sector-banca-seguros.html">Banca &amp; Seguros</a>
+          <a href="sector-salud.html">Salud</a>
+          <a href="sector-industria.html">Industria</a>
+          <a href="sector-formacion.html">Formación</a>
         </div>
-        <div>
-          <div style="font-size:0.85rem;margin-bottom:4px;">Copyright © 2026 Imascono Art SL</div>
-          <div style="display:flex;gap:16px;font-size:0.8rem;">
+        <div class="footer-col">
+          <div class="footer-sede">Sede España</div>
+          <div class="footer-address">
+            © 2026 Imascono Art S.L.<br>
+            C/ Josefa Amar y Borbón 10, Planta 2<br>
+            50001 – Zaragoza, España<br>
+            (+34) 876 28 37 14
+          </div>
+          <div class="footer-sede" style="margin-top:20px;">Sede EEUU</div>
+          <div class="footer-address">
+            © 2026 Imascono Corp<br>
+            2100 Coral Way, STE 704<br>
+            Miami, FL 33145, United States<br>
+            (+1) 214 830 1405
+          </div>
+        </div>
+        <div class="footer-legal-bar">
+          <span>Copyright © 2026 Imascono Art SL</span>
+          <div class="footer-legal-links">
             <a href="#">Política de privacidad</a>
             <a href="#">Política de cookies</a>
             <a href="#">Aviso legal</a>
           </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-col">
+          <h4>Servicios de Imascono</h4>
+          <a href="#">Servicios de Consultoría</a>
+          <a href="#">Servicios de Inteligencia Artificial</a>
+          <a href="#">Servicios de Realidad Virtual</a>
+          <a href="#">Servicios de Realidad Aumentada</a>
+          <a href="#">Servicios de Realidad Mixta</a>
+          <a href="#">Servicios de Espacios virtuales</a>
+          <a href="#">Servicios de Showroom Virtual</a>
+          <a href="#">Servicios de WebApp</a>
+          <a href="#">Servicios de Metaverso y Web3</a>
+        </div>
+        <div class="footer-bottom-col">
+          <h4>Casos de uso</h4>
+          <a href="#">Hoteles</a>
+          <a href="#">Lujo</a>
+          <a href="#">Real Estate</a>
+          <a href="#">Branding</a>
+          <a href="#">Centros Comerciales</a>
+          <a href="#">Niños y tecnología</a>
+          <a href="#">Eventos</a>
+        </div>
+        <div class="footer-badges">
+          <img src="Logo-footer-europa.jpg" alt="Financiado por la Unión Europea" style="width:100%;height:auto;">
         </div>
       </div>
     </div>
