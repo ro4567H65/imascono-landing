@@ -122,8 +122,7 @@
     document.body.classList.add('has-transparent-nav');
 
     function checkScroll() {
-      var heroBottom = projectHero.getBoundingClientRect().bottom;
-      if (heroBottom <= 72) {
+      if (window.scrollY >= 25) {
         header.classList.add('header-scrolled');
         header.classList.remove('header-transparent');
       } else {
