@@ -93,6 +93,34 @@
     });
   }
 
+  // Hero blur on scroll - starts when 40% hidden
+  (function() {
+    var heroes = document.querySelectorAll('.project-hero, .sector-hero');
+    if (!heroes.length) return;
+
+    function onScroll() {
+      heroes.forEach(function(hero) {
+        var rect = hero.getBoundingClientRect();
+        var height = hero.offsetHeight;
+        var threshold = height * 0.6; // 40% hidden = 60% visible
+        var scrolled = -rect.top;
+
+        if (scrolled > threshold) {
+          var progress = Math.min((scrolled - threshold) / (height - threshold), 1);
+          var blur = progress * 12;
+          var opacity = 1 - progress * 0.4;
+          hero.style.filter = 'blur(' + blur + 'px)';
+          hero.style.opacity = opacity;
+        } else {
+          hero.style.filter = '';
+          hero.style.opacity = '';
+        }
+      });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+
   // Digital scramble effect for stat numbers
   (function() {
     var chars = '0123456789+ABCDEFGHIJKLMNOPQRSTUVWXYZ%#&';
