@@ -40,7 +40,7 @@
         <a href="index.html">HOME</a>\
         <a href="#">PRODUCTOS</a>\
         <a href="#">SECTORES</a>\
-        <a href="proyectos.html">CASOS DE ÉXITO</a>\
+        <a href="casos-de-exito.html">CASOS DE ÉXITO</a>\
         <a href="#">BLOG</a>\
         <a href="#">RESEARCH</a>\
       </nav>\
