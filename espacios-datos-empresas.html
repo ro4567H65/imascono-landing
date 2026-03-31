@@ -128,11 +128,54 @@
       line-height: 1.8;
     }
 
+    /* ── Blog Layout ── */
+    .blog-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 60px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 40px;
+      align-items: start;
+    }
+
+    /* ── Blog TOC ── */
+    .blog-toc {
+      position: sticky;
+      top: 92px;
+    }
+    .blog-toc-title {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8a9baa;
+      margin-bottom: 16px;
+    }
+    .blog-toc a {
+      display: block;
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.8rem;
+      color: #8a9baa;
+      line-height: 1.5;
+      padding: 8px 0;
+      border-left: 2px solid transparent;
+      padding-left: 12px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .blog-toc a:hover {
+      color: #647483;
+    }
+    .blog-toc a.active {
+      color: #3a4f5f;
+      border-left-color: #647483;
+      font-weight: 500;
+    }
+
     /* ── Blog Content ── */
     .blog-content {
       max-width: 800px;
-      margin: 0 auto;
-      padding: 80px 40px;
     }
     .blog-content h2 {
       font-family: 'Visuelt Pro', system-ui, sans-serif;
@@ -279,7 +322,8 @@
     .cta-title { font-family: 'Visuelt Pro', system-ui, sans-serif; font-weight: 300; font-size: clamp(2.5rem, 4vw, 4rem); color: #647483; line-height: 1.1; }
 
     @media (max-width: 768px) {
-      .blog-content { padding: 40px 20px; }
+      .blog-layout { grid-template-columns: 1fr; padding: 40px 20px; }
+      .blog-toc { position: static; display: none; }
       .blog-cta-inline { padding: 24px; }
       .footer-top { grid-template-columns: 1fr 1fr; }
       .footer-bottom { grid-template-columns: 1fr; }
@@ -312,13 +356,24 @@
   </section>
 
   <!-- ════ BLOG CONTENT ════ -->
-  <article class="blog-content">
+  <div class="blog-layout">
+
+    <nav class="blog-toc">
+      <div class="blog-toc-title">Contenido</div>
+      <a href="#valor-dato">El nuevo valor del dato</a>
+      <a href="#que-es">¿Qué es un espacio de datos?</a>
+      <a href="#componentes">Componentes clave</a>
+      <a href="#futuro">El futuro de los espacios de datos</a>
+      <a href="#imascono">Imascono y gemelos virtuales</a>
+    </nav>
+
+    <article class="blog-content">
 
     <p>Los espacios de datos son la clave de este cambio, permitiendo compartir información de forma segura, interoperable y controlada, romper silos y alimentar tecnologías avanzadas como la inteligencia artificial y los gemelos virtuales.</p>
 
     <p>En este blog descubrirás qué es un espacio de datos, cómo funciona, cuáles son sus componentes clave, por qué es el futuro de la transformación digital y cómo impulsarlos a través de la tecnología. Además, verás cómo Imascono convierte los datos en valor real mediante consultoría tecnológica y tecnologías inmersivas.</p>
 
-    <h2>El nuevo valor del dato en la era digital.</h2>
+    <h2 id="valor-dato">El nuevo valor del dato en la era digital.</h2>
 
     <p>En la economía digital actual, los datos se han convertido en uno de los activos más valiosos para las organizaciones. Se trata de recopilar grandes volúmenes de información, y el objetivo es saber interpretarla, conectarla y convertirla en conocimiento accionable. El dato bien gestionado impulsa la toma de decisiones, mejora la eficiencia operativa y permite ofrecer experiencias más personalizadas e inteligentes.</p>
 
@@ -333,7 +388,7 @@
       <button class="btn-primary">Hablemos <span class="arrow">→</span></button>
     </div>
 
-    <h2>¿Qué es un espacio de datos y por qué está revolucionando la gestión de la información?</h2>
+    <h2 id="que-es">¿Qué es un espacio de datos y por qué está revolucionando la gestión de la información?</h2>
 
     <p>Un espacio de datos es un entorno digital que permite compartir y gestionar información de forma segura, interoperable y controlada, tanto dentro de una organización como entre distintos actores. Entender qué es un espacio de datos supone asumir un nuevo modelo en el que el dato deja de estar aislado en sistemas cerrados y pasa a convertirse en un activo conectado, accesible y preparado para generar valor real, manteniendo siempre la soberanía y el control sobre la información.</p>
 
@@ -344,7 +399,7 @@
       <div class="blog-image-caption">Virtual Twin de las instalaciones industriales de Certest</div>
     </div>
 
-    <h2>Cómo funciona un espacio de datos: componentes clave.</h2>
+    <h2 id="componentes">Cómo funciona un espacio de datos: componentes clave.</h2>
 
     <p>Un espacio de datos no es solo un repositorio de información, es un ecosistema inteligente diseñado para que los datos circulen de manera segura, eficiente y escalable. Su funcionamiento se basa en la combinación de varios componentes esenciales que garantizan que la información pueda compartirse, analizarse y aprovecharse sin perder control ni integridad. Entre los componentes clave destacan:</p>
 
@@ -369,7 +424,7 @@
       <button class="btn-primary">Hablemos <span class="arrow">→</span></button>
     </div>
 
-    <h2>El futuro de los espacios de datos: una oportunidad para liderar la transformación digital.</h2>
+    <h2 id="futuro">El futuro de los espacios de datos: una oportunidad para liderar la transformación digital.</h2>
 
     <p>El futuro de los espacios de datos está estrechamente ligado a la transformación digital de las empresas. A medida que los volúmenes de información crecen y las organizaciones buscan competir en mercados cada vez más rápidos y conectados, contar con un espacio de datos se convierte en una ventaja estratégica clave. No se trata sólo de almacenar o analizar datos, sino de crear un ecosistema donde la información fluya de manera segura, sostenible y accionable.</p>
 
@@ -380,7 +435,7 @@
       <div class="blog-image-caption">Modelo de maquinaria virtualizada de Grupo Tenías</div>
     </div>
 
-    <h2>Cómo Imascono impulsa el valor del dato a través de gemelos virtuales.</h2>
+    <h2 id="imascono">Cómo Imascono impulsa el valor del dato a través de gemelos virtuales.</h2>
 
     <p>En Imascono sabemos que la importancia de los datos es cómo se gestionan y aplican para impulsar la innovación y la eficiencia. Nuestra consultoría tecnológica ayuda a las organizaciones a diseñar y estructurar sus espacios de datos, asegurando que la información fluya de manera segura, interoperable y alineada con los objetivos estratégicos del negocio.</p>
 
@@ -400,12 +455,42 @@
 
   </article>
 
+  </div><!-- /blog-layout -->
+
   <div id="contact-form"></div>
   <script src="components/contact-form.js"></script>
 
   <div id="site-footer"></div>
   <script src="components/footer.js"></script>
   <script src="components/scroll-reveal.js"></script>
+  <script>
+    // TOC active state on scroll
+    (function() {
+      var tocLinks = document.querySelectorAll('.blog-toc a');
+      var sections = [];
+      tocLinks.forEach(function(link) {
+        var id = link.getAttribute('href').replace('#', '');
+        var el = document.getElementById(id);
+        if (el) sections.push({ id: id, el: el, link: link });
+      });
+      if (!sections.length) return;
+
+      function onScroll() {
+        var scrollPos = window.scrollY + 120;
+        var active = sections[0];
+        for (var i = 0; i < sections.length; i++) {
+          if (sections[i].el.offsetTop <= scrollPos) {
+            active = sections[i];
+          }
+        }
+        tocLinks.forEach(function(l) { l.classList.remove('active'); });
+        if (active) active.link.classList.add('active');
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
 
 </body>
 </html>
