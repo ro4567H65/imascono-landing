@@ -9,7 +9,7 @@
     .reveal.from-right{transform:translateX(40px)}\
     .reveal.scale-in{transform:scale(0.95)}\
     .reveal.visible{opacity:1;transform:translateY(0) translateX(0) scale(1)}\
-    .project-hero,.sector-hero{clip-path:inset(100% 0 0 0);transition:clip-path 1.2s cubic-bezier(0.22,1,0.36,1)}\
+    .project-hero,.sector-hero{clip-path:inset(0 0 100% 0);transition:clip-path 1.2s cubic-bezier(0.22,1,0.36,1)}\
     .project-hero.hero-revealed,.sector-hero.hero-revealed{clip-path:inset(0 0 0 0)}\
     .stagger>.reveal:nth-child(1){transition-delay:0s}\
     .stagger>.reveal:nth-child(2){transition-delay:0.12s}\
