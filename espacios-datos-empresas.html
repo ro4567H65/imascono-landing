@@ -83,8 +83,21 @@
     /* ── Blog Hero ── */
     .blog-hero {
       margin-top: 72px;
+      position: relative;
       padding: 100px 0 60px;
       background: #f2f5f8;
+      overflow: hidden;
+    }
+    .blog-hero-image {
+      width: 100%;
+      aspect-ratio: 21/9;
+      overflow: hidden;
+      margin-bottom: 48px;
+    }
+    .blog-hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     .blog-hero-content {
       max-width: 800px;
@@ -281,6 +294,9 @@
   <!-- ════ BLOG HERO ════ -->
   <section class="blog-hero">
     <div class="container">
+      <div class="blog-hero-image">
+        <img src="https://imascono.com/wp-content/uploads/2026/03/espacios-de-datos.jpg" alt="Espacios de datos para empresas">
+      </div>
       <div class="blog-hero-content">
         <div class="blog-meta">
           <span>Data & IA</span>
