@@ -92,4 +92,68 @@
       }, 200);
     });
   }
+
+  // Digital scramble effect for stat numbers
+  (function() {
+    var chars = '0123456789+ABCDEFGHIJKLMNOPQRSTUVWXYZ%#&';
+    // Auto-add data-scramble to project/sector stat numbers
+    document.querySelectorAll('.project-stat-number, .stat-number').forEach(function(el) {
+      if (!el.getAttribute('data-scramble')) {
+        el.setAttribute('data-scramble', el.textContent.trim());
+      }
+    });
+
+    var scrambleEls = document.querySelectorAll('[data-scramble]');
+    var animated = new Set();
+
+    function scramble(el) {
+      var target = el.getAttribute('data-scramble');
+      var length = target.length;
+      var iterations = 0;
+      var revealed = 0;
+      var totalSteps = length * 3 + 1;
+
+      el.style.opacity = '0.2';
+      el.style.transition = 'none';
+
+      var interval = setInterval(function() {
+        var display = '';
+        for (var i = 0; i < length; i++) {
+          if (i < revealed) {
+            display += target[i];
+          } else {
+            display += chars[Math.floor(Math.random() * chars.length)];
+          }
+        }
+        el.textContent = display;
+        iterations++;
+
+        var progress = Math.min(iterations / totalSteps, 1);
+        el.style.opacity = 0.2 + (0.8 * progress);
+
+        if (iterations % 3 === 0 && revealed < length) {
+          revealed++;
+        }
+
+        if (revealed >= length) {
+          el.textContent = target;
+          el.style.opacity = '1';
+          clearInterval(interval);
+        }
+      }, 50);
+    }
+
+    var scrambleObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting && !animated.has(entry.target)) {
+          animated.add(entry.target);
+          scramble(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    scrambleEls.forEach(function(el) {
+      scrambleObserver.observe(el);
+    });
+  })();
 })();
