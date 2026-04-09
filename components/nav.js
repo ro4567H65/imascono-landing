@@ -23,9 +23,13 @@
     .nav-mega.active .nav-mega-links a:nth-child(6){transition-delay:0.35s}\
     .nav-mega-links a:first-child{border-top:1px solid rgba(255,255,255,0.2)}\
     .nav-mega-links a::after{content:"";position:absolute;bottom:0;left:0;width:0;height:1px;background:rgba(255,255,255,0.8);transition:width 0.4s cubic-bezier(0.22,1,0.36,1)}\
+    .nav-mega-links a>span:last-child{transition:transform 0.3s cubic-bezier(0.22,1,0.36,1)}\
+    .nav-mega.active .nav-mega-links a:hover>span:last-child{transform:translateX(6px)}\
     .nav-mega.active .nav-mega-links a:hover{opacity:1;color:#fff}\
     .nav-mega.active .nav-mega-links a:hover::after{width:100%}\
     .nav-active{font-weight:600!important;color:#647483!important;text-decoration:underline;text-underline-offset:6px}\
+    .nav-mega-name{display:flex;align-items:baseline;gap:8px;flex:1}\
+    .nav-mega-desc{font-weight:300;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;color:rgba(255,255,255,0.4)}\
     ';
     document.head.appendChild(style);
   }
@@ -38,54 +42,135 @@
       </a>\
       <nav class="nav-links">\
         <a href="index.html">HOME</a>\
-        <a href="#">PRODUCTOS</a>\
+        <a href="#">SERVICIOS</a>\
         <a href="#">SECTORES</a>\
-        <a href="casos-de-exito.html">CASOS DE ÉXITO</a>\
-        <a href="blog.html">BLOG</a>\
-        <a href="#">RESEARCH</a>\
+        <a href="#">CASOS DE ÉXITO</a>\
+        <a href="#">PRODUCTOS</a>\
+        <a href="#">COMPAÑÍA</a>\
+        <a href="#">INSPIRA</a>\
       </nav>\
       <div class="header-actions">\
         <span style="font-size:0.85rem;color:#8a9baa;cursor:pointer;">EN</span>\
         <span style="font-size:0.85rem;font-weight:600;color:#647483;cursor:pointer;">ES</span>\
-        <button class="btn-primary" style="background:linear-gradient(135deg,#546878 0%,#546878 50%,#748a97 50%,#546878 100%);background-size:250% 250%;background-position:0 0;transition:all 0.6s ease,background-position 0.6s ease;" onmouseover="this.style.backgroundPosition=\'100% 100%\'" onmouseout="this.style.backgroundPosition=\'0 0\'">Hablemos <span class="arrow">→</span></button>\
+        <a href="#contact-form" class="btn-primary" style="text-decoration:none;background:linear-gradient(135deg,#546878 0%,#546878 50%,#748a97 50%,#546878 100%);background-size:250% 250%;background-position:0 0;transition:all 0.6s ease,background-position 0.6s ease;" onmouseover="this.style.backgroundPosition=\'100% 100%\'" onmouseout="this.style.backgroundPosition=\'0 0\'">Hablemos <span class="arrow">→</span></a>\
       </div>\
     </div>\
   </header>\
   \
+  <div class="nav-mega" id="nav-mega-servicios">\
+    <div class="container nav-mega-content">\
+      <span class="nav-mega-title">SERVICIOS</span>\
+      <div class="nav-mega-links">\
+        <a href="servicio-inteligencia-artificial.html">INTELIGENCIA ARTIFICIAL <span>→</span></a>\
+        <a href="servicio-realidad-extendida.html">REALIDAD EXTENDIDA <span>→</span></a>\
+        <a href="servicio-consultoria-producto-digital.html">CONSULTORÍA PRODUCTO DIGITAL <span>→</span></a>\
+        <a href="servicio-data-business-intelligence.html">DATA &amp; BUSINESS INTELLIGENCE <span>→</span></a>\
+      </div>\
+    </div>\
+  </div>\
+  \
+  <div class="nav-mega" id="nav-mega-casos">\
+    <div class="container nav-mega-content">\
+      <span class="nav-mega-title">CASOS DE<br>ÉXITO</span>\
+      <div class="nav-mega-links">\
+        <a href="#">ALHAMBRA <span>→</span></a>\
+        <a href="#">TATOMA <span>→</span></a>\
+        <a href="#">GRUPO JORGE <span>→</span></a>\
+        <a href="#">RAFA NADAL <span>→</span></a>\
+      </div>\
+    </div>\
+  </div>\
+  \
   <div class="nav-mega" id="nav-mega-productos">\
     <div class="container nav-mega-content">\
-      <h2 class="nav-mega-title">PRODUCTOS</h2>\
+      <span class="nav-mega-title">PRODUCTOS</span>\
       <div class="nav-mega-links">\
-        <a href="#">AVATAR IA <span>→</span></a>\
-        <a href="#">PHOTOCALL AUMENTADO <span>→</span></a>\
-        <a href="#">INFOGRAFÍA INTERACTIVA <span>→</span></a>\
-        <a href="#">ENTRENAMIENTO VR <span>→</span></a>\
-        <a href="#">ENTORNOS GAMIFICADOS <span>→</span></a>\
-        <a href="#">PROYECTOS A MEDIDA <span>→</span></a>\
+        <a href="#"><span class="nav-mega-name">V·E·G·A <span class="nav-mega-desc">Avatar IA</span></span> <span>→</span></a>\
+        <a href="#"><span class="nav-mega-name">VIRTUAL TWIN <span class="nav-mega-desc">Infografía Interactiva</span></span> <span>→</span></a>\
+        <a href="#"><span class="nav-mega-name">VIRTUAL TRAINING <span class="nav-mega-desc">Simulación VR</span></span> <span>→</span></a>\
+        <a href="#"><span class="nav-mega-name">KIMCHI! <span class="nav-mega-desc">Photocall Aumentado</span></span> <span>→</span></a>\
+        <a href="#"><span class="nav-mega-name">VIRTUAL SPACE <span class="nav-mega-desc">Entorno Virtual</span></span> <span>→</span></a>\
+        <a href="#"><span class="nav-mega-name">SPACESHIP PROJECT <span class="nav-mega-desc">Proyecto a Medida</span></span> <span>→</span></a>\
       </div>\
     </div>\
   </div>\
   \
   <div class="nav-mega" id="nav-mega-sectores">\
     <div class="container nav-mega-content">\
-      <h2 class="nav-mega-title">SECTORES</h2>\
+      <span class="nav-mega-title">SECTORES</span>\
       <div class="nav-mega-links">\
         <a href="sector-turismo.html">TURISMO <span>→</span></a>\
-        <a href="sector-retail-ocio.html">RETAIL &amp; OCIO <span>→</span></a>\
-        <a href="sector-banca-seguros.html">BANCA &amp; SEGUROS <span>→</span></a>\
         <a href="sector-salud.html">SALUD <span>→</span></a>\
         <a href="sector-industria.html">INDUSTRIA <span>→</span></a>\
+        <a href="sector-banca-seguros.html">BANCA &amp; SEGUROS <span>→</span></a>\
+        <a href="sector-retail-ocio.html">RETAIL &amp; OCIO <span>→</span></a>\
         <a href="sector-formacion.html">FORMACIÓN <span>→</span></a>\
+      </div>\
+    </div>\
+  </div>\
+  \
+  <div class="nav-mega" id="nav-mega-compania">\
+    <div class="container nav-mega-content">\
+      <span class="nav-mega-title">COMPAÑÍA</span>\
+      <div class="nav-mega-links">\
+        <a href="#">SOBRE NOSOTROS <span>→</span></a>\
+        <a href="#">METODOLOGÍA <span>→</span></a>\
+        <a href="#">CAREERS <span>→</span></a>\
+      </div>\
+    </div>\
+  </div>\
+  \
+  <div class="nav-mega" id="nav-mega-inspira">\
+    <div class="container nav-mega-content">\
+      <span class="nav-mega-title">INSPIRA</span>\
+      <div class="nav-mega-links">\
+        <a href="blog.html">BLOG BITÁCORA <span>→</span></a>\
+        <a href="#">DISCOVERY RESEARCH <span>→</span></a>\
+        <a href="#">SALA PLAYING <span>→</span></a>\
+        <a href="#">NEWS <span>→</span></a>\
       </div>\
     </div>\
   </div>';
 
   // Mega dropdown behavior
   var megas = [
+    { label: 'SERVICIOS', id: 'nav-mega-servicios' },
+    { label: 'SECTORES', id: 'nav-mega-sectores' },
+    { label: 'CASOS DE ÉXITO', id: 'nav-mega-casos' },
     { label: 'PRODUCTOS', id: 'nav-mega-productos' },
-    { label: 'SECTORES', id: 'nav-mega-sectores' }
+    { label: 'COMPAÑÍA', id: 'nav-mega-compania' },
+    { label: 'INSPIRA', id: 'nav-mega-inspira' }
   ];
   var links = document.querySelectorAll('.nav-links a');
+  var navBar = document.querySelector('.nav-links');
+  var hideTimeout;
+  var inNavBar = false;
+  var inMegaContent = false;
+
+  function closeAll() {
+    megas.forEach(function(cfg) {
+      var m = document.getElementById(cfg.id);
+      if (m) m.classList.remove('active');
+    });
+    links.forEach(function(a) { a.classList.remove('nav-active'); });
+  }
+
+  function scheduleHide() {
+    clearTimeout(hideTimeout);
+    hideTimeout = setTimeout(function() {
+      if (!inNavBar && !inMegaContent) closeAll();
+    }, 200);
+  }
+
+  // Keep mega open while cursor is within nav-links bar
+  navBar.addEventListener('mouseenter', function() {
+    inNavBar = true;
+    clearTimeout(hideTimeout);
+  });
+  navBar.addEventListener('mouseleave', function() {
+    inNavBar = false;
+    scheduleHide();
+  });
 
   megas.forEach(function(cfg) {
     var navLink = null;
@@ -94,23 +179,24 @@
     var mega = document.getElementById(cfg.id);
     if (!mega) return;
     var megaContent = mega.querySelector('.nav-mega-content');
-    var timeout;
 
-    function closeAll() {
-      megas.forEach(function(other) {
-        var m = document.getElementById(other.id);
-        if (m) m.classList.remove('active');
-      });
-      links.forEach(function(a) { a.classList.remove('nav-active'); });
+    function show() {
+      clearTimeout(hideTimeout);
+      closeAll();
+      mega.classList.add('active');
+      navLink.classList.add('nav-active');
     }
 
-    function show() { clearTimeout(timeout); closeAll(); mega.classList.add('active'); navLink.classList.add('nav-active'); }
-    function hide() { timeout = setTimeout(function() { mega.classList.remove('active'); navLink.classList.remove('nav-active'); }, 150); }
-
     navLink.addEventListener('mouseenter', show);
-    navLink.addEventListener('mouseleave', hide);
-    megaContent.addEventListener('mouseenter', function() { clearTimeout(timeout); });
-    megaContent.addEventListener('mouseleave', hide);
+
+    megaContent.addEventListener('mouseenter', function() {
+      inMegaContent = true;
+      clearTimeout(hideTimeout);
+    });
+    megaContent.addEventListener('mouseleave', function() {
+      inMegaContent = false;
+      scheduleHide();
+    });
 
     mega.addEventListener('click', function(e) {
       if (e.target === mega || !e.target.closest('.nav-mega-links')) {
@@ -122,11 +208,7 @@
 
   document.addEventListener('click', function(e) {
     if (!e.target.closest('.nav-mega') && !e.target.closest('.nav-links')) {
-      megas.forEach(function(cfg) {
-        var m = document.getElementById(cfg.id);
-        if (m) m.classList.remove('active');
-      });
-      links.forEach(function(a) { a.classList.remove('nav-active'); });
+      closeAll();
     }
   });
 })();

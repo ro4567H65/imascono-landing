@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="favicon.ico" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data &amp; Business Intelligence — Imascono</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;700;900&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    @font-face { font-family: 'PP Neue Montreal'; src: url('fonts/montrealbook.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'PP Neue Montreal'; src: url('fonts/montreal.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Visuelt Pro'; src: url('fonts/VisueltPro-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Graphik'; src: url('fonts/GraphikLCG-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: 'Visuelt Pro', system-ui, -apple-system, sans-serif;
+      color: #647483;
+      background: #ffffff;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    .container { max-width: 1440px; margin: 0 auto; padding: 0 40px; }
+
+    /* ── Header ── */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .header .container { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.8rem; font-weight: 500; color: #8a9baa;
+      text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.3s;
+    }
+    .nav-links a:hover { color: #647483; }
+    .header-actions { display: flex; align-items: center; gap: 16px; }
+    .btn-primary {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.8rem; font-weight: 500; color: #fff;
+      background: #647483; border: 1px solid #647483;
+      padding: 10px 24px; cursor: pointer;
+      text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.3s;
+    }
+    .btn-primary:hover { background: #4a5a68; }
+    .btn-primary .arrow { transition: transform 0.3s; display: inline-block; }
+    .btn-primary:hover .arrow { transform: translateX(4px); }
+
+    /* ── Service Hero ── */
+    .service-hero {
+      position: relative;
+      margin-top: 72px;
+      padding: 120px 0 80px;
+      background: #3d4d5c;
+      overflow: hidden;
+    }
+    .service-hero-canvas {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+    }
+    .service-hero-content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: end;
+    }
+    .service-hero h1 {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      color: #ffffff;
+      line-height: 1.05;
+    }
+    .service-hero-icon {
+      width: 64px; height: 64px; margin-bottom: 24px;
+      filter: brightness(0) invert(1);
+    }
+    .service-hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .service-hero-desc {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.8;
+      max-width: 500px;
+    }
+    .service-hero .btn-primary {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.7);
+      color: #fff;
+    }
+    .service-hero .btn-primary:hover {
+      background: rgba(255,255,255,0.22);
+      border-color: #fff;
+    }
+
+    /* ── Service Overview ── */
+    .service-overview {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+      padding: 80px 0;
+      border-bottom: 1px solid rgba(100,116,131,0.15);
+    }
+    .service-overview .section-label {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8a9baa;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .service-overview h2 {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      color: #647483;
+      line-height: 1.15;
+    }
+    .service-overview-text p {
+      font-size: 1.05rem;
+      color: #8a9baa;
+      line-height: 1.8;
+    }
+    .service-overview-text p + p {
+      margin-top: 24px;
+    }
+
+    /* ── Service Capabilities ── */
+    .service-capabilities {
+      padding: 80px 0;
+    }
+    .service-capabilities-header {
+      margin-bottom: 60px;
+    }
+    .service-capabilities-header h2 {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      color: #647483;
+      line-height: 1.1;
+    }
+    .service-capabilities-header p {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #8a9baa;
+      margin-top: 12px;
+    }
+    .trends-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+    .trend-item {
+      padding: 32px;
+      border: 1px solid rgba(100,116,131,0.12);
+      transition: all 0.4s ease;
+    }
+    .trend-item:hover {
+      border-color: rgba(100,116,131,0.3);
+      box-shadow: 0 8px 30px rgba(100,116,131,0.08);
+    }
+    .trend-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 20px;
+      color: #647483;
+    }
+    .trend-icon svg { width: 100%; height: 100%; }
+    .trend-item h3 {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #647483;
+      margin-bottom: 12px;
+    }
+    .trend-item p {
+      font-size: 0.9rem;
+      color: #8a9baa;
+      line-height: 1.7;
+    }
+
+    /* ── Service Process / Methodology (Timeline) ── */
+    .service-process {
+      padding: 80px 0;
+      background: #f2f5f8;
+    }
+    .service-process .section-header {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 60px;
+      align-items: start;
+      margin-bottom: 0;
+    }
+    .service-process .section-title {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      color: #647483;
+      line-height: 1.1;
+    }
+    .service-process .section-desc {
+      font-size: 1.05rem;
+      color: #8a9baa;
+      line-height: 1.7;
+      padding-top: 10px;
+    }
+    .timeline {
+      margin: 120px 0 50px;
+      position: relative;
+    }
+    .timeline-bar {
+      position: relative;
+      width: 100%;
+      height: 24px;
+      margin-bottom: 0;
+      clip-path: inset(-10px 100% -10px 0);
+      transition: clip-path 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.4s;
+      z-index: 2;
+    }
+    .timeline-bar-fill {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(to right, #c8d2dc 0%, #647483 50%, #2c3e50 100%);
+      clip-path: polygon(0 85%, 100% 0, 100% 100%, 0 100%);
+      border-radius: 2px;
+    }
+    .timeline.in-view .timeline-bar {
+      clip-path: inset(-10px 0 -10px 0);
+    }
+    .timeline-bar-fill::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 128px 128px;
+      opacity: 0.75;
+      mix-blend-mode: overlay;
+    }
+    .timeline-bar::after {
+      content: '';
+      position: absolute;
+      bottom: -5px; left: 0;
+      width: 100%; height: 2px;
+      background: linear-gradient(to right, #c8d2dc 0%, #647483 50%, #2c3e50 100%);
+    }
+    .timeline-steps {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      position: relative;
+    }
+    .timeline-step {
+      text-align: center;
+      position: relative;
+      padding-top: 20px;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .timeline-step.revealed {
+      opacity: 1;
+      transform: none;
+    }
+    .timeline-steps:hover .timeline-step.revealed {
+      opacity: 0.5;
+    }
+    .timeline-steps .timeline-step.revealed:hover {
+      opacity: 1;
+    }
+    .timeline-step::before,
+    .timeline-step::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      border-radius: 50%;
+      border: 1px solid rgba(163, 177, 190, 0.2);
+      background: radial-gradient(circle, rgba(163, 177, 190, 0.06) 0%, transparent 70%);
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0;
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .timeline-step::before {
+      width: 160px; height: 160px;
+      border-color: rgba(255, 255, 255, 0.9);
+      background: transparent;
+      z-index: 3;
+    }
+    .timeline-step::after {
+      width: 260px; height: 260px;
+      border-color: rgba(163, 177, 190, 0.15);
+      background: #e7eaec;
+      box-shadow: 0 0 0 130px #f6f7f8, 0 0 0 131px rgba(163, 177, 190, 0.07);
+      transition-delay: 0.08s;
+    }
+    .timeline-step:hover::before {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0;
+    }
+    .timeline-step:hover::after {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0;
+    }
+    .timeline-marker::before {
+      content: '';
+      position: absolute;
+      top: -4px; left: 50%;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #647483;
+      transform: translateX(-50%) scale(0);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .timeline-step:hover .timeline-marker::before {
+      transform: translateX(-50%) scale(1);
+    }
+    .timeline-step:hover .timeline-num {
+      transform: translateX(-50%) translateY(-6px);
+      color: #647483;
+    }
+    .timeline-marker {
+      position: absolute;
+      top: -38px; left: 50%;
+      width: 0.5px; height: 52px;
+      background: #a3b1be;
+      transform: translateX(-50%) scaleY(0);
+      transform-origin: bottom center;
+      transition: transform 0.4s ease;
+      z-index: 2;
+    }
+    .timeline-step.revealed .timeline-marker {
+      transform: translateX(-50%) scaleY(1);
+    }
+    .timeline-num {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.7rem;
+      color: #a3b1be;
+      letter-spacing: 0.05em;
+      display: block;
+      position: absolute;
+      top: -56px; left: 50%;
+      transform: translateX(-50%);
+      transition: transform 0.3s ease, color 0.3s ease;
+      white-space: nowrap;
+      z-index: 2;
+    }
+    .timeline-label {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #3a4f5f;
+      margin-bottom: 4px;
+      position: relative;
+      z-index: 2;
+    }
+    .timeline-sublabel {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.75rem;
+      color: #8a9baa;
+      line-height: 1.4;
+      position: relative;
+      z-index: 2;
+    }
+    .timeline-icon {
+      display: block;
+      width: 28px; height: 28px;
+      margin: 10px auto 0;
+      position: relative;
+      z-index: 2;
+      opacity: 0;
+      transform: translateY(6px) scale(0.7);
+      transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .timeline-step:hover .timeline-icon {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    .timeline-icon svg {
+      width: 100%; height: 100%;
+      stroke: #647483;
+      fill: none;
+      stroke-width: 1;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      overflow: visible;
+    }
+    .timeline-icon svg .anim-draw {
+      stroke-dasharray: 200;
+      stroke-dashoffset: 200;
+      transition: stroke-dashoffset 0.8s ease 0.15s;
+    }
+    .timeline-step:hover .timeline-icon svg .anim-draw {
+      stroke-dashoffset: 0;
+    }
+    .timeline-icon svg .anim-spin {
+      transform-origin: center;
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s;
+      transform: rotate(-90deg);
+    }
+    .timeline-step:hover .timeline-icon svg .anim-spin {
+      transform: rotate(0deg);
+    }
+    .timeline-icon svg .anim-scale {
+      transform-origin: center;
+      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s;
+      transform: scale(0);
+    }
+    .timeline-step:hover .timeline-icon svg .anim-scale {
+      transform: scale(1);
+    }
+
+    /* ── Cases ── */
+    .sector-cases {
+      padding: 80px 0;
+    }
+    .sector-cases-header {
+      margin-bottom: 50px;
+    }
+    .sector-cases-header h2 {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      color: #647483;
+      line-height: 1.15;
+    }
+    .sector-cases-header p {
+      font-size: 1rem;
+      color: #8a9baa;
+      margin-top: 12px;
+    }
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .case-card {
+      display: block;
+      overflow: hidden;
+      position: relative;
+    }
+    .case-card img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .case-card:hover img {
+      transform: scale(1.03);
+    }
+    .case-card-info {
+      padding: 20px 0;
+    }
+    .case-card-info h3 {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #647483;
+      margin-bottom: 4px;
+    }
+    .case-card-info p {
+      font-size: 0.85rem;
+      color: #8a9baa;
+    }
+
+    /* ── FAQ ── */
+    .service-faq {
+      padding: 80px 0;
+      border-top: 1px solid rgba(100,116,131,0.15);
+    }
+    .service-faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .service-faq .section-label {
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8a9baa;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .service-faq h2 {
+      font-family: 'Visuelt Pro', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      color: #647483;
+      line-height: 1.15;
+    }
+    .faq-item {
+      border-bottom: 1px solid rgba(100,116,131,0.15);
+    }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+      cursor: pointer;
+      font-family: 'PP Neue Montreal', system-ui, sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      color: #647483;
+      transition: color 0.3s;
+    }
+    .faq-question:hover { color: #3a4f5f; }
+    .faq-icon {
+      font-size: 1.4rem;
+      line-height: 1;
+      transition: transform 0.3s;
+      flex-shrink: 0;
+      margin-left: 16px;
+    }
+    .faq-item.active .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .faq-answer-inner {
+      padding: 0 0 24px;
+      font-size: 0.95rem;
+      color: #8a9baa;
+      line-height: 1.8;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      position: relative;
+      z-index: auto;
+      background: #fff;
+      padding: 60px 0 40px;
+      border-top: 1px solid #d0d5dd;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 60px;
+      padding-bottom: 60px;
+      border-bottom: 1px solid #d0d5dd;
+    }
+    .footer-brand p {
+      font-size: 0.8rem;
+      color: #8a9baa;
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+    .footer-col .footer-col-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #3a4f5f;
+      margin-bottom: 16px;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 0.85rem;
+      color: #647483;
+      line-height: 1.7;
+      margin-bottom: 8px;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: #3a4f5f; }
+    .footer-col .footer-address {
+      font-size: 0.85rem;
+      color: #647483;
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+    .footer-col .footer-sede {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #3a4f5f;
+      margin-bottom: 8px;
+    }
+    .footer-legal-bar {
+      grid-column: 2 / -1;
+      padding: 20px 0 0;
+      font-size: 0.75rem;
+      color: #647483;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .footer-legal-bar span::after {
+      content: '|';
+      margin-left: 8px;
+      color: #647483;
+    }
+    .footer-legal-links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .footer-legal-links a {
+      color: #647483;
+      transition: color 0.2s;
+    }
+    .footer-legal-links a:hover { color: #3a4f5f; }
+    .footer-legal-links a:not(:last-child)::after {
+      content: '|';
+      margin-left: 8px;
+      color: #647483;
+    }
+    .footer-bottom {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .footer-bottom-col .footer-col-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #3a4f5f;
+      margin-bottom: 12px;
+    }
+    .footer-bottom-col a {
+      display: block;
+      font-size: 0.85rem;
+      color: #647483;
+      line-height: 1.7;
+      margin-bottom: 8px;
+      transition: color 0.2s;
+    }
+    .footer-bottom-col a:hover { color: #3a4f5f; }
+    .footer-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      grid-column: 3 / 5;
+    }
+    .footer-badges img {
+      height: 50px;
+      object-fit: contain;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .service-hero-content { grid-template-columns: 1fr; gap: 30px; }
+      .service-overview { grid-template-columns: 1fr; gap: 40px; }
+      .service-capabilities .trends-grid { grid-template-columns: 1fr; }
+      .service-process .section-header { grid-template-columns: 1fr; gap: 20px; }
+      .timeline { margin: 60px 0 30px; overflow-x: auto; }
+      .timeline-steps { grid-template-columns: repeat(8, 120px); }
+      .service-faq-grid { grid-template-columns: 1fr; gap: 40px; }
+      .cases-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-bottom { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-nav"></div>
+  <script src="components/nav.js"></script>
+
+  <!-- ════ HERO ════ -->
+  <section class="service-hero">
+    <canvas class="service-hero-canvas" id="hero-grid-canvas"></canvas>
+    <div class="container">
+      <div class="service-hero-content">
+        <div class="service-hero-left">
+          <img src="Icon_Imascono_Tecnology_DATA.svg" class="service-hero-icon" alt="Icono Data & Business Intelligence">
+          <h1>Data &amp; Business Intelligence.</h1>
+        </div>
+        <div class="service-hero-right">
+          <p class="service-hero-desc">Convertimos tus datos en ventaja competitiva con soluciones de Business Intelligence, visualización avanzada y arquitecturas de datos que impulsan decisiones informadas.</p>
+          <a href="#contact-form" class="btn-primary">Hablemos <span class="arrow">&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ OVERVIEW ════ -->
+  <div class="container">
+    <div class="service-overview">
+      <div>
+        <span class="section-label">SOBRE EL SERVICIO</span>
+        <h2>Tus datos, tu mayor activo estratégico.</h2>
+      </div>
+      <div class="service-overview-text">
+        <p>En Imascono entendemos que los datos solo tienen valor cuando se convierten en información accionable. Diseñamos e implementamos ecosistemas de datos completos: desde la captura y almacenamiento hasta la visualización y el análisis predictivo.</p>
+        <p>Nuestro equipo de ingenieros de datos y analistas BI trabaja codo a codo con tu negocio para construir dashboards, pipelines y modelos que respondan a las preguntas que realmente importan para tu toma de decisiones.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ CAPABILITIES ════ -->
+  <section class="service-capabilities">
+    <div class="container">
+      <div class="service-capabilities-header">
+        <h2>¿Qué podemos hacer por ti?</h2>
+        <p>SOLUCIONES DATA & BI PARA DECISIONES INFORMADAS</p>
+      </div>
+      <div class="trends-grid">
+        <div class="trend-item">
+          <div class="trend-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg></div>
+          <h3>Dashboards & Visualización</h3>
+          <p>Cuadros de mando interactivos y visualizaciones de datos que traducen información compleja en insights claros y accionables.</p>
+        </div>
+        <div class="trend-item">
+          <div class="trend-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+          <h3>Arquitectura de Datos</h3>
+          <p>Diseño e implementación de data warehouses, data lakes y pipelines ETL/ELT que unifican tus fuentes de datos dispersas.</p>
+        </div>
+        <div class="trend-item">
+          <div class="trend-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg></div>
+          <h3>Analítica Avanzada</h3>
+          <p>Modelos estadísticos, segmentación y análisis predictivo que van más allá del reporting tradicional para anticipar tendencias.</p>
+        </div>
+        <div class="trend-item">
+          <div class="trend-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10"/></svg></div>
+          <h3>Automatización de Reporting</h3>
+          <p>Informes automatizados, alertas inteligentes y distribución programada que liberan a tu equipo de tareas manuales repetitivas.</p>
+        </div>
+        <div class="trend-item">
+          <div class="trend-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3>Gobernanza de Datos</h3>
+          <p>Políticas de calidad, linaje de datos, catalogación y cumplimiento normativo para garantizar datos fiables y seguros.</p>
+        </div>
+        <div class="trend-item">
+          <div class="trend-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg></div>
+          <h3>Integración & APIs</h3>
+          <p>Conectores y APIs que integran tus herramientas existentes (CRM, ERP, marketing) en un ecosistema de datos unificado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ METHODOLOGY (Timeline) ════ -->
+  <section class="service-process">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">De la idea al<br>producto.</h2>
+        <p class="section-desc">Convertimos ideas en realidad con Imaginación Aplicada, un proceso probado en más de 450 proyectos y un único partner de principio a fin.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-bar">
+          <div class="timeline-bar-fill"></div>
+        </div>
+        <div class="timeline-steps">
+          <div class="timeline-step">
+            <div class="timeline-marker"></div>
+            <span class="timeline-num">/ 01</span>
+            <h4 class="timeline-label">Playing</h4>
+            <p class="timeline-sublabel">Descubrimiento<br>de cliente</p>
+            <span class="timeline-icon"><svg viewBox="0 0 28 28"><polygon class="anim-draw" points="8,4 24,14 8,24"/></svg></span>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-marker"></div>
+            <span class="timeline-num">/ 02</span>
+            <h4 class="timeline-label">Análisis</h4>
+            <p class="timeline-sublabel">Consultoría<br>técnica y negocio</p>
+            <span class="timeline-icon"><svg viewBox="0 0 28 28"><circle class="anim-scale" cx="4" cy="7" r="1.5"/><line class="anim-draw" x1="9" y1="7" x2="26" y2="7"/><circle class="anim-scale" cx="4" cy="14" r="1.5"/><line class="anim-draw" x1="9" y1="14" x2="26" y2="14"/><circle class="anim-scale" cx="4" cy="21" r="1.5"/><line class="anim-draw" x1="9" y1="21" x2="26" y2="21"/></svg></span>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-marker"></div>
+            <span class="timeline-num">/ 03</span>
+            <h4 class="timeline-label">Ideación</h4>
+            <p class="timeline-sublabel">Diseño<br>conceptual y<br>tecnológico</p>
+            <span class="timeline-icon" style="width:32px;height:32px"><svg viewBox="0 0 32 32"><polygon class="anim-draw" points="16,2 30,10 30,22 16,30 2,22 2,10"/><line class="anim-draw" x1="16" y1="2" x2="16" y2="16"/><line class="anim-draw" x1="2" y1="10" x2="16" y2="16"/><line class="anim-draw" x1="30" y1="10" x2="16" y2="16"/><polygon class="anim-draw" points="16,16 23,20 23,26 16,30 9,26 9,20"/><line class="anim-draw" x1="16" y1="16" x2="16" y2="30"/></svg></span>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-marker"></div>
+            <span class="timeline-num">/ 04</span>
+            <h4 class="timeline-label">Definición</h4>
+            <p class="timeline-sublabel">Especificaciones y<br>requisitos</p>
+            <span class="timeline-icon"><svg viewBox="0 0 28 28"><polyline class="anim-draw" points="3,7.5 5,9.5 8,5"/><line class="anim-draw" x1="11" y1="7" x2="26" y2="7"/><polyline class="anim-draw" points="3,14.5 5,16.5 8,12"/><line class="anim-draw" x1="11" y1="14" x2="26" y2="14"/><polyline class="anim-draw" points="3,21.5 5,23.5 8,19"/><line class="anim-draw" x1="11" y1="21" x2="26" y2="21"/></svg></span>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-marker"></div>
+            <span class="timeline-num">/ 05</span>
+            <h4 class="timeline-label">Prototipado</h4>
+            <p class="timeline-sublabel">Construcción</p>
+            <span class="timeline-icon" style="width:32px;height:28px"><svg viewBox="0 0 32 28"><rect class="anim-draw" x="1" y="1" width="30" height="26" rx="2"/><line class="anim-draw" x1="1" y1="7" x2="31" y2="7"/><line class="anim-draw" x1="4" y1="4" x2="8" y2="4"/><line class="anim-draw" x1="10" y1="4" x2="14" y2="4"/><rect class="anim-draw" x="4" y="10" width="10" height="8" rx="1"/><line class="anim-draw" x1="17" y1="11" x2="28" y2="11"/><line class="anim-draw" x1="17" y1="14.5" x2="25" y2="14.5"/><line class="anim-draw" x1="17" y1="18" x2="22" y2="18"/><path class="anim-draw" d="M22 24L20 22L22 20"/><line class="anim-draw" x1="20" y1="22" x2="26" y2="22"/></svg></span>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-marker"></div>
+            <span class="timeline-num">/ 06</span>
+            <h4 class="timeline-label">MVP</h4>
+            <p class="timeline-sublabel">Producto viable</p>
+            <span class="timeline-icon" style="width:22px;height:34px"><svg viewBox="0 0 22 34"><rect class="anim-draw" x="1" y="1" width="20" height="32" rx="2"/><line class="anim-draw" x1="1" y1="6" x2="21" y2="6"/><line class="anim-draw" x1="1" y1="27" x2="21" y2="27"/><circle class="anim-scale" cx="11" cy="30" r="1.2"/></svg></span>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-marker"></div>
+            <span class="timeline-num">/ 07</span>
+            <h4 class="timeline-label">Escala</h4>
+            <p class="timeline-sublabel">Crecimiento</p>
+            <span class="timeline-icon"><svg viewBox="0 0 28 28"><line class="anim-draw" x1="4" y1="24" x2="24" y2="24"/><line class="anim-draw" x1="4" y1="24" x2="4" y2="4"/><path class="anim-draw" d="M4 22C8 21 12 18 16 12C20 6 22 4 24 3"/><circle class="anim-scale" cx="24" cy="3" r="2"/></svg></span>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-marker"></div>
+            <span class="timeline-num">/ 08</span>
+            <h4 class="timeline-label">Soporte</h4>
+            <p class="timeline-sublabel">Mantenimiento</p>
+            <span class="timeline-icon" style="width:32px;height:32px"><svg viewBox="0 0 32 32"><circle class="anim-draw" cx="9" cy="6" r="3"/><path class="anim-draw" d="M4 16C4 13 6 11 9 11C12 11 14 13 14 16"/><circle class="anim-draw" cx="23" cy="20" r="3"/><path class="anim-draw" d="M18 30C18 27 20 25 23 25C26 25 28 27 28 30"/><path class="anim-draw" d="M14 6L22 6"/><polyline class="anim-draw" points="20,3 23,6 20,9"/><path class="anim-draw" d="M18 26L10 26"/><polyline class="anim-draw" points="12,23 9,26 12,29"/></svg></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ CASES ════ -->
+  <section class="sector-cases">
+    <div class="container">
+      <div class="sector-cases-header">
+        <h2>Casos de éxito en Data & BI.</h2>
+        <p>Proyectos donde los datos marcan la diferencia.</p>
+      </div>
+      <div class="cases-grid">
+        <a class="case-card" href="caso-de-uso-ibercaja.html">
+          <img src="Proyecto_Ibercaja.jpg" alt="Ibercaja">
+          <div class="case-card-info">
+            <h3>Ibercaja</h3>
+            <p>Dashboard analítico interactivo</p>
+          </div>
+        </a>
+        <a class="case-card" href="caso-de-uso-telefonica.html">
+          <img src="Proyecto_Telefonica_MWC.jpg" alt="Telefónica">
+          <div class="case-card-info">
+            <h3>Telefónica</h3>
+            <p>Plataforma de datos en tiempo real</p>
+          </div>
+        </a>
+        <a class="case-card" href="caso-de-uso-loreal.html">
+          <img src="Proyecto_Loreal.jpg" alt="L'Oréal">
+          <div class="case-card-info">
+            <h3>L'Oréal</h3>
+            <p>Analítica de experiencia de usuario</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ FAQ ════ -->
+  <section class="service-faq">
+    <div class="container">
+      <div class="service-faq-grid">
+        <div>
+          <span class="section-label">PREGUNTAS FRECUENTES</span>
+          <h2>Lo que necesitas saber.</h2>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>¿Qué herramientas de BI utilizáis?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">Trabajamos con las principales plataformas del mercado: Power BI, Tableau, Looker y soluciones custom. La elección depende de tu ecosistema tecnológico, presupuesto y necesidades específicas de visualización.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>¿Podéis integrar datos de múltiples fuentes?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">Sí, es una de nuestras especialidades. Conectamos bases de datos, APIs, ficheros, CRMs, ERPs, plataformas de marketing y cualquier fuente de datos que utilice tu organización en un ecosistema unificado.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>¿Cuánto tiempo lleva implementar un proyecto de BI?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">Un primer dashboard funcional puede estar listo en 4-6 semanas. Los proyectos de arquitectura de datos completa suelen requerir de 2 a 4 meses. Priorizamos quick wins para que veas valor desde el primer sprint.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>¿Necesitamos tener un data warehouse para empezar?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">No necesariamente. Podemos empezar con tus fuentes de datos actuales y diseñar la arquitectura de forma incremental. Si ya tienes un data warehouse, lo auditamos y optimizamos.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>¿Ofrecéis formación para nuestro equipo?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">Sí, incluimos formación como parte de todos nuestros proyectos. Queremos que tu equipo sea autónomo para interpretar los dashboards, crear sus propios informes y mantener la calidad de los datos.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ CTA / CONTACT ════ -->
+  <div id="contact-form"></div>
+  <script src="components/contact-form.js"></script>
+
+  <!-- ════ FOOTER ════ -->
+  <div id="site-footer"></div>
+  <script src="components/footer.js"></script>
+  <script src="components/scroll-reveal.js"></script>
+
+  <!-- ════ HERO GRID ANIMATION ════ -->
+  <script>
+  (function() {
+    var canvas = document.getElementById('hero-grid-canvas');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var dpr = window.devicePixelRatio || 1;
+    var cols, rows, cellW, cellH;
+
+    function resize() {
+      var rect = canvas.parentElement.getBoundingClientRect();
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      canvas.style.width = rect.width + 'px';
+      canvas.style.height = rect.height + 'px';
+      ctx.scale(dpr, dpr);
+      cellW = 38;
+      cellH = 28;
+      cols = Math.ceil(rect.width / cellW) + 2;
+      rows = Math.ceil(rect.height / cellH) + 2;
+    }
+
+    var time = 0;
+    function draw() {
+      var w = canvas.width / dpr;
+      var h = canvas.height / dpr;
+      ctx.clearRect(0, 0, w, h);
+
+      var barW = 22;
+      var barH = 3;
+
+      for (var r = 0; r < rows; r++) {
+        for (var c = 0; c < cols; c++) {
+          var x = c * cellW + cellW * 0.5;
+          var y = r * cellH + cellH * 0.5;
+
+          // Normalized position
+          var nx = c / cols;
+          var ny = r / rows;
+
+          // Wave angle based on position + time
+          var angle = (nx * 2.5 + ny * 1.8 + time * 0.4) * Math.PI;
+          var rotation = Math.sin(angle) * (Math.PI * 0.4);
+
+          // Scale increases toward top-right
+          var distFactor = Math.sqrt(nx * nx + (1 - ny) * (1 - ny));
+          var scale = 0.6 + distFactor * 0.8 + Math.sin(angle + 1.5) * 0.15;
+
+          // Opacity: base + wave
+          var alpha = 0.08 + distFactor * 0.12 + Math.sin(angle + 0.7) * 0.04;
+
+          ctx.save();
+          ctx.translate(x, y);
+          ctx.rotate(rotation);
+          ctx.scale(scale, scale);
+
+          ctx.fillStyle = 'rgba(255,255,255,' + alpha + ')';
+          ctx.fillRect(-barW / 2, -barH / 2, barW, barH);
+
+          ctx.restore();
+        }
+      }
+
+      time += 0.008;
+      requestAnimationFrame(draw);
+    }
+
+    resize();
+    draw();
+    window.addEventListener('resize', function() {
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      resize();
+    });
+  })();
+  </script>
+
+  <!-- ════ FAQ TOGGLE ════ -->
+  <script>
+  (function() {
+    document.querySelectorAll('.faq-question').forEach(function(q) {
+      q.addEventListener('click', function() {
+        var item = this.parentElement;
+        var answer = item.querySelector('.faq-answer');
+        var isActive = item.classList.contains('active');
+        // Close all
+        document.querySelectorAll('.faq-item').forEach(function(i) {
+          i.classList.remove('active');
+          i.querySelector('.faq-answer').style.maxHeight = null;
+        });
+        // Toggle current
+        if (!isActive) {
+          item.classList.add('active');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+  })();
+  </script>
+
+  <!-- Timeline reveal + elastic hover -->
+  <script>
+  (function() {
+    var timeline = document.querySelector('.timeline');
+    if (!timeline) return;
+    var steps = timeline.querySelectorAll('.timeline-step');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          timeline.classList.add('in-view');
+          steps.forEach(function(step, i) {
+            setTimeout(function() {
+              step.classList.add('revealed');
+            }, 400 + i * 180);
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    observer.observe(timeline);
+
+    var stepsContainer = timeline.querySelector('.timeline-steps');
+    var maxPush = 18;
+
+    stepsContainer.addEventListener('mouseover', function(e) {
+      var hoveredStep = e.target.closest('.timeline-step');
+      if (!hoveredStep) return;
+      var hoveredIndex = Array.prototype.indexOf.call(steps, hoveredStep);
+      steps.forEach(function(step, i) {
+        if (i === hoveredIndex) {
+          step.style.transform = 'none';
+          return;
+        }
+        var dist = Math.abs(i - hoveredIndex);
+        var push = maxPush / dist;
+        var dir = i < hoveredIndex ? -1 : 1;
+        step.style.transform = 'translateX(' + (dir * push) + 'px)';
+      });
+    });
+
+    stepsContainer.addEventListener('mouseleave', function() {
+      steps.forEach(function(step) {
+        step.style.transform = 'none';
+      });
+    });
+  })();
+  </script>
+
+</body>
+</html>

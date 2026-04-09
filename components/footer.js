@@ -11,22 +11,22 @@
           </a>\
         </div>\
         <div class="footer-col">\
-          <h4>Productos</h4>\
+          <span class="footer-col-title">Sectores</span>\
+          <a href="sector-turismo.html">Turismo</a>\
+          <a href="sector-salud.html">Salud</a>\
+          <a href="sector-industria.html">Industria</a>\
+          <a href="sector-banca-seguros.html">Banca &amp; Seguros</a>\
+          <a href="sector-retail-ocio.html">Retail &amp; Ocio</a>\
+          <a href="sector-formacion.html">Formación</a>\
+        </div>\
+        <div class="footer-col">\
+          <span class="footer-col-title">Productos</span>\
           <a href="#">VEGA</a>\
           <a href="#">Kimchi!</a>\
           <a href="#">Virtual Twins</a>\
           <a href="#">Virtual Training</a>\
           <a href="#">Virtual Spaces</a>\
           <a href="#">Spaceship Projects</a>\
-        </div>\
-        <div class="footer-col">\
-          <h4>Sectores</h4>\
-          <a href="sector-turismo.html">Turismo</a>\
-          <a href="sector-retail-ocio.html">Retail &amp; Ocio</a>\
-          <a href="sector-banca-seguros.html">Banca &amp; Seguros</a>\
-          <a href="sector-salud.html">Salud</a>\
-          <a href="sector-industria.html">Industria</a>\
-          <a href="sector-formacion.html">Formación</a>\
         </div>\
         <div class="footer-col">\
           <div class="footer-sede">Sede España</div>\
@@ -55,7 +55,7 @@
       </div>\
       <div class="footer-bottom">\
         <div class="footer-bottom-col">\
-          <h4>Servicios de Imascono</h4>\
+          <span class="footer-col-title">Servicios de Imascono</span>\
           <a href="#">Servicios de Consultoría</a>\
           <a href="#">Servicios de Inteligencia Artificial</a>\
           <a href="#">Servicios de Realidad Virtual</a>\
@@ -67,7 +67,7 @@
           <a href="#">Servicios de Metaverso y Web3</a>\
         </div>\
         <div class="footer-bottom-col">\
-          <h4>Casos de uso</h4>\
+          <span class="footer-col-title">Casos de uso</span>\
           <a href="#">Hoteles</a>\
           <a href="#">Lujo</a>\
           <a href="#">Real Estate</a>\

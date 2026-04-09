@@ -24,10 +24,10 @@
   }
 
   el.outerHTML = '\
-  <section class="cta-section">\
+  <section id="contact-form" class="cta-section">\
     <div class="container">\
       <div class="cta-grid">\
-        <h2 class="cta-title">Cuéntanos<br>y sigue<br>avanzando.</h2>\
+        <span class="cta-title">Cuéntanos<br>y sigue<br>avanzando.</span>\
         <form class="cta-form" onsubmit="return false;">\
           <div class="form-group"><input type="text" placeholder="Nombre y Apellidos*"></div>\
           <div class="form-group"><input type="text" placeholder="Empresa*"></div>\
